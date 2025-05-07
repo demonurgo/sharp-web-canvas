@@ -1,52 +1,52 @@
 
 import React from 'react';
-import { Code, Laptop, Smartphone, Database, Server } from 'lucide-react';
+import { Code, Server, Database, Cloud, Settings } from 'lucide-react';
 
 const Services = () => {
   const servicesList = [
     {
-      icon: <Code size={48} />,
-      title: "Desenvolvimento Frontend",
-      description: "Criação de interfaces responsivas e modernas com React, Vue ou Angular, utilizando HTML5, CSS3 e JavaScript/TypeScript."
-    },
-    {
-      icon: <Server size={48} />,
+      icon: <Server size={36} />,
       title: "Desenvolvimento Backend",
-      description: "Construção de APIs robustas e escaláveis com Node.js, Express, ou frameworks similares com integração de bancos de dados."
+      description: "Construção de APIs robustas e sistemas escaláveis com PHP, Laravel e outras tecnologias backend."
     },
     {
-      icon: <Smartphone size={48} />,
-      title: "Aplicativos Móveis",
-      description: "Desenvolvimento de aplicativos para Android e iOS com React Native, oferecendo experiência nativa com código unificado."
-    },
-    {
-      icon: <Database size={48} />,
+      icon: <Database size={36} />,
       title: "Banco de Dados",
-      description: "Implementação, migração e otimização de bancos de dados SQL e NoSQL como PostgreSQL, MySQL e MongoDB."
+      description: "Implementação, migração e otimização de bancos de dados PostgreSQL, modelagem de dados e queries eficientes."
     },
     {
-      icon: <Laptop size={48} />,
-      title: "UI/UX Design",
-      description: "Criação de interfaces intuitivas e atraentes, wireframes e protótipos com foco na experiência do usuário."
+      icon: <Cloud size={36} />,
+      title: "Docker & DevOps",
+      description: "Containerização de aplicações, orquestração com Docker Compose e Kubernetes, e implementação de CI/CD."
+    },
+    {
+      icon: <Settings size={36} />,
+      title: "Automações",
+      description: "Desenvolvimento de scripts e sistemas para automação de tarefas repetitivas, melhorando eficiência e reduzindo erros."
+    },
+    {
+      icon: <Code size={36} />,
+      title: "Integração com IA",
+      description: "Implementação de soluções que utilizam inteligência artificial para otimizar processos e criar funcionalidades avançadas."
     }
   ];
 
   return (
     <section id="services" className="brutalist-section bg-white">
       <div className="container mx-auto">
-        <h2 className="text-5xl md:text-6xl mb-16">
+        <h2 className="text-4xl md:text-5xl mb-12">
           <span className="bg-black text-white px-2">Serviços</span>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicesList.map((service, index) => (
             <div 
               key={index} 
-              className="p-8 border-4 border-black hover:bg-secondary transition-colors group"
+              className="p-6 border border-black hover:bg-accent/20 transition-colors"
             >
-              <div className="text-black mb-6">{service.icon}</div>
-              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p>{service.description}</p>
+              <div className="text-black mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+              <p className="text-gray-700">{service.description}</p>
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Phone, Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { Phone, Mail, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 
@@ -30,49 +30,46 @@ const Contact = () => {
   return (
     <section id="contact" className="brutalist-section bg-white">
       <div className="container mx-auto">
-        <h2 className="text-5xl md:text-6xl mb-16">
+        <h2 className="text-4xl md:text-5xl mb-12">
           <span className="bg-black text-white px-2">Contato</span>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
-            <h3 className="text-2xl font-bold mb-8">Entre em contato</h3>
-            <p className="mb-8">
+            <h3 className="text-xl font-bold mb-6">Entre em contato</h3>
+            <p className="mb-6 text-gray-700">
               Interessado em trabalhar juntos ou tem alguma pergunta? Preencha o formulário ou use 
               os canais de contato direto abaixo.
             </p>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-black flex items-center justify-center mr-4">
-                  <Mail size={24} className="text-white" />
+                <div className="w-10 h-10 bg-black flex items-center justify-center mr-4">
+                  <Mail size={20} className="text-white" />
                 </div>
-                <span>email@exemplo.com</span>
+                <span className="text-gray-700">email@exemplo.com</span>
               </div>
               
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-black flex items-center justify-center mr-4">
-                  <Phone size={24} className="text-white" />
+                <div className="w-10 h-10 bg-black flex items-center justify-center mr-4">
+                  <Phone size={20} className="text-white" />
                 </div>
-                <span>+55 (11) 9 8765-4321</span>
+                <span className="text-gray-700">+55 (11) 9 8765-4321</span>
               </div>
               
-              <div className="flex mt-8 space-x-4">
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center hover:bg-secondary transition-colors">
-                  <Github size={24} className="text-white" />
+              <div className="flex mt-6 space-x-3">
+                <a href="#" className="w-10 h-10 bg-black flex items-center justify-center hover:bg-accent transition-colors">
+                  <Github size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center hover:bg-secondary transition-colors">
-                  <Linkedin size={24} className="text-white" />
-                </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center hover:bg-secondary transition-colors">
-                  <Instagram size={24} className="text-white" />
+                <a href="#" className="w-10 h-10 bg-black flex items-center justify-center hover:bg-accent transition-colors">
+                  <Linkedin size={20} className="text-white" />
                 </a>
               </div>
             </div>
           </div>
           
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block mb-2 font-bold">Nome</label>
                 <input
@@ -106,7 +103,7 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  rows={5}
+                  rows={4}
                   required
                   className="brutalist-input"
                   placeholder="Escreva sua mensagem aqui..."

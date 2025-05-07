@@ -19,13 +19,13 @@
     --primary: 240 6% 10%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 255 100% 75%;
+    --secondary: 210 40% 85%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 255 80% 75%;
+    --accent: 210 40% 85%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -57,15 +57,14 @@
   }
   
   .brutalist-section {
-    @apply py-16 md:py-24 px-4 md:px-8 border-b-2 border-black;
+    @apply py-12 md:py-20 px-4 md:px-6 border-b border-black;
   }
   
   .brutalist-button {
-    @apply bg-black text-white px-6 py-3 font-bold hover:bg-secondary hover:text-black transition-colors border-2 border-black uppercase;
+    @apply bg-black text-white px-5 py-2 font-bold hover:bg-secondary hover:text-black transition-colors border border-black uppercase;
   }
   
   .brutalist-input {
-    @apply bg-transparent border-2 border-black p-3 w-full font-mono;
+    @apply bg-transparent border border-black p-3 w-full font-mono;
   }
 }
-
