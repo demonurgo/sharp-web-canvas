@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { Phone, Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,56 +29,60 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="brutalist-section bg-white relative">
+    <section id="contact" className="brutalist-section bg-white dark:bg-gray-900 relative">
       <div className="grain-overlay"></div>
       <div className="container mx-auto relative z-10">
-        <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">
-          <span className="bg-black text-white px-2 py-1 brutal-box inline-block">Contato</span>
-        </h2>
+        <ScrollReveal>
+          <h2 className="text-4xl md:text-5xl mb-12">
+            <span className="bg-black dark:bg-gray-800 text-white px-2 py-1 brutal-box inline-block">Contato</span>
+          </h2>
+        </ScrollReveal>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="animate-fade-in-up delay-100">
+          <ScrollReveal delay={100}>
             <h3 className="text-xl font-bold mb-6">Entre em contato</h3>
-            <p className="mb-6 text-gray-700">
+            <p className="mb-6 text-gray-700 dark:text-gray-300">
               Interessado em trabalhar juntos ou tem alguma pergunta? Preencha o formulário ou use 
               os canais de contato direto abaixo.
             </p>
             
             <div className="space-y-6">
-              <div className="flex items-center animate-fade-in-up delay-200">
-                <div className="w-12 h-12 bg-secondary flex items-center justify-center mr-4 brutal-box">
+              <ScrollReveal delay={200} className="flex items-center">
+                <div className="w-12 h-12 bg-secondary dark:bg-green-700 flex items-center justify-center mr-4 brutal-box">
                   <Mail size={20} className="text-white" />
                 </div>
-                <span className="text-gray-700">email@exemplo.com</span>
-              </div>
+                <span className="text-gray-700 dark:text-gray-300">email@exemplo.com</span>
+              </ScrollReveal>
               
-              <div className="flex items-center animate-fade-in-up delay-300">
-                <div className="w-12 h-12 bg-secondary flex items-center justify-center mr-4 brutal-box">
-                  <Phone size={20} className="text-white" />
-                </div>
-                <span className="text-gray-700">+55 (11) 9 8765-4321</span>
-              </div>
-              
-              <div className="flex mt-6 space-x-4 animate-fade-in-up delay-400">
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box">
+              <ScrollReveal delay={300} className="flex mt-6 space-x-4">
+                <a href="#" className="w-12 h-12 bg-black dark:bg-gray-800 flex items-center justify-center brutal-box">
                   <Github size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box">
+                <a href="#" className="w-12 h-12 bg-black dark:bg-gray-800 flex items-center justify-center brutal-box">
                   <Linkedin size={20} className="text-white" />
                 </a>
-              </div>
+                <a href="#" className="w-12 h-12 bg-black dark:bg-gray-800 flex items-center justify-center brutal-box">
+                  <Instagram size={20} className="text-white" />
+                </a>
+                <a href="#" className="w-12 h-12 bg-black dark:bg-gray-800 flex items-center justify-center brutal-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path>
+                    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Zm5 0a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Z"></path>
+                  </svg>
+                </a>
+              </ScrollReveal>
 
-              <div className="mt-8 pt-8 border-t-2 border-black animate-fade-in-up delay-500">
+              <ScrollReveal delay={400} className="mt-8 pt-8 border-t-2 border-black dark:border-gray-700">
                 <div className="flex items-center gap-4">
-                  <div className="w-3 h-3 bg-black"></div>
+                  <div className="w-3 h-3 bg-black dark:bg-white"></div>
                   <span className="text-sm uppercase font-bold">Disponível para projetos</span>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
-          </div>
+          </ScrollReveal>
           
-          <div className="relative animate-fade-in-up delay-200">
-            <div className="brutal-box p-6 bg-white">
+          <ScrollReveal delay={200} className="relative">
+            <div className="brutal-box p-6 bg-white dark:bg-gray-800">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block mb-2 font-bold">Nome</label>
@@ -86,7 +91,7 @@ const Contact = () => {
                     id="name"
                     name="name"
                     required
-                    className="brutalist-input brutal-box"
+                    className="brutalist-input brutal-box dark:bg-gray-700 dark:text-white"
                     placeholder="Seu nome"
                     value={formData.name}
                     onChange={handleChange}
@@ -100,7 +105,7 @@ const Contact = () => {
                     id="email"
                     name="email"
                     required
-                    className="brutalist-input brutal-box"
+                    className="brutalist-input brutal-box dark:bg-gray-700 dark:text-white"
                     placeholder="seu@email.com"
                     value={formData.email}
                     onChange={handleChange}
@@ -114,7 +119,7 @@ const Contact = () => {
                     name="message"
                     rows={4}
                     required
-                    className="brutalist-input brutal-box"
+                    className="brutalist-input brutal-box dark:bg-gray-700 dark:text-white"
                     placeholder="Escreva sua mensagem aqui..."
                     value={formData.message}
                     onChange={handleChange}
@@ -126,8 +131,8 @@ const Contact = () => {
                 </Button>
               </form>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-black -z-10"></div>
-          </div>
+            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-black dark:border-gray-700 -z-10"></div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
