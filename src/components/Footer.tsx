@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white dark:bg-gray-900 py-8 relative">
+    <footer className="bg-black text-white py-8 relative">
       <div className="grain-overlay opacity-20"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -15,24 +15,24 @@ const Footer = () => {
           
           <ScrollReveal className="mb-4 md:mb-0" delay={100}>
             <ul className="flex flex-wrap justify-center space-x-4 uppercase font-bold text-sm">
-              <li><a href="#home" className="hover:text-accent dark:hover:text-green-400 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-accent dark:hover:text-green-400 transition-colors">Sobre</a></li>
-              <li><a href="#services" className="hover:text-accent dark:hover:text-green-400 transition-colors">Serviços</a></li>
-              <li><a href="#portfolio" className="hover:text-accent dark:hover:text-green-400 transition-colors">Portfolio</a></li>
-              <li><a href="#contact" className="hover:text-accent dark:hover:text-green-400 transition-colors">Contato</a></li>
+              <li><a href="#home" className="hover:text-accent transition-colors">Home</a></li>
+              <li><a href="#about" className="hover:text-accent transition-colors">Sobre</a></li>
+              <li><a href="#services" className="hover:text-accent transition-colors">Serviços</a></li>
+              <li><a href="#portfolio" className="hover:text-accent transition-colors">Portfolio</a></li>
+              <li><a href="#contact" className="hover:text-accent transition-colors">Contato</a></li>
             </ul>
           </ScrollReveal>
         </div>
 
         <ScrollReveal className="flex justify-center mb-6" delay={200}>
           <div className="flex space-x-4">
-            <div className="circular-icon w-10 h-10 border border-white dark:border-gray-400 flex items-center justify-center">
+            <div className="circular-icon w-10 h-10 border border-white flex items-center justify-center">
               <Code size={18} />
             </div>
-            <div className="circular-icon w-10 h-10 border border-white dark:border-gray-400 flex items-center justify-center">
+            <div className="circular-icon w-10 h-10 border border-white flex items-center justify-center">
               <Database size={18} />
             </div>
-            <div className="circular-icon w-10 h-10 border border-white dark:border-gray-400 flex items-center justify-center">
+            <div className="circular-icon w-10 h-10 border border-white flex items-center justify-center">
               <Server size={18} />
             </div>
           </div>
