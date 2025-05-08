@@ -32,21 +32,29 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="brutalist-section bg-white">
-      <div className="container mx-auto">
-        <h2 className="text-4xl md:text-5xl mb-12">
-          <span className="bg-black text-white px-2">Serviços</span>
+    <section id="services" className="brutalist-section bg-secondary/5 relative">
+      <div className="grain-overlay"></div>
+      <div className="absolute top-0 left-0 w-full h-full dotted-bg"></div>
+      <div className="container mx-auto relative z-10">
+        <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">
+          <span className="bg-black text-white px-2 py-1 brutal-box inline-block">Serviços</span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicesList.map((service, index) => (
             <div 
               key={index} 
-              className="p-6 border border-black hover:bg-accent/20 transition-colors"
+              className="brutal-box bg-white hover:bg-white transition-colors animate-fade-in-up"
+              style={{animationDelay: `${index * 0.1}s`}}
             >
-              <div className="text-black mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-700">{service.description}</p>
+              <div className="p-6">
+                <div className="circular-icon w-16 h-16 bg-secondary text-white mb-4">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-gray-700">{service.description}</p>
+              </div>
+              <div className="w-full h-1 bg-secondary"></div>
             </div>
           ))}
         </div>
