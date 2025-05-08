@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Code, Server, Database, Cloud, Settings } from 'lucide-react';
-import ScrollReveal from './ScrollReveal';
 
 const Services = () => {
   const servicesList = [
@@ -33,32 +32,30 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="brutalist-section bg-secondary/5 dark:bg-green-900/5 relative">
+    <section id="services" className="brutalist-section bg-secondary/5 relative">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 left-0 w-full h-full dotted-bg"></div>
       <div className="container mx-auto relative z-10">
-        <ScrollReveal>
-          <h2 className="text-4xl md:text-5xl mb-12">
-            <span className="bg-black dark:bg-gray-800 text-white px-2 py-1 brutal-box inline-block">Serviços</span>
-          </h2>
-        </ScrollReveal>
+        <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">
+          <span className="bg-black text-white px-2 py-1 brutal-box inline-block">Serviços</span>
+        </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicesList.map((service, index) => (
-            <ScrollReveal 
+            <div 
               key={index} 
-              className="brutal-box bg-white dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-800 transition-colors"
-              delay={index * 100}
+              className="brutal-box bg-white hover:bg-white transition-colors animate-fade-in-up"
+              style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className="p-6">
-                <div className="circular-icon w-16 h-16 bg-secondary dark:bg-green-700 text-white mb-4">
+                <div className="circular-icon w-16 h-16 bg-secondary text-white mb-4">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-700 dark:text-gray-300">{service.description}</p>
+                <p className="text-gray-700">{service.description}</p>
               </div>
-              <div className="w-full h-1 bg-secondary dark:bg-green-700"></div>
-            </ScrollReveal>
+              <div className="w-full h-1 bg-secondary"></div>
+            </div>
           ))}
         </div>
       </div>
