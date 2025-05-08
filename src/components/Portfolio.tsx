@@ -1,39 +1,46 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
   const projects = [
     {
+      id: "sistema-automacao",
       title: "Sistema de Automação",
       category: "Backend Development",
       description: "Sistema automatizado para processamento de dados em lote com integração a múltiplos serviços externos.",
       image: "bg-secondary/10"
     },
     {
+      id: "api-pagamentos",
       title: "API de Pagamentos",
       category: "PHP & PostgreSQL",
       description: "API RESTful para processamento de pagamentos com integração a múltiplos gateways e sistema anti-fraude.",
       image: "bg-accent/10"
     },
     {
+      id: "microservicos-docker",
       title: "Microserviços Docker",
       category: "DevOps",
       description: "Arquitetura de microsserviços containerizada com Docker, com monitoramento e escalabilidade automática.",
       image: "bg-secondary/10"
     },
     {
+      id: "dashboard-analitico",
       title: "Dashboard Analítico",
       category: "Full Stack",
       description: "Dashboard para visualização de métricas e KPIs com backend em PHP, PostgreSQL e frontend moderno.",
       image: "bg-accent/10"
     },
     {
+      id: "assistente-ia",
       title: "Assistente IA",
       category: "Inteligência Artificial",
       description: "Implementação de assistente virtual baseado em IA para automatizar suporte ao cliente e processos internos.",
       image: "bg-secondary/10"
     },
     {
+      id: "sistema-crm",
       title: "Sistema CRM",
       category: "Backend & Automação",
       description: "Sistema de gestão de relacionamento com clientes com automações de tarefas e fluxos de trabalho personalizados.",
@@ -70,13 +77,13 @@ const Portfolio = () => {
               <div className="p-4">
                 <p className="text-sm font-bold uppercase text-accent mb-2">{project.category}</p>
                 <p className="mb-3 text-gray-700 text-sm">{project.description}</p>
-                <a 
-                  href="#" 
+                <Link 
+                  to={`/projeto/${project.id}`} 
                   className="font-bold uppercase text-black hover:text-accent flex items-center gap-2 group-hover:translate-x-1 transition-transform"
                 >
                   Ver detalhes 
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
-                </a>
+                </Link>
               </div>
             </div>
           ))}

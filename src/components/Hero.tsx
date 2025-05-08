@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Code, Globe, Database } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -18,12 +19,12 @@ const Hero = () => {
               Transformo ideias em soluções eficientes com código limpo e tecnologias robustas.
             </p>
             <div className="flex gap-3 animate-fade-in-up delay-300">
-              <a href="#contact" className="brutalist-button brutal-box">
+              <Link to="/#contact" className="brutalist-button brutal-box">
                 Contato
-              </a>
-              <a href="#portfolio" className="brutalist-button bg-white text-black brutal-box">
+              </Link>
+              <Link to="/#portfolio" className="brutalist-button bg-white text-black brutal-box">
                 Projetos
-              </a>
+              </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center justify-center">
@@ -45,7 +46,7 @@ const Hero = () => {
         </div>
 
         <div className="absolute bottom-10 left-0 right-0 hidden md:flex justify-center z-20 animate-float">
-          <a href="#about" className="flex flex-col items-center text-xs">
+          <a  href="#about" className="flex flex-col items-center text-xs">
             <span className="mb-2">Scroll</span>
             <span className="w-0.5 h-10 bg-black"></span>
           </a>
