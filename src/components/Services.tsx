@@ -1,9 +1,14 @@
 
 import React from 'react';
-import { Code, Server, Database, Cloud, Settings } from 'lucide-react';
+import { Code, Server, Database, Cloud, Settings, Layout } from 'lucide-react';
 
 const Services = () => {
   const servicesList = [
+    {
+      icon: <Layout size={36} />,
+      title: "Frontend & Landing Pages",
+      description: "Criação de interfaces modernas e responsivas, landing pages otimizadas para conversão e sites institucionais com design brutalista."
+    },
     {
       icon: <Server size={36} />,
       title: "Desenvolvimento Backend",
@@ -14,6 +19,11 @@ const Services = () => {
       title: "Banco de Dados",
       description: "Implementação, migração e otimização de bancos de dados PostgreSQL, modelagem de dados e queries eficientes."
     },
+        {
+      icon: <Code size={36} />,
+      title: "Integração com IA",
+      description: "Implementação de soluções que utilizam inteligência artificial para otimizar processos e criar funcionalidades avançadas."
+    },
     {
       icon: <Cloud size={36} />,
       title: "Docker & DevOps",
@@ -23,11 +33,6 @@ const Services = () => {
       icon: <Settings size={36} />,
       title: "Automações",
       description: "Desenvolvimento de scripts e sistemas para automação de tarefas repetitivas, melhorando eficiência e reduzindo erros."
-    },
-    {
-      icon: <Code size={36} />,
-      title: "Integração com IA",
-      description: "Implementação de soluções que utilizam inteligência artificial para otimizar processos e criar funcionalidades avançadas."
     }
   ];
 
@@ -44,17 +49,17 @@ const Services = () => {
           {servicesList.map((service, index) => (
             <div 
               key={index} 
-              className="brutal-box bg-white hover:bg-white transition-colors animate-fade-in-up"
+              className="brutal-box bg-white hover:bg-white transition-colors animate-fade-in-up overflow-hidden flex flex-col"
               style={{animationDelay: `${index * 0.1}s`}}
             >
-              <div className="p-6">
+              <div className="p-6 flex-grow">
                 <div className="circular-icon w-16 h-16 bg-secondary text-white mb-4">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-700">{service.description}</p>
               </div>
-              <div className="w-full h-1 bg-secondary"></div>
+              <div className="w-full h-1 bg-secondary shrink-0"></div>
             </div>
           ))}
         </div>
