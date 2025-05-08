@@ -1,15 +1,24 @@
-
 import React from 'react';
 import { useTheme } from '@/hooks/useTheme';
-import { Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
 
-// This component is now just a placeholder since we've removed dark mode
 const ThemeToggle = () => {
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <div className="flex items-center gap-2">
-      <Sun size={18} className="text-yellow-500" />
+      <Sun size={18} className="text-yellow-500 dark:text-gray-400" />
+      <Switch 
+        checked={theme === 'dark'}
+        onCheckedChange={toggleTheme}
+        className="data-[state=checked]:bg-green-700 data-[state=unchecked]:bg-secondary"
+      />
+      <Moon size={18} className="text-gray-400 dark:text-blue-300" />
     </div>
   );
 };
