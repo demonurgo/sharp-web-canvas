@@ -25,7 +25,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 350 80% 65%;
+    --accent: 142 76% 36%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -36,6 +36,36 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 3%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 0 0% 3%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 240 6% 10%;
+
+    --secondary: 240 60% 55%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 6% 10%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 240 4.9% 83.9%;
   }
  
   * {
@@ -49,7 +79,6 @@
   body {
     @apply bg-background text-foreground font-mono;
     font-family: 'Space Mono', monospace;
-    background-color: #f5f5f5;
   }
   
   h1, h2, h3, h4, h5 {
@@ -58,11 +87,11 @@
   }
   
   .brutalist-section {
-    @apply py-12 md:py-20 px-4 md:px-6 border-b border-black relative overflow-hidden;
+    @apply py-12 md:py-20 px-4 md:px-6 border-b border-black dark:border-white relative overflow-hidden;
   }
   
   .brutalist-button {
-    @apply bg-black text-white px-5 py-2 font-bold hover:bg-secondary hover:text-black transition-colors border border-black uppercase relative;
+    @apply bg-black text-white px-5 py-2 font-bold hover:bg-secondary hover:text-black transition-colors border border-black dark:border-white uppercase relative dark:bg-white dark:text-black dark:hover:bg-secondary dark:hover:text-white;
     transform: translateY(0);
     transition: transform 0.2s ease;
   }
@@ -72,9 +101,13 @@
   }
   
   .brutalist-input {
-    @apply bg-transparent border border-black p-3 w-full font-mono;
+    @apply bg-transparent border border-black dark:border-white p-3 w-full font-mono;
   }
-  
+
+  .dark .grain-overlay {
+    opacity: 0.1;
+  }
+
   .grain-overlay {
     position: absolute;
     top: 0;
@@ -92,6 +125,12 @@
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  .dark .grid-texture {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   }
 
   /* Animações */
@@ -189,7 +228,7 @@
   }
 
   .brutal-box {
-    @apply border border-black relative;
+    @apply border border-black relative dark:border-white;
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
     transition: all 0.2s ease;
   }
@@ -197,6 +236,14 @@
   .brutal-box:hover {
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+  }
+
+  .dark .brutal-box {
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 1);
+  }
+  
+  .dark .brutal-box:hover {
+    box-shadow: 6px 6px 0 rgba(255, 255, 255, 1);
   }
 
   .brutal-hover:hover {
@@ -216,5 +263,22 @@
   .dotted-bg {
     background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 10px 10px;
+  }
+  
+  .dark .dotted-bg {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  }
+
+  /* Scroll animation */
+  .reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

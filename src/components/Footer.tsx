@@ -4,7 +4,7 @@ import { Code, Database, Server } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 relative">
+    <footer className="bg-black text-white dark:bg-black dark:text-white py-8 relative">
       <div className="grain-overlay opacity-20"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
