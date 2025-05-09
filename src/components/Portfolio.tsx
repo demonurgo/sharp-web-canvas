@@ -90,7 +90,19 @@ const Portfolio = () => {
         </div>
         
         <div className="mt-12 text-center animate-fade-in-up delay-500">
-          <a href="#contact" className="brutalist-button brutal-box inline-block">Tem um projeto em mente?</a>
+          <a 
+            href="#contact" 
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById('contact');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="brutalist-button brutal-box inline-block"
+          >
+            Tem um projeto em mente?
+          </a>
         </div>
       </div>
     </section>

@@ -19,12 +19,32 @@ const Hero = () => {
               Transformo ideias em soluções eficientes com código limpo e tecnologias robustas.
             </p>
             <div className="flex gap-3 animate-fade-in-up delay-300">
-              <Link to="/#contact" className="brutalist-button brutal-box">
+              <a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="brutalist-button brutal-box"
+              >
                 Contato
-              </Link>
-              <Link to="/#portfolio" className="brutalist-button bg-white text-black brutal-box">
+              </a>
+              <a 
+                href="#portfolio" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('portfolio');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="brutalist-button bg-white text-black brutal-box"
+              >
                 Projetos
-              </Link>
+              </a>
             </div>
           </div>
           <div className="hidden md:flex items-center justify-center">
