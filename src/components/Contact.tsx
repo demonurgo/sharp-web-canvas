@@ -28,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="brutalist-section bg-white dark:bg-black relative">
+    <section id="contact" className="brutalist-section bg-white dark:bg-black relative pt-24 md:pt-28">
       <div className="grain-overlay"></div>
       <div className="container mx-auto relative z-10">
         <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">

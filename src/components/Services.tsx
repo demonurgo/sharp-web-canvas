@@ -37,7 +37,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="brutalist-section bg-accent/5 dark:bg-accent/10 relative">
+    <section id="services" className="brutalist-section bg-accent/5 dark:bg-accent/10 relative pt-24 md:pt-28">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 left-0 w-full h-full dotted-bg"></div>
       <div className="container mx-auto relative z-10">

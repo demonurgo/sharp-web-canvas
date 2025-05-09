@@ -49,7 +49,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="brutalist-section bg-white dark:bg-black relative">
+    <section id="portfolio" className="brutalist-section bg-white dark:bg-black relative pt-24 md:pt-28">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 -z-1"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 -z-1"></div>

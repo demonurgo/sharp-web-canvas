@@ -74,6 +74,7 @@
   
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px; /* Altura da barra de navegação + um pouco de espaço extra */
   }
   
   body {
@@ -84,6 +85,11 @@
   h1, h2, h3, h4, h5 {
     font-family: 'Inter', sans-serif;
     @apply font-black;
+  }
+  
+  /* Espaçamento adicional para todas as seções que são alvos de links de âncora */
+  section[id] {
+    scroll-margin-top: 6rem; /* Valor de segurança adicional */
   }
   
   .brutalist-section {
