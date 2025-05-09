@@ -91,12 +91,23 @@
   }
   
   .brutalist-button {
-    @apply bg-black text-white dark:bg-white dark:text-black px-5 py-2 font-bold hover:bg-secondary hover:text-black transition-colors border border-black dark:border-white uppercase relative;
+    @apply bg-black text-white dark:bg-black dark:text-white px-5 py-2 font-bold hover:bg-secondary hover:text-black dark:hover:bg-secondary dark:hover:text-white transition-colors border border-black dark:border-white uppercase relative;
     transform: translateY(0);
     transition: transform 0.2s ease;
   }
   
   .brutalist-button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Botão estilo brutalist invertido (para fundos escuros) */
+  .brutalist-button-inverted {
+    @apply bg-white text-black dark:bg-white dark:text-black px-5 py-2 font-bold hover:bg-secondary hover:text-white dark:hover:bg-secondary dark:hover:text-white transition-colors border border-black dark:border-white uppercase relative;
+    transform: translateY(0);
+    transition: transform 0.2s ease;
+  }
+
+  .brutalist-button-inverted:hover {
     transform: translateY(-2px);
   }
   
@@ -243,6 +254,12 @@
   .dark .brutal-box:hover {
     transform: translate(-2px, -2px);
     box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Efeito brilhoso para quadrados no tema escuro */
+  .dark .indicator-square {
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.9);
   }
 
   .brutal-hover:hover {

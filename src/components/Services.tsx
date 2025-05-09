@@ -37,7 +37,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="brutalist-section bg-secondary/5 relative">
+    <section id="services" className="brutalist-section bg-secondary/5 dark:bg-secondary/10 relative">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 left-0 w-full h-full dotted-bg"></div>
       <div className="container mx-auto relative z-10">
@@ -49,7 +49,7 @@ const Services = () => {
           {servicesList.map((service, index) => (
             <div 
               key={index} 
-              className="brutal-box bg-white hover:bg-white transition-colors animate-fade-in-up overflow-hidden flex flex-col"
+              className="brutal-box bg-white dark:bg-black hover:bg-white dark:hover:bg-black transition-colors animate-fade-in-up overflow-hidden flex flex-col"
               style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className="p-6 flex-grow">
@@ -57,7 +57,7 @@ const Services = () => {
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-700">{service.description}</p>
+                <p className="text-gray-700 dark:text-gray-300">{service.description}</p>
               </div>
               <div className="w-full h-1 bg-secondary shrink-0"></div>
             </div>

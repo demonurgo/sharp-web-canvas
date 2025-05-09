@@ -187,7 +187,7 @@ const ProjectDetail = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <section className="brutalist-section bg-white relative py-16">
+        <section className="brutalist-section bg-white dark:bg-black relative py-16">
           <div className="grain-overlay"></div>
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 -z-1"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 -z-1"></div>
@@ -200,7 +200,7 @@ const ProjectDetail = () => {
             <div className="mb-6">
               <Link 
                 to="/#portfolio" 
-                className="inline-flex items-center gap-2 font-bold text-black hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 font-bold text-black dark:text-white hover:text-accent transition-colors"
               >
                 ← Voltar ao Portfolio
               </Link>
@@ -214,13 +214,13 @@ const ProjectDetail = () => {
             <div className="project-image-container mb-10 animate-fade-in-up">
               <div className={`aspect-video w-full ${project.image} p-12 flex items-center justify-center`}>
                 <div className="text-center">
-                  <h2 className="text-3xl font-bold text-black mb-4">{project.title}</h2>
+                  <h2 className="text-3xl font-bold text-black dark:text-white mb-4">{project.title}</h2>
                   <p className="text-xl mb-6">{project.category}</p>
                   <a 
                     href={project.demoUrl} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="brutalist-button brutal-box inline-block"
+                    className="brutalist-button brutal-box inline-block dark:text-white"
                   >
                     Ver Demonstração
                   </a>
@@ -230,14 +230,14 @@ const ProjectDetail = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {/* Ferramentas */}
-              <div className="brutal-box border-2 border-black p-6 animate-fade-in-up animate-delay-100">
+              <div className="brutal-box border-2 border-black dark:border-white p-6 animate-fade-in-up animate-delay-100">
                 <h2 className="text-2xl font-bold mb-6 after:content-[''] after:block after:w-16 after:h-1 after:bg-accent after:mt-2">
                   Ferramentas
                 </h2>
                 <ul className="grid grid-cols-2 gap-4">
                   {project.tools.map((tool, index) => (
                     <li key={index} className="flex items-center gap-3">
-                      <div className="w-10 h-10 border-2 border-black flex items-center justify-center">
+                      <div className="w-10 h-10 border-2 border-black dark:border-white flex items-center justify-center">
                         <i data-lucide={tool.icon} className="w-5 h-5"></i>
                       </div>
                       <span className="font-medium">{tool.name}</span>
@@ -247,7 +247,7 @@ const ProjectDetail = () => {
               </div>
               
               {/* Descrição */}
-              <div className="brutal-box border-2 border-black p-6 animate-fade-in-up animate-delay-200">
+              <div className="brutal-box border-2 border-black dark:border-white p-6 animate-fade-in-up animate-delay-200">
                 <h2 className="text-2xl font-bold mb-6 after:content-[''] after:block after:w-16 after:h-1 after:bg-accent after:mt-2">
                   Descrição
                 </h2>
@@ -265,7 +265,7 @@ const ProjectDetail = () => {
                 {prevProject && (
                   <Link 
                     to={`/projeto/${prevProject.id}`}
-                    className="brutal-box border-2 border-black p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white transition-colors"
+                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                   >
                     <span className="text-xl">←</span> 
                     <div>
@@ -277,7 +277,7 @@ const ProjectDetail = () => {
               </div>
               
               <div className="text-center flex justify-center items-center">
-                <Link to="/#portfolio" className="brutal-box border-2 border-black p-3 inline-block hover:bg-black hover:text-white transition-colors">
+                <Link to="/#portfolio" className="brutal-box border-2 border-black dark:border-white p-3 inline-block hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
                   Ver Todos
                 </Link>
               </div>
@@ -286,7 +286,7 @@ const ProjectDetail = () => {
                 {nextProject && (
                   <Link 
                     to={`/projeto/${nextProject.id}`}
-                    className="brutal-box border-2 border-black p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white transition-colors"
+                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                   >
                     <div>
                       <div className="text-xs uppercase font-bold">Próximo Projeto</div>
@@ -299,7 +299,7 @@ const ProjectDetail = () => {
             </div>
 
             <div className="text-center animate-fade-in-up animate-delay-400">
-              <Link to="/#contact" className="brutalist-button brutal-box inline-block">
+              <Link to="/#contact" className="brutalist-button brutal-box inline-block dark:text-white">
                 Tem um projeto similar em mente?
               </Link>
             </div>

@@ -49,7 +49,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="brutalist-section bg-white relative">
+    <section id="portfolio" className="brutalist-section bg-white dark:bg-black relative">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 -z-1"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 -z-1"></div>
@@ -62,24 +62,24 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className="group brutal-box bg-white animate-fade-in-up"
+              className="group brutal-box bg-white dark:bg-black animate-fade-in-up"
               style={{animationDelay: `${index * 0.1}s`}}
             >
-              <div className={`aspect-[3/2] w-full ${project.image} p-6 flex items-center justify-center border-b-2 border-black`}>
+              <div className={`aspect-[3/2] w-full ${project.image} p-6 flex items-center justify-center border-b-2 border-black dark:border-white`}>
                 <div className="text-center">
-                  <div className="w-10 h-10 mx-auto mb-2 border-2 border-black rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 mx-auto mb-2 border-2 border-black dark:border-white rounded-full flex items-center justify-center">
                     <span className="text-sm">{index + 1}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-black">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-black dark:text-white">{project.title}</h3>
                 </div>
               </div>
               
               <div className="p-4">
                 <p className="text-sm font-bold uppercase text-accent mb-2">{project.category}</p>
-                <p className="mb-3 text-gray-700 text-sm">{project.description}</p>
+                <p className="mb-3 text-gray-700 dark:text-gray-300 text-sm">{project.description}</p>
                 <Link 
                   to={`/projeto/${project.id}`} 
-                  className="font-bold uppercase text-black hover:text-accent flex items-center gap-2 group-hover:translate-x-1 transition-transform"
+                  className="font-bold uppercase text-black dark:text-white hover:text-accent flex items-center gap-2 group-hover:translate-x-1 transition-transform"
                 >
                   Ver detalhes 
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
@@ -90,7 +90,7 @@ const Portfolio = () => {
         </div>
         
         <div className="mt-12 text-center animate-fade-in-up delay-500">
-          <Link to="/#contact" className="brutalist-button brutal-box inline-block">
+          <Link to="/#contact" className="brutalist-button brutal-box inline-block dark:text-white">
             Tem um projeto em mente?
           </Link>
         </div>

@@ -28,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="brutalist-section bg-white relative">
+    <section id="contact" className="brutalist-section bg-white dark:bg-black relative">
       <div className="grain-overlay"></div>
       <div className="container mx-auto relative z-10">
         <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">
@@ -38,7 +38,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="animate-fade-in-up delay-100">
             <h3 className="text-xl font-bold mb-6">Entre em contato</h3>
-            <p className="mb-6 text-gray-700">
+            <p className="mb-6 text-gray-700 dark:text-gray-300">
               Interessado em trabalhar juntos ou tem alguma pergunta? Preencha o formulário ou use 
               os canais de contato direto abaixo.
             </p>
@@ -48,7 +48,7 @@ const Contact = () => {
                 <div className="w-12 h-12 bg-secondary flex items-center justify-center mr-4 brutal-box">
                   <Mail size={20} className="text-white" />
                 </div>
-                <span className="text-gray-700">email@exemplo.com</span>
+                <span className="text-gray-700 dark:text-gray-300">email@exemplo.com</span>
               </div>
               
               <div className="flex mt-6 space-x-4 animate-fade-in-up delay-300">
@@ -66,9 +66,9 @@ const Contact = () => {
                 </a>
               </div>
 
-              <div className="mt-8 pt-8 border-t-2 border-black animate-fade-in-up delay-400">
+              <div className="mt-8 pt-8 border-t-2 border-black dark:border-white animate-fade-in-up delay-400">
                 <div className="flex items-center gap-4">
-                  <div className="w-3 h-3 bg-black"></div>
+                  <div className="w-3 h-3 bg-black dark:bg-white indicator-square"></div>
                   <span className="text-sm uppercase font-bold">Disponível para projetos</span>
                 </div>
               </div>
@@ -76,7 +76,7 @@ const Contact = () => {
           </div>
           
           <div className="relative animate-fade-in-up delay-200">
-            <div className="brutal-box p-6 bg-white">
+            <div className="brutal-box p-6 bg-white dark:bg-black">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block mb-2 font-bold">Nome</label>
@@ -120,12 +120,12 @@ const Contact = () => {
                   />
                 </div>
                 
-                <Button type="submit" className="brutalist-button w-full brutal-box">
+                <Button type="submit" className="brutalist-button w-full brutal-box dark:text-white">
                   Enviar mensagem
                 </Button>
               </form>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-black -z-10"></div>
+            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-black dark:border-white -z-10"></div>
           </div>
         </div>
       </div>
