@@ -273,4 +273,30 @@
   .-z-1 {
     z-index: -1;
   }
+
+  /* Fix for remaining white backgrounds */
+  .dark .bg-white {
+    @apply bg-black;
+  }
+  
+  .dark .bg-white\/5, .dark .bg-white\/10 {
+    @apply bg-black/10;
+  }
+  
+  .dark .bg-secondary\/5, .dark .bg-secondary\/10, .dark .bg-accent\/10, .dark .bg-accent\/5 {
+    @apply bg-secondary/20;
+  }
+  
+  .dark .text-gray-700 {
+    @apply text-gray-300;
+  }
+  
+  /* Fix for project detail backgrounds */
+  .dark .project-detail-container {
+    @apply bg-black;
+  }
+  
+  .dark .project-content {
+    @apply bg-black text-white;
+  }
 }
