@@ -45,30 +45,30 @@ const Contact = () => {
             
             <div className="space-y-6">
               <div className="flex items-center animate-fade-in-up delay-200">
-                <div className="w-12 h-12 bg-secondary flex items-center justify-center mr-4 brutal-box">
+                <div className="w-12 h-12 bg-accent flex items-center justify-center mr-4 brutal-box">
                   <Mail size={20} className="text-white" />
                 </div>
                 <span className="text-gray-700 dark:text-gray-300">email@exemplo.com</span>
               </div>
               
               <div className="flex mt-6 space-x-4 animate-fade-in-up delay-300">
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-secondary transition-colors">
+                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Github size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-secondary transition-colors">
+                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Linkedin size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-secondary transition-colors">
+                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Instagram size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-secondary transition-colors">
+                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Smartphone size={20} className="text-white" />
                 </a>
               </div>
 
               <div className="mt-8 pt-8 border-t-2 border-black dark:border-white animate-fade-in-up delay-400">
                 <div className="flex items-center gap-4">
-                  <div className="w-3 h-3 bg-black dark:bg-white indicator-square"></div>
+                  <div className="w-3 h-3 availability-indicator"></div>
                   <span className="text-sm uppercase font-bold">Disponível para projetos</span>
                 </div>
               </div>

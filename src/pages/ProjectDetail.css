@@ -6,6 +6,12 @@
   overflow: hidden;
 }
 
+/* Fix para o comportamento de hover no modo escuro */
+.dark *:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .grain-overlay {
   position: absolute;
   top: 0;
@@ -30,6 +36,21 @@
   transform: translate(-2px, -2px);
 }
 
+/* Dark mode styles */
+.dark .brutal-box {
+  border: 2px solid #fff;
+  box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.7);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.dark .brutal-box:hover {
+  box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.7);
+  transform: translate(-2px, -2px);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .brutalist-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -47,6 +68,25 @@
   color: #000;
   box-shadow: 5px 5px 0 #000;
   transform: translate(-2px, -2px);
+}
+
+/* Dark mode styles */
+.dark .brutalist-button {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #fff;
+  box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.7);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.dark .brutalist-button:hover {
+  background-color: #111;
+  color: #fff;
+  box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.7);
+  transform: translate(-2px, -2px);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Animações */
@@ -146,4 +186,35 @@
   border: 3px solid #000;
   bottom: 10%;
   left: 8%;
+}
+
+/* Dark mode styles */
+.dark .brutalist-square {
+  border: 3px solid #fff;
+}
+
+.dark .brutalist-circle {
+  border: 3px solid #fff;
+}
+
+.dark .project-image-container {
+  border: 2px solid #fff;
+}
+
+/* Estilo específico para os botões de navegação no tema escuro */
+.dark .brutal-box.hover\:bg-black.hover\:text-white {
+  color: white;
+}
+
+.dark .brutal-box.hover\:bg-black.hover\:text-white:hover {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+/* Garantir que os textos nos botões de navegação permaneçam visíveis no hover no tema escuro */
+.dark .brutal-box:hover div,
+.dark .brutal-box:hover span {
+  color: white !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }

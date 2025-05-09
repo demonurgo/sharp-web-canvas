@@ -12,7 +12,7 @@ const About = () => {
       <div className="grain-overlay"></div>
       <div className="container mx-auto relative z-10">
         <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">
-          <span className="bg-secondary text-white px-2 py-1 brutal-box inline-block">Sobre</span> mim
+          <span className="bg-accent text-white px-2 py-1 brutal-box inline-block">Sobre</span> mim
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
@@ -50,14 +50,14 @@ const About = () => {
             <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-400">
               <div className="flex justify-between items-start">
                 <h4 className="text-lg mb-2">Desenvolvedor Senior</h4>
-                <span className="bg-secondary text-white px-2 text-xs">2021 - Presente</span>
+                <span className="bg-accent text-white px-2 text-xs">2021 - Presente</span>
               </div>
               <p className="text-gray-700 dark:text-gray-300">Desenvolvimento de APIs e microsserviços utilizando PHP, Docker e PostgreSQL.</p>
             </div>
             <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-500">
               <div className="flex justify-between items-start">
                 <h4 className="text-lg mb-2">Tech Lead</h4>
-                <span className="bg-accent text-white px-2 text-xs">2018 - 2021</span>
+                <span className="bg-secondary text-white px-2 text-xs">2018 - 2021</span>
               </div>
               <p className="text-gray-700 dark:text-gray-300">Liderança técnica em projetos, definição de arquitetura e automação de processos.</p>
             </div>

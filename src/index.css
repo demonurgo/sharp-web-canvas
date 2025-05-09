@@ -8,64 +8,64 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 240 6% 10%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 60% 55%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 30%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 350 80% 65%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 0% 40%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 10%;
 
     --radius: 0rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 240 6% 10%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 10%;
 
-    --secondary: 240 60% 65%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 25%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 84.9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 75%;
 
-    --accent: 350 80% 65%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 0 0% 30%;
+    --accent-foreground: 0 0% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 0% 50%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 80%;
   }
  
   * {
@@ -91,18 +91,37 @@
   }
   
   .brutalist-button {
-    @apply bg-black text-white dark:bg-black dark:text-white px-5 py-2 font-bold hover:bg-secondary hover:text-black dark:hover:bg-secondary dark:hover:text-white transition-colors border border-black dark:border-white uppercase relative;
+    @apply bg-black text-white dark:bg-black dark:text-white px-5 py-2 font-bold hover:bg-secondary hover:text-white dark:hover:bg-secondary dark:hover:text-white transition-colors border border-black dark:border-white uppercase relative;
     transform: translateY(0);
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  
+  .dark .brutalist-button {
+    box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.3);
   }
   
   .brutalist-button:hover {
     transform: translateY(-2px);
   }
+  
+  .dark .brutalist-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.5);
+    animation: button-pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes button-pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7);
+    }
+  }
 
   /* Botão estilo brutalist invertido (para fundos escuros) */
   .brutalist-button-inverted {
-    @apply bg-white text-black dark:bg-white dark:text-black px-5 py-2 font-bold hover:bg-secondary hover:text-white dark:hover:bg-secondary dark:hover:text-white transition-colors border border-black dark:border-white uppercase relative;
+    @apply bg-white text-black dark:bg-white dark:text-black px-5 py-2 font-bold hover:bg-secondary hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors border border-black dark:border-white uppercase relative;
     transform: translateY(0);
     transition: transform 0.2s ease;
   }
@@ -249,21 +268,94 @@
   /* Dark Theme Glow Effect */
   .dark .brutal-box {
     box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    opacity: 1;
   }
   
   .dark .brutal-box:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.4);
+    animation: pulse-glow 2s ease-in-out infinite;
+    opacity: 1;
+  }
+  
+  /* Enhanced glow effect for project cards */
+  .dark .project-card {
+    transition: all 0.3s ease;
+    opacity: 1;
+  }
+  
+  .dark .project-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+    animation: card-pulse-glow 3s ease-in-out infinite;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  @keyframes card-pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.7);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.6);
+    }
   }
 
   /* Efeito brilhoso para quadrados no tema escuro */
   .dark .indicator-square {
     box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
     background: rgba(255, 255, 255, 0.9);
+    animation: indicator-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes indicator-pulse {
+    0%, 100% {
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 18px 4px rgba(255, 255, 255, 0.7);
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Indicador de disponibilidade (será verde) */
+  .availability-indicator {
+    background-color: #4ade80 !important; /* Verde - exceção ao design monocromático */
+    box-shadow: 0 0 10px 2px rgba(74, 222, 128, 0.4);
+  }
+  
+  .dark .availability-indicator {
+    background-color: #4ade80 !important;
+    box-shadow: 0 0 10px 2px rgba(74, 222, 128, 0.4);
+    animation: green-indicator-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes green-indicator-pulse {
+    0%, 100% {
+      box-shadow: 0 0 10px 2px rgba(74, 222, 128, 0.4);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 18px 4px rgba(74, 222, 128, 0.7);
+      transform: scale(1.1);
+    }
   }
 
   .brutal-hover:hover {
-    @apply bg-accent text-white;
+    @apply bg-accent text-white dark:bg-accent dark:text-white;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .circular-icon {
@@ -302,6 +394,12 @@
   
   .dark .bg-secondary\/5, .dark .bg-secondary\/10, .dark .bg-accent\/10, .dark .bg-accent\/5 {
     @apply bg-secondary/20;
+  }
+  
+  /* Fix para elementos que desaparecem no hover */
+  .dark *:hover {
+    opacity: 1;
+    visibility: visible;
   }
   
   .dark .text-gray-700 {

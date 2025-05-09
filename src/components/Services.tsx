@@ -37,7 +37,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="brutalist-section bg-secondary/5 dark:bg-secondary/10 relative">
+    <section id="services" className="brutalist-section bg-accent/5 dark:bg-accent/10 relative">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 left-0 w-full h-full dotted-bg"></div>
       <div className="container mx-auto relative z-10">
@@ -53,13 +53,13 @@ const Services = () => {
               style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className="p-6 flex-grow">
-                <div className="circular-icon w-16 h-16 bg-secondary text-white mb-4">
+                <div className="circular-icon w-16 h-16 bg-accent text-white mb-4">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{service.description}</p>
               </div>
-              <div className="w-full h-1 bg-secondary shrink-0"></div>
+              <div className="w-full h-1 bg-accent shrink-0"></div>
             </div>
           ))}
         </div>

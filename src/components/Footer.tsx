@@ -9,18 +9,18 @@ const Footer = () => {
         {/* Linha superior com logo e links */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-10 border-b border-white/10 pb-10">
           <div className="mb-6 md:mb-0">
-            <a href="#home" className="text-3xl font-black inline-block text-white">DEV<span className="text-accent">.</span></a>
+            <a href="#home" className="text-3xl font-black inline-block text-white">DEV<span className="text-gray-500">.</span></a>
             <p className="text-gray-400 mt-2 max-w-xs">Transformando ideias em código limpo e eficiente</p>
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition-colors" aria-label="Github">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors" aria-label="Github">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition-colors" aria-label="LinkedIn">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors" aria-label="LinkedIn">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:contato@exemplo.com" className="text-white hover:text-accent transition-colors" aria-label="Email">
+            <a href="mailto:contato@exemplo.com" className="text-white hover:text-gray-400 transition-colors" aria-label="Email">
               <Mail size={24} />
             </a>
           </div>
@@ -31,30 +31,30 @@ const Footer = () => {
           <div>
             <h3 className="text-sm uppercase font-bold mb-4 text-white/80">Navegação</h3>
             <ul className="space-y-2">
-              <li><a href="#home" className="text-gray-400 hover:text-accent transition-colors">Home</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-accent transition-colors">Sobre</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-accent transition-colors">Serviços</a></li>
-              <li><a href="#portfolio" className="text-gray-400 hover:text-accent transition-colors">Portfolio</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-accent transition-colors">Contato</a></li>
+              <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
+              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Serviços</a></li>
+              <li><a href="#portfolio" className="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contato</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-sm uppercase font-bold mb-4 text-white/80">Serviços</h3>
             <ul className="space-y-2">
-              <li><a href="#services" className="text-gray-400 hover:text-accent transition-colors">Backend Development</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-accent transition-colors">Frontend & Landing Pages</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-accent transition-colors">Banco de Dados</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-accent transition-colors">Docker & DevOps</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Backend Development</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Frontend & Landing Pages</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Banco de Dados</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Docker & DevOps</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-sm uppercase font-bold mb-4 text-white/80">Legal</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-accent transition-colors">Termos de Uso</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-accent transition-colors">Política de Privacidade</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-accent transition-colors">Cookies</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Termos de Uso</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cookies</a></li>
             </ul>
           </div>
           

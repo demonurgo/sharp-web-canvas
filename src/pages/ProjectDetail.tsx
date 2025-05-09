@@ -189,8 +189,8 @@ const ProjectDetail = () => {
       <main className="flex-grow">
         <section className="brutalist-section bg-white dark:bg-black relative py-16">
           <div className="grain-overlay"></div>
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 -z-1"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 -z-1"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 -z-1"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 -z-1"></div>
           
           {/* Elementos decorativos brutalistas */}
           <div className="brutalist-decoration brutalist-square"></div>
@@ -231,7 +231,7 @@ const ProjectDetail = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {/* Ferramentas */}
               <div className="brutal-box border-2 border-black dark:border-white p-6 animate-fade-in-up animate-delay-100">
-                <h2 className="text-2xl font-bold mb-6 after:content-[''] after:block after:w-16 after:h-1 after:bg-accent after:mt-2">
+                <h2 className="text-2xl font-bold mb-6 after:content-[''] after:block after:w-16 after:h-1 after:bg-secondary after:mt-2">
                   Ferramentas
                 </h2>
                 <ul className="grid grid-cols-2 gap-4">
@@ -248,7 +248,7 @@ const ProjectDetail = () => {
               
               {/* Descrição */}
               <div className="brutal-box border-2 border-black dark:border-white p-6 animate-fade-in-up animate-delay-200">
-                <h2 className="text-2xl font-bold mb-6 after:content-[''] after:block after:w-16 after:h-1 after:bg-accent after:mt-2">
+                <h2 className="text-2xl font-bold mb-6 after:content-[''] after:block after:w-16 after:h-1 after:bg-secondary after:mt-2">
                   Descrição
                 </h2>
                 {project.longDescription.map((paragraph, index) => (
@@ -265,7 +265,7 @@ const ProjectDetail = () => {
                 {prevProject && (
                   <Link 
                     to={`/projeto/${prevProject.id}`}
-                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors"
                   >
                     <span className="text-xl">←</span> 
                     <div>
@@ -277,7 +277,7 @@ const ProjectDetail = () => {
               </div>
               
               <div className="text-center flex justify-center items-center">
-                <Link to="/#portfolio" className="brutal-box border-2 border-black dark:border-white p-3 inline-block hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                <Link to="/#portfolio" className="brutal-box border-2 border-black dark:border-white p-3 inline-block hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors">
                   Ver Todos
                 </Link>
               </div>
@@ -286,7 +286,7 @@ const ProjectDetail = () => {
                 {nextProject && (
                   <Link 
                     to={`/projeto/${nextProject.id}`}
-                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors"
                   >
                     <div>
                       <div className="text-xs uppercase font-bold">Próximo Projeto</div>
