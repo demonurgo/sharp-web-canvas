@@ -19,7 +19,7 @@ const Services = () => {
       title: "Banco de Dados",
       description: "Implementação, migração e otimização de bancos de dados PostgreSQL, modelagem de dados e queries eficientes."
     },
-    {
+        {
       icon: <Code size={36} />,
       title: "Integração com IA",
       description: "Implementação de soluções que utilizam inteligência artificial para otimizar processos e criar funcionalidades avançadas."
@@ -37,19 +37,19 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="brutalist-section bg-secondary/5 dark:bg-secondary/10 relative">
+    <section id="services" className="brutalist-section bg-secondary/5 relative">
       <div className="grain-overlay"></div>
       <div className="absolute top-0 left-0 w-full h-full dotted-bg"></div>
       <div className="container mx-auto relative z-10">
-        <h2 className="text-4xl md:text-5xl mb-12 reveal">
-          <span className="bg-black text-white dark:bg-white dark:text-black px-2 py-1 brutal-box inline-block">Serviços</span>
+        <h2 className="text-4xl md:text-5xl mb-12 animate-fade-in-up">
+          <span className="bg-black text-white px-2 py-1 brutal-box inline-block">Serviços</span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicesList.map((service, index) => (
             <div 
               key={index} 
-              className="brutal-box bg-white dark:bg-black dark:text-white hover:bg-white dark:hover:bg-black transition-colors reveal overflow-hidden flex flex-col"
+              className="brutal-box bg-white hover:bg-white transition-colors animate-fade-in-up overflow-hidden flex flex-col"
               style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className="p-6 flex-grow">
@@ -57,7 +57,7 @@ const Services = () => {
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-700 dark:text-gray-300">{service.description}</p>
+                <p className="text-gray-700">{service.description}</p>
               </div>
               <div className="w-full h-1 bg-secondary shrink-0"></div>
             </div>

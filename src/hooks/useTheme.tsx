@@ -1,40 +1,22 @@
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-
-type Theme = "light" | "dark";
+import React, { createContext, useContext } from "react";
 
 interface ThemeContextType {
-  theme: Theme;
+  theme: "light";
   toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Simplified ThemeProvider that only supports light mode for brutalista design
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("light");
-
-  // Initialize theme from localStorage or system preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.className = savedTheme;
-    } else {
-      // Default to light theme
-      setTheme("light");
-      document.documentElement.className = "light";
-    }
-  }, []);
-
+  // No-op function since we're only using light theme for brutalista design
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.className = newTheme;
+    console.log("Theme toggling is disabled in brutalista design");
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: "light", toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

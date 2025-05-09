@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center brutalist-section bg-white dark:bg-black dark:text-white pt-20 md:pt-24 relative">
+    <section id="home" className="min-h-screen flex items-center brutalist-section bg-white pt-20 md:pt-24 relative">
       <div className="grain-overlay"></div>
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -15,55 +15,36 @@ const Hero = () => {
               <span className="block">Desenvolvedor</span>
               <span className="text-secondary relative inline-block animate-glitch">Backend</span>
             </h1>
-            <p className="text-lg mb-6 md:pr-8 text-gray-700 dark:text-gray-300 animate-fade-in-up delay-200">
+            <p className="text-lg mb-6 md:pr-8 text-gray-700 animate-fade-in-up delay-200">
               Transformo ideias em soluções eficientes com código limpo e tecnologias robustas.
             </p>
             <div className="flex gap-3 animate-fade-in-up delay-300">
-              <a 
-                href="#contact" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+              <Link 
+                to="/#contact" 
                 className="brutalist-button brutal-box"
               >
                 Contato
-<<<<<<< HEAD
-              </a>
-              <a 
-                href="#portfolio" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById('portfolio');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+              </Link>
+              <Link 
+                to="/#portfolio" 
                 className="brutalist-button bg-white text-black brutal-box"
               >
-=======
-              </Link>
-              <Link to="/#portfolio" className="brutalist-button bg-white text-black dark:bg-black dark:text-white brutal-box">
->>>>>>> a93ae8193a7d049462d7fcd5c2eae7e1646e801b
                 Projetos
-              </a>
+              </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center justify-center">
             <div className="relative w-full max-w-sm aspect-square animate-float">
               <div className="absolute inset-0 bg-secondary -rotate-3 brutal-box"></div>
-              <div className="absolute inset-0 border-2 border-black dark:border-white rotate-2 dotted-bg"></div>
-              <div className="absolute inset-0 border-2 border-black dark:border-white bg-white dark:bg-black flex items-center justify-center z-10">
+              <div className="absolute inset-0 border-2 border-black rotate-2 dotted-bg"></div>
+              <div className="absolute inset-0 border-2 border-black bg-white flex items-center justify-center z-10">
                 <div className="grid grid-cols-3 gap-4 p-8">
                   <Code size={40} className="animate-pulse-slow" />
                   <Database size={40} className="animate-pulse-slow delay-200" />
                   <Globe size={40} className="animate-pulse-slow delay-400" />
-                  <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PHP&gt;</div>
-                  <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;Docker&gt;</div>
-                  <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PostgreSQL&gt;</div>
+                  <div className="text-xs border border-black p-1 text-center">&lt;PHP&gt;</div>
+                  <div className="text-xs border border-black p-1 text-center">&lt;Docker&gt;</div>
+                  <div className="text-xs border border-black p-1 text-center">&lt;PostgreSQL&gt;</div>
                 </div>
               </div>
             </div>
@@ -71,9 +52,9 @@ const Hero = () => {
         </div>
 
         <div className="absolute bottom-10 left-0 right-0 hidden md:flex justify-center z-20 animate-float">
-          <a  href="#about" className="flex flex-col items-center text-xs">
+          <a href="#about" className="flex flex-col items-center text-xs">
             <span className="mb-2">Scroll</span>
-            <span className="w-0.5 h-10 bg-black dark:bg-white"></span>
+            <span className="w-0.5 h-10 bg-black"></span>
           </a>
         </div>
       </div>
