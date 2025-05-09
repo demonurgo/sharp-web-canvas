@@ -111,6 +111,10 @@ export default {
 				pulse: {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.5' }
+				},
+				glow: {
+					'0%, 100%': { boxShadow: '0 0 5px 0px rgba(255, 255, 255, 0.3)' },
+					'50%': { boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.5)' }
 				}
 			},
 			animation: {
@@ -119,7 +123,8 @@ export default {
 				'fade-in': 'fadeIn 0.5s ease-in-out forwards',
 				'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
 				'float': 'float 6s ease-in-out infinite',
-				'pulse-slow': 'pulse 4s ease infinite'
+				'pulse-slow': 'pulse 4s ease infinite',
+				'glow': 'glow 2s ease-in-out infinite'
 			},
 			zIndex: {
 				'-1': '-1',

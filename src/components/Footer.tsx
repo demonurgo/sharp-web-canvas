@@ -4,12 +4,12 @@ import { Code, Database, Server } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 relative">
+    <footer className="bg-black dark:bg-black text-white py-8 relative">
       <div className="grain-overlay opacity-20"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="mb-4 md:mb-0">
-            <a href="#home" className="text-2xl font-black animate-glitch inline-block">DEV.</a>
+            <a href="#home" className="text-2xl font-black animate-glitch inline-block text-white">DEV.</a>
           </div>
           
           <div className="mb-4 md:mb-0">

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Link, useLocation } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,22 +16,20 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Função para lidar com a navegação para a página inicial com âncoras
+  // Function to handle navigation to home page with anchors
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    // Se já estamos na página inicial, usamos o comportamento de rolagem suave
+    // If already on home page, use smooth scrolling
     if (isHomePage) {
       e.preventDefault();
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        // Fechar o menu móvel se estiver aberto
+        // Close mobile menu if open
         if (isMenuOpen) {
           setIsMenuOpen(false);
         }
       }
     }
-    // Se não estamos na página inicial, a navegação padrão do Link vai nos levar para 
-    // a página inicial com a âncora correta
   };
 
   useEffect(() => {
@@ -49,91 +48,96 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white border-b-2 border-black' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white dark:bg-black border-b-2 border-black dark:border-white' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link 
             to="/#home" 
             onClick={(e) => handleNavigation(e, 'home')}
-            className={`text-2xl font-black transition-all duration-300 ${isScrolled ? 'text-black' : ''} animate-glitch inline-block`}
+            className={`text-2xl font-black transition-all duration-300 ${isScrolled ? 'text-black dark:text-white' : 'dark:text-white'} animate-glitch inline-block`}
           >
             DEV.
           </Link>
           
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden brutal-box p-1" 
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-          
-          {/* Desktop menu */}
-          <ul className="hidden md:flex space-x-6 uppercase font-bold text-sm">
-            <li>
-              <Link 
-                to="/#home" 
-                onClick={(e) => handleNavigation(e, 'home')}
-                className="hover:text-accent-foreground relative group"
-              >
-                Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/#about" 
-                onClick={(e) => handleNavigation(e, 'about')}
-                className="hover:text-accent-foreground relative group"
-              >
-                Sobre
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/#services" 
-                onClick={(e) => handleNavigation(e, 'services')}
-                className="hover:text-accent-foreground relative group"
-              >
-                Serviços
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/#portfolio" 
-                onClick={(e) => handleNavigation(e, 'portfolio')}
-                className="hover:text-accent-foreground relative group"
-              >
-                Portfolio
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/#contact" 
-                onClick={(e) => handleNavigation(e, 'contact')}
-                className="hover:text-accent-foreground relative group"
-              >
-                Contato
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </li>
-          </ul>
+          <div className="flex items-center gap-4">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+            
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden brutal-box p-1 dark:border-white" 
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} className="dark:text-white" /> : <Menu size={24} className="dark:text-white" />}
+            </button>
+            
+            {/* Desktop menu */}
+            <ul className="hidden md:flex space-x-6 uppercase font-bold text-sm">
+              <li>
+                <Link 
+                  to="/#home" 
+                  onClick={(e) => handleNavigation(e, 'home')}
+                  className="hover:text-accent-foreground relative group dark:text-white"
+                >
+                  Home
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/#about" 
+                  onClick={(e) => handleNavigation(e, 'about')}
+                  className="hover:text-accent-foreground relative group dark:text-white"
+                >
+                  Sobre
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/#services" 
+                  onClick={(e) => handleNavigation(e, 'services')}
+                  className="hover:text-accent-foreground relative group dark:text-white"
+                >
+                  Serviços
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/#portfolio" 
+                  onClick={(e) => handleNavigation(e, 'portfolio')}
+                  className="hover:text-accent-foreground relative group dark:text-white"
+                >
+                  Portfolio
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/#contact" 
+                  onClick={(e) => handleNavigation(e, 'contact')}
+                  className="hover:text-accent-foreground relative group dark:text-white"
+                >
+                  Contato
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       
       {/* Mobile menu */}
       {isMenuOpen && isMobile && (
-        <div className="md:hidden bg-white border-t-2 border-black animate-fade-in-up">
+        <div className="md:hidden bg-white dark:bg-black border-t-2 border-black dark:border-white animate-fade-in-up">
           <ul className="flex flex-col py-3 uppercase font-bold text-sm">
             <li>
               <Link 
                 to="/#home" 
                 onClick={(e) => handleNavigation(e, 'home')}
-                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors"
+                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
               >
                 Home
               </Link>
@@ -142,7 +146,7 @@ const Navbar = () => {
               <Link 
                 to="/#about" 
                 onClick={(e) => handleNavigation(e, 'about')}
-                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors"
+                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
               >
                 Sobre
               </Link>
@@ -151,7 +155,7 @@ const Navbar = () => {
               <Link 
                 to="/#services" 
                 onClick={(e) => handleNavigation(e, 'services')}
-                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors"
+                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
               >
                 Serviços
               </Link>
@@ -160,7 +164,7 @@ const Navbar = () => {
               <Link 
                 to="/#portfolio" 
                 onClick={(e) => handleNavigation(e, 'portfolio')}
-                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors"
+                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
               >
                 Portfolio
               </Link>
@@ -169,7 +173,7 @@ const Navbar = () => {
               <Link 
                 to="/#contact" 
                 onClick={(e) => handleNavigation(e, 'contact')}
-                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors"
+                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
               >
                 Contato
               </Link>
