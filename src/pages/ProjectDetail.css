@@ -115,6 +115,18 @@
   animation-delay: 0.5s;
 }
 
+.animate-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animate-delay-800 {
+  animation-delay: 0.8s;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -149,11 +161,34 @@
   transition: opacity 0.3s, transform 0.3s;
 }
 
+/* Grid responsivo para showcase */
+@media (max-width: 1024px) {
+  .project-image-showcase {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Melhorias para telas pequenas */
+@media (max-width: 640px) {
+  .featured-project {
+    padding: 1rem;
+  }
+  
+  .project-technologies {
+    gap: 0.25rem;
+  }
+  
+  .project-technologies span {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
 /* Estilos de imagem do projeto */
 .project-image-container {
   position: relative;
   overflow: hidden;
-  border: 2px solid #000;
 }
 
 .project-image-container img {
@@ -162,6 +197,78 @@
 
 .project-image-container:hover img {
   transform: scale(1.03);
+}
+
+/* Showcase de projetos */
+.project-image-showcase {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Suporte para imagens verticais */
+.project-image-showcase img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Efeitos hover para cartões de projeto */
+.project-card {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Line clamp para descrições */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Botão de demonstração destacado */
+.demo-button-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-button-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.demo-button-highlight:hover::before {
+  left: 100%;
+}
+
+/* Responsividade para carrossel */
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 280px;
+  }
+  
+  .project-image-showcase {
+    min-height: 250px;
+  }
+  
+  .project-image-showcase img {
+    max-height: 350px;
+  }
 }
 
 /* Decorações geométricas brutalistas */
@@ -186,6 +293,39 @@
   border: 3px solid #000;
   bottom: 10%;
   left: 8%;
+}
+
+/* Efeitos de sombra brutalista */
+.brutal-shadow-hover {
+  transition: all 0.2s ease;
+}
+
+.brutal-shadow-hover:hover {
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 1);
+  transform: translate(-4px, -4px);
+}
+
+/* Badge de projeto em destaque */
+.featured-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-badge::after {
+  content: '★';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ff4444;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  animation: pulse 2s infinite;
 }
 
 /* Dark mode styles */

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ProjectImage from '@/components/ProjectImage';
+import IconRenderer from '@/components/IconRenderer';
+import useProjects from '@/hooks/useProjects';
 import './ProjectDetail.css';
 
 // Definição dos tipos
@@ -41,21 +44,23 @@ const projects: Project[] = [
     ]
   },
   {
-    id: "api-pagamentos",
-    title: "API de Pagamentos",
-    category: "PHP & PostgreSQL",
-    description: "API RESTful para processamento de pagamentos com integração a múltiplos gateways e sistema anti-fraude.",
+    id: "figurinhas-da-fer",
+    title: "Figurinhas da Fer - PWA",
+    category: "React + Supabase + PWA",
+    description: "Progressive Web App completo de álbum de figurinhas com sistema social, funcionalidades offline e gamificação.",
     longDescription: [
-      "API completa para processamento de pagamentos online, oferecendo suporte a múltiplos gateways de pagamento e métodos diversos como cartões, boletos e PIX.",
-      "Implementação de camadas de segurança avançadas, com sistema anti-fraude baseado em regras e machine learning para detecção de transações suspeitas."
+      "Progressive Web App completo para coleção de figurinhas temáticas com 184 itens organizados em categorias como Fotografias, Pinturas, Esculturas, Obras literárias, Músicas, Filmes e muito mais. O app inclui sistema de gamificação com figurinhas especiais (bronze, prata, ouro) e permite upload de fotos das figurinhas coletadas.",
+      "Funcionalidades sociais avançadas permitem conexões entre usuários, visualização de álbuns de amigos e sistema de solicitações de amizade. Suporte completo offline com sincronização automática quando online, utilizando IndexedDB e Service Workers para garantir funcionalidade mesmo sem internet."
     ],
     image: "bg-accent/20",
-    demoUrl: "#",
+    demoUrl: "https://figurinhas-nine.vercel.app/",
     tools: [
-      { icon: "code", name: "PHP 8" },
-      { icon: "database", name: "PostgreSQL" },
-      { icon: "shield", name: "Anti-Fraude" },
-      { icon: "credit-card", name: "Gateways" }
+      { icon: "smartphone", name: "PWA" },
+      { icon: "code", name: "React + TypeScript" },
+      { icon: "database", name: "Supabase" },
+      { icon: "palette", name: "Tailwind CSS" },
+      { icon: "wifi-off", name: "Offline Support" },
+      { icon: "users", name: "Sistema Social" }
     ]
   },
   {
@@ -134,16 +139,62 @@ const projects: Project[] = [
 
 const ProjectDetail = () => {
   const { projectId } = useParams<{ projectId: string }>();
+  const { projects, getProjectById } = useProjects();
   const [project, setProject] = useState<Project | null>(null);
   const [prevProject, setPrevProject] = useState<Project | null>(null);
   const [nextProject, setNextProject] = useState<Project | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  
+  const carouselImages = [
+    { src: "/projects/figurinhas/IMG_2122.PNG", alt: "Login e tela inicial do app" },
+    { src: "/projects/figurinhas/IMG_2120.PNG", alt: "Dashboard principal com estatísticas" },
+    { src: "/projects/figurinhas/IMG_2121.PNG", alt: "Visualização detalhada de figurinha" },
+    { src: "/projects/figurinhas/IMG_2119.PNG", alt: "Sistema de conexões e amigos" },
+    { src: "/projects/figurinhas/IMG_2118.PNG", alt: "Perfil do usuário e configurações" }
+  ];
+  
+  const captions = [
+    "Tela 1/5 - Login e tela inicial do app",
+    "Tela 2/5 - Dashboard principal com estatísticas",
+    "Tela 3/5 - Visualização detalhada de figurinha",
+    "Tela 4/5 - Sistema de conexões e amigos",
+    "Tela 5/5 - Perfil do usuário e configurações"
+  ];
+  
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+  };
+  
+  const previousSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+    setIsAutoPlaying(false); // Pausar auto-play quando usuário interage
+  };
+  
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false); // Pausar auto-play quando usuário interage
+  };
+  
+  // Auto-play carrossel
+  useEffect(() => {
+    if (project?.id === 'figurinhas-da-fer' && isAutoPlaying) {
+      const interval = setInterval(nextSlide, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [project?.id, isAutoPlaying]);
 
   useEffect(() => {
-    // Encontrar o projeto pelo ID na URL
-    const currentIndex = projects.findIndex(p => p.id === projectId);
+    if (!projectId) return;
     
-    if (currentIndex !== -1) {
-      setProject(projects[currentIndex]);
+    // Usar o hook para buscar o projeto
+    const currentProject = getProjectById(projectId);
+    
+    if (currentProject) {
+      setProject(currentProject);
+      
+      // Encontrar índice do projeto atual
+      const currentIndex = projects.findIndex(p => p.id === projectId);
       
       // Determinar projeto anterior (se existir)
       if (currentIndex > 0) {
@@ -163,7 +214,7 @@ const ProjectDetail = () => {
       setPrevProject(null);
       setNextProject(null);
     }
-  }, [projectId]);
+  }, [projectId, projects, getProjectById]);
 
   if (!project) {
     return (
@@ -212,20 +263,139 @@ const ProjectDetail = () => {
             
             {/* Imagem do Projeto */}
             <div className="project-image-container mb-10 animate-fade-in-up">
-              <div className={`aspect-video w-full ${project.image} p-12 flex items-center justify-center`}>
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-black dark:text-white mb-4">{project.title}</h2>
-                  <p className="text-xl mb-6">{project.category}</p>
-                  <a 
-                    href={project.demoUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="brutalist-button brutal-box inline-block dark:text-white"
-                  >
-                    Ver Demonstração
-                  </a>
+              {project.id === 'figurinhas-da-fer' ? (
+                <div className="space-y-6">
+                  <div className="text-center mb-6">
+                    <h2 className="text-3xl font-bold text-black dark:text-white mb-2">{project.title}</h2>
+                    <p className="text-xl text-accent mb-4">{project.category}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">Progressive Web App completo com funcionalidades offline e sistema social</p>
+                    
+                    {/* Botão de Demonstração em Destaque */}
+                    <div className="flex justify-center mb-8">
+                      <a 
+                        href={project.demoUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold text-lg uppercase border-4 border-black shadow-[8px_8px_0_0_#000] hover:shadow-[12px_12px_0_0_#000] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-200"
+                      >
+                        <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                        TESTAR APLICATIVO AO VIVO
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+                          DEMO
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  {/* Carrossel de Imagens */}
+                  <div className="relative max-w-md mx-auto">
+                    <div className="carousel-container overflow-hidden rounded-lg border-4 border-black">
+                      <div 
+                        className="carousel-track flex transition-transform duration-500 ease-in-out" 
+                        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                      >
+                        {carouselImages.map((image, index) => (
+                          <div key={index} className="carousel-slide min-w-full aspect-[9/16] bg-white">
+                            <ProjectImage 
+                              src={image.src}
+                              fallbackSrc="/projects/figurinhas/placeholder.svg"
+                              alt={image.alt}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Controles do Carrossel */}
+                    <button 
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
+                      onClick={previousSlide}
+                      aria-label="Imagem anterior"
+                    >
+                      ←
+                    </button>
+                    <button 
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
+                      onClick={nextSlide}
+                      aria-label="Próxima imagem"
+                    >
+                      →
+                    </button>
+                    
+                    {/* Indicadores */}
+                    <div className="flex justify-center mt-4 space-x-2">
+                      {carouselImages.map((_, index) => (
+                        <button 
+                          key={index}
+                          className={`carousel-indicator w-3 h-3 border border-gray-400 brutal-box ${
+                            index === currentSlide ? 'bg-black' : 'bg-gray-400'
+                          }`} 
+                          onClick={() => goToSlide(index)}
+                          aria-label={`Ir para slide ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Legenda da imagem atual */}
+                    <div className="text-center mt-4 p-3 bg-secondary/10 border-2 border-black rounded">
+                      <p className="font-bold text-sm">
+                        {captions[currentSlide]}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center mt-8 p-4 bg-secondary/10 border-2 border-black rounded-lg">
+                    <h3 className="font-bold text-lg mb-2">Principais Funcionalidades:</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                      <p>• 184 figurinhas organizadas em categorias</p>
+                      <p>• Sistema de gamificação com figurinhas especiais</p>
+                      <p>• Upload de fotos das figurinhas coletadas</p>
+                      <p>• Funcionalidades sociais e sistema de amizades</p>
+                      <p>• Suporte completo offline (PWA)</p>
+                      <p>• Sincronização automática com Supabase</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="space-y-6">
+                  <div className={`aspect-video w-full ${project.image} p-12 flex items-center justify-center border-2 border-black`}>
+                    <div className="text-center">
+                      <h2 className="text-3xl font-bold text-black dark:text-white mb-4">{project.title}</h2>
+                      <p className="text-xl mb-6">{project.category}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Botão de Demonstração em Destaque */}
+                  <div className="text-center">
+                    {project.demoUrl !== '#' ? (
+                      <a 
+                        href={project.demoUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold text-lg uppercase border-4 border-black shadow-[8px_8px_0_0_#000] hover:shadow-[12px_12px_0_0_#000] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-200"
+                      >
+                        <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                        VER DEMONSTRAÇÃO AO VIVO
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+                          DEMO
+                        </span>
+                      </a>
+                    ) : (
+                      <div className="inline-flex items-center gap-3 px-8 py-4 bg-gray-400 text-white font-bold text-lg uppercase border-4 border-black cursor-not-allowed">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M3 4a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 13a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1v-3zM13 4a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1V4zM13 13a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-3z" clipRule="evenodd" />
+                        </svg>
+                        EM DESENVOLVIMENTO
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -238,7 +408,7 @@ const ProjectDetail = () => {
                   {project.tools.map((tool, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <div className="w-10 h-10 border-2 border-black dark:border-white flex items-center justify-center">
-                        <i data-lucide={tool.icon} className="w-5 h-5"></i>
+                        <IconRenderer iconName={tool.icon} className="w-5 h-5" />
                       </div>
                       <span className="font-medium">{tool.name}</span>
                     </li>
@@ -298,17 +468,17 @@ const ProjectDetail = () => {
               </div>
             </div>
 
-            <div className="text-center animate-fade-in-up animate-delay-400">
-              <Link to="/#contact" className="brutalist-button brutal-box inline-block dark:text-white">
-                Tem um projeto similar em mente?
-              </Link>
+              <div className="text-center animate-fade-in-up animate-delay-400">
+                <Link to="/#contact" className="brutalist-button brutal-box inline-block dark:text-white">
+                  Tem um projeto similar em mente?
+                </Link>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
-  );
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
 };
 
 export default ProjectDetail;
