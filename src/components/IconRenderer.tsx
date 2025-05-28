@@ -17,7 +17,10 @@ import {
   TrendingUp,
   Sliders,
   Palette,
-  WifiOff
+  WifiOff,
+  Brain,
+  Gamepad2,
+  Shuffle
 } from 'lucide-react';
 
 interface IconRendererProps {
@@ -76,6 +79,12 @@ const IconRenderer: React.FC<IconRendererProps> = ({
       return <WifiOff {...iconProps} />;
     case 'repeat':
       return <RefreshCw {...iconProps} />;
+    case 'brain':
+      return <Brain {...iconProps} />;
+    case 'gamepad-2':
+      return <Gamepad2 {...iconProps} />;
+    case 'shuffle':
+      return <Shuffle {...iconProps} />;
     default:
       return <Code {...iconProps} />;
   }

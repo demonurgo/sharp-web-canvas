@@ -21,14 +21,14 @@ const Portfolio = () => {
         {/* Projeto em Destaque */}
         {featuredProjects.map((project, index) => (
           <div key={`featured-${project.id}`} className="mb-12 animate-fade-in-up">
-            <div className="bg-accent/5 border-2 border-accent p-1 mb-4 featured-project">
-              <div className="bg-white dark:bg-black p-6">
+            <div className="bg-accent/5 dark:bg-accent/10 border-2 border-accent dark:border-accent/80 p-1 mb-4 featured-project brutal-box">
+              <div className="bg-white dark:bg-black p-6 transition-all duration-300">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="bg-accent text-white p-2 rounded">
                     <IconRenderer iconName={project.icon} className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="bg-accent text-white px-2 py-1 text-xs font-bold uppercase">Projeto em Destaque</span>
+                    <span className="bg-accent text-white dark:bg-accent dark:text-white px-2 py-1 text-xs font-bold uppercase brutal-box">Projeto em Destaque</span>
                     <h3 className="text-2xl font-bold mt-2">{project.title}</h3>
                   </div>
                 </div>
@@ -40,7 +40,7 @@ const Portfolio = () => {
                     
                     <div className="flex flex-wrap gap-2 mb-6 project-technologies">
                       {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className="px-2 py-1 bg-secondary/20 border border-secondary text-xs font-bold">
+                        <span key={techIndex} className="px-2 py-1 bg-secondary/20 dark:bg-secondary/30 border border-secondary dark:border-secondary/70 text-xs font-bold text-black dark:text-white">
                           {tech}
                         </span>
                       ))}
@@ -71,22 +71,22 @@ const Portfolio = () => {
                   <div className="project-image-showcase">
                     {project.hasRealImage ? (
                       <div className="relative group">
-                        <div className="absolute inset-0 bg-accent/20 transform rotate-3 brutal-box"></div>
-                        <div className="relative bg-white p-4 border-2 border-black transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                        <div className="absolute inset-0 bg-accent/20 dark:bg-accent/30 transform rotate-3 brutal-box"></div>
+                        <div className="relative bg-white dark:bg-black p-4 border-2 border-black dark:border-white featured-project-frame transform -rotate-1 group-hover:rotate-0 transition-all duration-500">
                           <ProjectImage 
                             src={project.image}
                             fallbackSrc={project.fallbackImage}
                             alt={`Screenshot do projeto ${project.title}`}
-                            className="w-full h-auto object-contain max-h-96 mx-auto"
+                            className="w-full h-auto object-contain max-h-96 mx-auto transition-all duration-300"
                             style={{ aspectRatio: '9/16' }}
                           />
                         </div>
                       </div>
                     ) : (
-                      <div className={`aspect-video w-full ${project.image} p-8 flex items-center justify-center border-2 border-black`}>
+                      <div className={`aspect-video w-full ${project.image} p-8 flex items-center justify-center border-2 border-black dark:border-white project-image-container`}>
                         <div className="text-center">
                         <IconRenderer iconName={project.icon} className="w-8 h-8" />
-                        <h4 className="text-xl font-bold mt-2">{project.title}</h4>
+                        <h4 className="text-xl font-bold mt-2 text-black dark:text-white">{project.title}</h4>
                         </div>
                       </div>
                     )}
@@ -111,15 +111,17 @@ const Portfolio = () => {
                   className="group brutal-box bg-white dark:bg-black animate-fade-in-up project-card transform-hover"
                   style={{animationDelay: `${index * 0.1}s`}}
                 >
-                  <div className={`aspect-[4/3] w-full ${project.image} p-6 flex items-center justify-center border-b-2 border-black dark:border-white relative overflow-hidden`}>
+                  <div className={`aspect-[4/3] w-full ${project.image} p-6 flex items-center justify-center border-b-2 border-black dark:border-white project-image-container relative overflow-hidden`}>
                     {project.hasRealImage ? (
                       <div className="w-full h-full relative">
-                        <ProjectImage 
-                          src={project.image}
-                          fallbackSrc={project.fallbackImage}
-                          alt={`Screenshot do projeto ${project.title}`}
-                          className="w-full h-full object-cover rounded border-2 border-black group-hover:scale-105 transition-transform duration-300"
-                        />
+                        <div className="relative overflow-hidden rounded border-2 border-black dark:border-white bg-white dark:bg-black/50">
+                          <ProjectImage 
+                            src={project.image}
+                            fallbackSrc={project.fallbackImage}
+                            alt={`Screenshot do projeto ${project.title}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                          />
+                        </div>
                       </div>
                     ) : (
                       <div className="text-center">
@@ -131,7 +133,7 @@ const Portfolio = () => {
                     )}
                     
                     {/* Badge de categoria */}
-                    <div className="absolute top-2 right-2 bg-black text-white px-2 py-1 text-xs font-bold">
+                    <div className="absolute top-2 right-2 bg-black dark:bg-white text-white dark:text-black px-2 py-1 text-xs font-bold brutal-box">
                       {project.category.split(' ')[0]}
                     </div>
                   </div>
@@ -143,12 +145,12 @@ const Portfolio = () => {
                     
                     <div className="flex flex-wrap gap-1 mb-4">
                       {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                        <span key={techIndex} className="px-2 py-1 bg-secondary/10 border border-secondary/30 text-xs font-medium">
+                        <span key={techIndex} className="px-2 py-1 bg-secondary/10 dark:bg-secondary/20 border border-secondary/30 dark:border-secondary/50 text-xs font-medium text-black dark:text-white">
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-medium">
+                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-xs font-medium text-black dark:text-white">
                           +{project.technologies.length - 3}
                         </span>
                       )}

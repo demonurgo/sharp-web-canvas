@@ -4,8 +4,33 @@ import ProjectType from '@/types/Project';
 const useProjects = () => {
   const projects: ProjectType[] = useMemo(() => [
     {
-      id: "figurinhas-da-fer",
-      title: "Figurinhas da Fer - PWA",
+      id: "adivinheja",
+      title: "Adivinhe Já!",
+      category: "React + IA + Gamificação",
+      description: "Jogo moderno de charadas/adivinhação com IA Gemini para geração dinâmica de palavras e sistema anti-repetição inteligente.",
+      longDescription: [
+        "Jogo interativo de charadas construído com React + TypeScript, integrado com Google Gemini AI para geração automática de palavras em 10 categorias distintas (Pessoas, Lugares, Animais, Objetos, Filmes, Música, Comida, Esportes, Profissões, Natureza) com 3 níveis de dificuldade cada.",
+        "Sistema de controles múltiplos (mouse drag, touch swipe, teclado e botões de fallback) com feedback visual avançado. Utiliza Supabase para armazenamento persistente com sistema de aleatoriedade inteligente que evita repetições, priorizando palavras menos utilizadas e implementando cooldown temporal para melhor experiência de jogo."
+      ],
+      image: "/projects/adivinheja/IMG_2151.PNG",
+      fallbackImage: "/projects/adivinheja/placeholder.svg",
+      hasRealImage: true,
+      demoUrl: "https://adivinheja.vercel.app/",
+      featured: true,
+      icon: "brain",
+      technologies: ["React", "TypeScript", "Gemini AI", "Supabase"],
+      tools: [
+        { icon: "brain", name: "IA Gemini" },
+        { icon: "code", name: "React + TypeScript" },
+        { icon: "database", name: "Supabase" },
+        { icon: "palette", name: "Tailwind CSS" },
+        { icon: "gamepad-2", name: "Controles Múltiplos" },
+        { icon: "shuffle", name: "Anti-Repetição" }
+      ]
+    },
+    {
+      id: "figurinhas",
+      title: "Figurinhas - PWA",
       category: "React + Supabase + PWA",
       description: "Progressive Web App completo de álbum de figurinhas com sistema social, funcionalidades offline e gamificação.",
       longDescription: [
@@ -16,7 +41,7 @@ const useProjects = () => {
       fallbackImage: "/projects/figurinhas/placeholder.svg",
       hasRealImage: true,
       demoUrl: "https://figurinhas-nine.vercel.app/",
-      featured: true,
+      featured: false,
       icon: "smartphone",
       technologies: ["React", "TypeScript", "Supabase", "PWA"],
       tools: [

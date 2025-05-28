@@ -271,49 +271,113 @@
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
   }
 
-  /* Dark Theme Glow Effect */
+  /* Dark Theme Enhanced Box Effects */
   .dark .brutal-box {
-    box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      4px 4px 0 rgba(255, 255, 255, 0.1),
+      0 0 12px 2px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     opacity: 1;
+    backdrop-filter: blur(1px);
   }
   
   .dark .brutal-box:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.4);
-    animation: pulse-glow 2s ease-in-out infinite;
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 
+      6px 6px 0 rgba(255, 255, 255, 0.2),
+      0 0 20px 4px rgba(255, 255, 255, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    animation: subtle-pulse-glow 3s ease-in-out infinite;
     opacity: 1;
   }
   
-  /* Enhanced glow effect for project cards */
+  /* Enhanced project card effects for dark theme */
   .dark .project-card {
-    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 
+      4px 4px 0 rgba(255, 255, 255, 0.1),
+      0 0 8px 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
     opacity: 1;
   }
   
   .dark .project-card:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
-    animation: card-pulse-glow 3s ease-in-out infinite;
+    border-color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 
+      7px 7px 0 rgba(255, 255, 255, 0.2),
+      0 0 25px 6px rgba(255, 255, 255, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    animation: enhanced-card-glow 4s ease-in-out infinite;
     opacity: 1 !important;
     visibility: visible !important;
   }
   
-  @keyframes card-pulse-glow {
+  /* Dark theme project image containers */
+  .dark .project-image-container {
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 
+      3px 3px 0 rgba(255, 255, 255, 0.1),
+      0 0 10px 2px rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .project-image-container:hover {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 
+      5px 5px 0 rgba(255, 255, 255, 0.2),
+      0 0 18px 4px rgba(255, 255, 255, 0.25);
+  }
+  
+  /* Featured project enhanced styling */
+  .dark .featured-project-frame {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 
+      4px 4px 0 rgba(255, 255, 255, 0.15),
+      0 0 15px 3px rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .featured-project-frame:hover {
+    border-color: rgba(255, 255, 255, 1);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 
+      6px 6px 0 rgba(255, 255, 255, 0.25),
+      0 0 25px 6px rgba(255, 255, 255, 0.2),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  @keyframes enhanced-card-glow {
     0%, 100% {
-      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.5);
+      box-shadow: 
+        7px 7px 0 rgba(255, 255, 255, 0.2),
+        0 0 25px 6px rgba(255, 255, 255, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
     50% {
-      box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.7);
+      box-shadow: 
+        7px 7px 0 rgba(255, 255, 255, 0.25),
+        0 0 35px 8px rgba(255, 255, 255, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
     }
   }
   
-  @keyframes pulse-glow {
+  @keyframes subtle-pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.4);
+      box-shadow: 
+        6px 6px 0 rgba(255, 255, 255, 0.2),
+        0 0 20px 4px rgba(255, 255, 255, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
     50% {
-      box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.6);
+      box-shadow: 
+        6px 6px 0 rgba(255, 255, 255, 0.25),
+        0 0 30px 6px rgba(255, 255, 255, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
     }
   }
 
@@ -398,8 +462,21 @@
     @apply bg-black/10;
   }
   
-  .dark .bg-secondary\/5, .dark .bg-secondary\/10, .dark .bg-accent\/10, .dark .bg-accent\/5 {
+  .dark .bg-secondary\/5, .dark .bg-secondary\/10 {
     @apply bg-secondary/20;
+  }
+  
+  .dark .bg-accent\/10, .dark .bg-accent\/5 {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  /* Enhanced text contrast in dark mode */
+  .dark .text-black {
+    @apply text-white;
+  }
+  
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
   }
   
   /* Fix para elementos que desaparecem no hover */
@@ -425,23 +502,6 @@
   .project-card {
     position: relative;
     overflow: hidden;
-  }
-  
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
-    transform: translateX(-100%);
-    transition: transform 0.6s;
-    pointer-events: none;
-  }
-  
-  .project-card:hover::before {
-    transform: translateX(100%);
   }
   
   /* Efeitos para botões de demonstração */
@@ -525,6 +585,52 @@
     overflow: hidden;
   }
   
+  /* Dark theme image enhancements */
+  .dark .project-image-showcase img {
+    filter: brightness(0.95) contrast(1.1);
+    transition: filter 0.3s ease;
+  }
+  
+  .dark .project-image-showcase:hover img {
+    filter: brightness(1) contrast(1.2);
+  }
+  
+  /* Enhanced contrast for dark theme borders */
+  .dark .border-black {
+    border-color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  .dark .border-accent {
+    border-color: rgba(255, 255, 255, 0.6) !important;
+  }
+  
+  /* Refined glow effects for specific elements */
+  .dark .featured-project {
+    position: relative;
+  }
+  
+  .dark .featured-project::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.1)
+    );
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .dark .featured-project:hover::before {
+    opacity: 1;
+  }
+  
   /* Efeitos hover melhorados */
   .transform-hover:hover {
     transform: translateY(-8px);
@@ -549,5 +655,26 @@
     border-radius: 4px;
     transform: rotate(12deg);
     box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    z-index: 10;
+  }
+  
+  .dark .featured-project::after {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    box-shadow: 
+      2px 2px 4px rgba(0,0,0,0.5),
+      0 0 12px 2px rgba(255, 107, 53, 0.3);
+  }
+  
+  /* Enhanced transitions for all interactive elements */
+  .project-card,
+  .featured-project-frame,
+  .project-image-container {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Subtle background pattern for dark theme */
+  .dark .brutalist-section {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
   }
 }

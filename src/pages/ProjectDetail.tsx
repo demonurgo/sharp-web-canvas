@@ -44,8 +44,28 @@ const projects: Project[] = [
     ]
   },
   {
-    id: "figurinhas-da-fer",
-    title: "Figurinhas da Fer - PWA",
+    id: "adivinheja",
+    title: "Adivinhe Já!",
+    category: "React + IA + Gamificação",
+    description: "Jogo moderno de charadas/adivinhação com IA Gemini para geração dinâmica de palavras e sistema anti-repetição inteligente.",
+    longDescription: [
+      "Jogo interativo de charadas construído com React + TypeScript, integrado com Google Gemini AI para geração automática de palavras em 10 categorias distintas (Pessoas, Lugares, Animais, Objetos, Filmes, Música, Comida, Esportes, Profissões, Natureza) com 3 níveis de dificuldade cada.",
+      "Sistema de controles múltiplos (mouse drag, touch swipe, teclado e botões de fallback) com feedback visual avançado. Utiliza Supabase para armazenamento persistente com sistema de aleatoriedade inteligente que evita repetições, priorizando palavras menos utilizadas e implementando cooldown temporal para melhor experiência de jogo."
+    ],
+    image: "bg-accent/20",
+    demoUrl: "https://adivinheja.vercel.app/",
+    tools: [
+      { icon: "brain", name: "IA Gemini" },
+      { icon: "code", name: "React + TypeScript" },
+      { icon: "database", name: "Supabase" },
+      { icon: "palette", name: "Tailwind CSS" },
+      { icon: "gamepad-2", name: "Controles Múltiplos" },
+      { icon: "shuffle", name: "Anti-Repetição" }
+    ]
+  },
+  {
+    id: "figurinhas",
+    title: "Figurinhas - PWA",
     category: "React + Supabase + PWA",
     description: "Progressive Web App completo de álbum de figurinhas com sistema social, funcionalidades offline e gamificação.",
     longDescription: [
@@ -154,6 +174,13 @@ const ProjectDetail = () => {
     { src: "/projects/figurinhas/IMG_2118.PNG", alt: "Perfil do usuário e configurações" }
   ];
   
+  const adivinhejaImages = [
+    { src: "/projects/adivinheja/IMG_2151.PNG", alt: "Tela inicial com seleção de categorias" },
+    { src: "/projects/adivinheja/IMG_2152.PNG", alt: "Jogo em andamento com controles múltiplos" },
+    { src: "/projects/adivinheja/IMG_2153.PNG", alt: "Sistema de configurações e dificuldades" },
+    { src: "/projects/adivinheja/IMG_2154.PNG", alt: "Resultados e estatísticas do jogo" }
+  ];
+  
   const captions = [
     "Tela 1/5 - Login e tela inicial do app",
     "Tela 2/5 - Dashboard principal com estatísticas",
@@ -162,12 +189,21 @@ const ProjectDetail = () => {
     "Tela 5/5 - Perfil do usuário e configurações"
   ];
   
+  const adivinhejaCaption = [
+    "Tela 1/4 - Tela inicial com seleção de categorias",
+    "Tela 2/4 - Jogo em andamento com controles múltiplos",
+    "Tela 3/4 - Sistema de configurações e dificuldades",
+    "Tela 4/4 - Resultados e estatísticas do jogo"
+  ];
+  
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    const imageCount = project?.id === 'adivinheja' ? adivinhejaImages.length : carouselImages.length;
+    setCurrentSlide((prev) => (prev + 1) % imageCount);
   };
   
   const previousSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+    const imageCount = project?.id === 'adivinheja' ? adivinhejaImages.length : carouselImages.length;
+    setCurrentSlide((prev) => (prev - 1 + imageCount) % imageCount);
     setIsAutoPlaying(false); // Pausar auto-play quando usuário interage
   };
   
@@ -178,7 +214,7 @@ const ProjectDetail = () => {
   
   // Auto-play carrossel
   useEffect(() => {
-    if (project?.id === 'figurinhas-da-fer' && isAutoPlaying) {
+    if ((project?.id === 'figurinhas' || project?.id === 'adivinheja') && isAutoPlaying) {
       const interval = setInterval(nextSlide, 5000);
       return () => clearInterval(interval);
     }
@@ -263,7 +299,103 @@ const ProjectDetail = () => {
             
             {/* Imagem do Projeto */}
             <div className="project-image-container mb-10 animate-fade-in-up">
-              {project.id === 'figurinhas-da-fer' ? (
+              {project.id === 'adivinheja' ? (
+                <div className="space-y-6">
+                  <div className="text-center mb-6">
+                    <h2 className="text-3xl font-bold text-black dark:text-white mb-2">{project.title}</h2>
+                    <p className="text-xl text-accent mb-4">{project.category}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">Jogo moderno de charadas com IA Gemini e sistema anti-repetição inteligente</p>
+                    
+                    {/* Botão de Demonstração em Destaque */}
+                    <div className="flex justify-center mb-8">
+                      <a 
+                        href={project.demoUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold text-lg uppercase border-4 border-black shadow-[8px_8px_0_0_#000] hover:shadow-[12px_12px_0_0_#000] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-200"
+                      >
+                        <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                        JOGAR ADIVINHE JÁ!
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+                          JOGAR
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  {/* Carrossel de Imagens */}
+                  <div className="relative max-w-md mx-auto">
+                    <div className="carousel-container overflow-hidden rounded-lg border-4 border-black">
+                      <div 
+                        className="carousel-track flex transition-transform duration-500 ease-in-out" 
+                        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                      >
+                        {adivinhejaImages.map((image, index) => (
+                          <div key={index} className="carousel-slide min-w-full aspect-[9/16] bg-white">
+                            <ProjectImage 
+                              src={image.src}
+                              fallbackSrc="/projects/adivinheja/placeholder.svg"
+                              alt={image.alt}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Controles do Carrossel */}
+                    <button 
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
+                      onClick={previousSlide}
+                      aria-label="Imagem anterior"
+                    >
+                      ←
+                    </button>
+                    <button 
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
+                      onClick={nextSlide}
+                      aria-label="Próxima imagem"
+                    >
+                      →
+                    </button>
+                    
+                    {/* Indicadores */}
+                    <div className="flex justify-center mt-4 space-x-2">
+                      {adivinhejaImages.map((_, index) => (
+                        <button 
+                          key={index}
+                          className={`carousel-indicator w-3 h-3 border border-gray-400 brutal-box ${
+                            index === currentSlide ? 'bg-black' : 'bg-gray-400'
+                          }`} 
+                          onClick={() => goToSlide(index)}
+                          aria-label={`Ir para slide ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Legenda da imagem atual */}
+                    <div className="text-center mt-4 p-3 bg-accent/10 border-2 border-black rounded">
+                      <p className="font-bold text-sm">
+                        {adivinhejaCaption[currentSlide]}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center mt-8 p-4 bg-accent/10 border-2 border-black rounded-lg">
+                    <h3 className="font-bold text-lg mb-2">Principais Funcionalidades:</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                      <p>• 10 categorias com 3 níveis de dificuldade</p>
+                      <p>• Geração automática de palavras via IA Gemini</p>
+                      <p>• Controles múltiplos (mouse, touch, teclado)</p>
+                      <p>• Sistema anti-repetição inteligente</p>
+                      <p>• Feedback visual avançado</p>
+                      <p>• Armazenamento persistente com Supabase</p>
+                    </div>
+                  </div>
+                </div>
+              ) : project.id === 'figurinhas' ? (
                 <div className="space-y-6">
                   <div className="text-center mb-6">
                     <h2 className="text-3xl font-bold text-black dark:text-white mb-2">{project.title}</h2>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="none" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f3f4f6" rx="8"/>
+  <rect x="20" y="20" width="360" height="260" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="4"/>
+  
+  <!-- Ícone central -->
+  <circle cx="200" cy="120" r="30" fill="#6366f1"/>
+  <path d="M185 115 h30 M200 105 v30 M190 125 l20 -20 M190 115 l20 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Texto -->
+  <text x="200" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#374151">
+    Adivinhe Já!
+  </text>
+  <text x="200" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+    Jogo de Charadas com IA
+  </text>
+  
+  <!-- Elementos decorativos -->
+  <rect x="80" y="220" width="60" height="20" fill="#10B981" rx="4"/>
+  <rect x="160" y="220" width="80" height="20" fill="#F59E0B" rx="4"/>
+  <rect x="260" y="220" width="60" height="20" fill="#EF4444" rx="4"/>
+  
+  <text x="110" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">FÁCIL</text>
+  <text x="200" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">MÉDIO</text>
+  <text x="290" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">DIFÍCIL</text>
+</svg>
