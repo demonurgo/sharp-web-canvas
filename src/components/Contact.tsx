@@ -52,16 +52,16 @@ const Contact = () => {
               </div>
               
               <div className="flex mt-6 space-x-4 animate-fade-in-up delay-300">
-                <a href="https://github.com/demonurgo" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
+                <a href="https://github.com/demonurgo" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Github size={20} className="text-white" />
                 </a>
-                <a href="https://www.linkedin.com/in/dropedro/" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
+                <a href="https://www.linkedin.com/in/dropedro/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Linkedin size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Instagram size={20} className="text-white" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
+                <a href="tel:+5511987654321" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Smartphone size={20} className="text-white" />
                 </a>
               </div>

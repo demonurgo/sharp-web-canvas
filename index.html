@@ -7,6 +7,14 @@
     <title>Pedro Augusto - Portfolio</title>
     <meta name="description" content="Desenvolvedor Backend e Frontend - Portfolio Profissional" />
     <meta name="author" content="Pedro Augusto" />
+    
+    <!-- Performance hints -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Favicon e Ícones -->
     <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
@@ -16,6 +24,11 @@
     <meta name="msapplication-TileImage" content="/icon.png" />
     <meta name="theme-color" content="#222222" />
     <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preload crítico -->
+    <link rel="preload" href="/placeholder.svg" as="image" fetchpriority="high" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;700;900&display=swap"></noscript>
 
     <meta property="og:title" content="Pedro Augusto - Portfolio" />
     <meta property="og:description" content="Desenvolvedor Backend e Frontend - Portfolio Profissional" />
@@ -26,6 +39,24 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="/icon.png" />
+    
+    <!-- Preload de recursos críticos -->
+    <script>
+      // Preload de imagens críticas via JavaScript
+      const criticalImages = [
+        '/projects/adivinheja/placeholder-lqip.svg',
+        '/projects/figurinhas/placeholder-lqip.svg'
+      ];
+      
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        link.fetchPriority = 'high';
+        document.head.appendChild(link);
+      });
+    </script>
   </head>
 
   <body>

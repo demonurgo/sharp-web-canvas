@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ProjectImage from '@/components/ProjectImage';
+import OptimizedProjectImage from '@/components/OptimizedProjectImage';
 import IconRenderer from '@/components/IconRenderer';
 import useProjects from '@/hooks/useProjects';
 import './ProjectDetail.css';
@@ -334,11 +334,15 @@ const ProjectDetail = () => {
                       >
                         {adivinhejaImages.map((image, index) => (
                           <div key={index} className="carousel-slide min-w-full aspect-[9/16] bg-white">
-                            <ProjectImage 
+                            <OptimizedProjectImage 
                               src={image.src}
-                              fallbackSrc="/projects/adivinheja/placeholder.svg"
+                              fallbackSrc="/projects/adivinheja/placeholder-lqip.svg"
                               alt={image.alt}
                               className="w-full h-full object-cover"
+                              aspectRatio="9/16"
+                              variant="project-card"
+                              priority={index === 0}
+                              sizes="(max-width: 640px) 100vw, 50vw"
                             />
                           </div>
                         ))}
@@ -430,11 +434,15 @@ const ProjectDetail = () => {
                       >
                         {carouselImages.map((image, index) => (
                           <div key={index} className="carousel-slide min-w-full aspect-[9/16] bg-white">
-                            <ProjectImage 
+                            <OptimizedProjectImage 
                               src={image.src}
-                              fallbackSrc="/projects/figurinhas/placeholder.svg"
+                              fallbackSrc="/projects/figurinhas/placeholder-lqip.svg"
                               alt={image.alt}
                               className="w-full h-full object-cover"
+                              aspectRatio="9/16"
+                              variant="project-card"
+                              priority={index === 0}
+                              sizes="(max-width: 640px) 100vw, 50vw"
                             />
                           </div>
                         ))}

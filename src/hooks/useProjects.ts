@@ -13,7 +13,8 @@ const useProjects = () => {
         "Sistema de controles múltiplos (mouse drag, touch swipe, teclado e botões de fallback) com feedback visual avançado. Utiliza Supabase para armazenamento persistente com sistema de aleatoriedade inteligente que evita repetições, priorizando palavras menos utilizadas e implementando cooldown temporal para melhor experiência de jogo."
       ],
       image: "/projects/adivinheja/IMG_2151.PNG",
-      fallbackImage: "/projects/adivinheja/placeholder.svg",
+      fallbackImage: "/projects/adivinheja/placeholder-lqip.svg",
+      lqip: "/projects/adivinheja/placeholder-lqip.svg",
       hasRealImage: true,
       demoUrl: "https://adivinheja.vercel.app/",
       featured: true,
@@ -38,10 +39,11 @@ const useProjects = () => {
         "Funcionalidades sociais avançadas permitem conexões entre usuários, visualização de álbuns de amigos e sistema de solicitações de amizade. Suporte completo offline com sincronização automática quando online, utilizando IndexedDB e Service Workers para garantir funcionalidade mesmo sem internet."
       ],
       image: "/projects/figurinhas/IMG_2120.PNG",
-      fallbackImage: "/projects/figurinhas/placeholder.svg",
+      fallbackImage: "/projects/figurinhas/placeholder-lqip.svg",
+      lqip: "/projects/figurinhas/placeholder-lqip.svg",
       hasRealImage: true,
       demoUrl: "https://figurinhas-nine.vercel.app/",
-      featured: true,
+      featured: false,
       icon: "smartphone",
       technologies: ["React", "TypeScript", "Supabase", "PWA"],
       tools: [

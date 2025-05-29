@@ -543,11 +543,51 @@
       box-shadow: 3px 3px 0 rgba(0, 0, 0, 1);
       transform: translate(-1px, -1px);
     }
+    
+    /* Reduzir animações em dispositivos móveis para performance */
+    .project-card {
+      transition: transform 0.2s ease;
+    }
+    
+    .transform-hover:hover {
+      transform: translateY(-4px);
+    }
+  }
+  
+  /* Otimizações para conexões lentas */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse,
+    .animate-fade-in-up,
+    .animate-glitch,
+    .animate-float {
+      animation: none;
+    }
+    
+    .transform-hover:hover {
+      transform: none;
+    }
+    
+    .brutal-box:hover {
+      transform: none;
+    }
+  }
+  
+  /* Melhor contraste para alta definição */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .brutal-box {
+      border-width: 1px;
+    }
   }
   
   /* Animações para loading de imagens */
   .image-loading {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  .dark .image-loading {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
   }
@@ -559,6 +599,60 @@
     100% {
       background-position: -200% 0;
     }
+  }
+  
+  /* Skeleton loader melhorado */
+  .skeleton-loader {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .skeleton-loader > * {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 2s infinite;
+  }
+  
+  .dark .skeleton-loader > * {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 2s infinite;
+  }
+  
+  @keyframes skeleton-loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Performance optimizations */
+  .optimized-image {
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+  
+  /* Preload hints */
+  .preload-container {
+    contain: layout style paint;
+  }
+  
+  /* Improved aspect ratio containers */
+  .aspect-ratio-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .aspect-ratio-container > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   /* Melhorias para o showcase de imagens */

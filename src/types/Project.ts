@@ -6,6 +6,7 @@ interface ProjectType {
   longDescription: string[];
   image: string;
   fallbackImage?: string;
+  lqip?: string;
   hasRealImage: boolean;
   demoUrl: string;
   featured: boolean;

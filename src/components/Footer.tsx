@@ -14,13 +14,13 @@ const Footer = () => {
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors" aria-label="Github">
+            <a href="https://github.com/demonurgo" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors" aria-label="Github">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/dropedro/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors" aria-label="LinkedIn">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:contato@exemplo.com" className="text-white hover:text-gray-400 transition-colors" aria-label="Email">
+            <a href="mailto:pedroaugusto.cg19@gmail.com" className="text-white hover:text-gray-400 transition-colors" aria-label="Email">
               <Mail size={24} />
             </a>
           </div>
@@ -60,7 +60,7 @@ const Footer = () => {
           
           <div>
             <h3 className="text-sm uppercase font-bold mb-4 text-white/80">Contato</h3>
-            <p className="text-gray-400 mb-2">contato@exemplo.com</p>
+            <p className="text-gray-400 mb-2">pedroaugusto.cg19@gmail.com</p>
             <p className="text-gray-400">São Paulo, Brasil</p>
           </div>
         </div>
