@@ -32,7 +32,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col justify-center">
             <p className="text-md mb-3 uppercase font-bold animate-fade-in-up">Olá, eu sou</p>
-            <h1 className="text-5xl md:text-7xl mb-5 leading-tight animate-fade-in-up delay-100">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl mb-5 leading-tight animate-fade-in-up delay-100">
               <span className="block">Desenvolvedor</span>
               <span className="text-accent relative inline-block animate-glitch">Backend</span>
             </h1>
