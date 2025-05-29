@@ -6,7 +6,7 @@ const useProjects = () => {
     {
       id: "adivinheja",
       title: "Adivinhe Já!",
-      category: "React + IA + Gamificação",
+      category: "IA + React + Gamificação",
       description: "Jogo moderno de charadas/adivinhação com IA Gemini para geração dinâmica de palavras e sistema anti-repetição inteligente.",
       longDescription: [
         "Jogo interativo de charadas construído com React + TypeScript, integrado com Google Gemini AI para geração automática de palavras em 10 categorias distintas (Pessoas, Lugares, Animais, Objetos, Filmes, Música, Comida, Esportes, Profissões, Natureza) com 3 níveis de dificuldade cada.",
@@ -18,7 +18,7 @@ const useProjects = () => {
       demoUrl: "https://adivinheja.vercel.app/",
       featured: true,
       icon: "brain",
-      technologies: ["React", "TypeScript", "Gemini AI", "Supabase"],
+      technologies: ["Gemini AI", "React", "TypeScript", "Supabase"],
       tools: [
         { icon: "brain", name: "IA Gemini" },
         { icon: "code", name: "React + TypeScript" },
@@ -41,7 +41,7 @@ const useProjects = () => {
       fallbackImage: "/projects/figurinhas/placeholder.svg",
       hasRealImage: true,
       demoUrl: "https://figurinhas-nine.vercel.app/",
-      featured: false,
+      featured: true,
       icon: "smartphone",
       technologies: ["React", "TypeScript", "Supabase", "PWA"],
       tools: [
@@ -125,7 +125,7 @@ const useProjects = () => {
     {
       id: "assistente-ia",
       title: "Assistente IA",
-      category: "Inteligência Artificial",
+      category: "Inteligência Artificial + NLP",
       description: "Implementação de assistente virtual baseado em IA para automatizar suporte ao cliente e processos internos.",
       longDescription: [
         "Assistente virtual inteligente desenvolvido para automatizar tarefas de suporte ao cliente e processos internos, reduzindo tempo de resposta e aumentando satisfação.",
@@ -137,9 +137,9 @@ const useProjects = () => {
       demoUrl: "#",
       featured: false,
       icon: "cpu",
-      technologies: ["Python", "NLP", "Machine Learning"],
+      technologies: ["IA/NLP", "Python", "Machine Learning"],
       tools: [
-        { icon: "cpu", name: "NLP" },
+        { icon: "cpu", name: "IA/NLP" },
         { icon: "message-square", name: "Chatbot" },
         { icon: "code", name: "Python" },
         { icon: "database", name: "NoSQL" }
