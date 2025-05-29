@@ -13,32 +13,15 @@ const ImagePreloader: React.FC = () => {
       ...(figurinhasProject && figurinhasProject.hasRealImage ? [figurinhasProject.image] : [])
     ];
 
-    // Criar elementos link para preload
+    // Criar elementos link para preload diretamente das imagens originais
     criticalImages.forEach((imageSrc, index) => {
       // Preload com alta prioridade
       const link = document.createElement('link');
       link.rel = 'preload';
       link.as = 'image';
-      link.href = imageSrc;
+      link.href = imageSrc; // Usar a imagem original diretamente
       link.fetchPriority = index < 2 ? 'high' : 'auto';
       document.head.appendChild(link);
-      
-      // Preload versões responsivas
-      if (imageSrc.startsWith('/projects/')) {
-        const pathParts = imageSrc.split('.');
-        const extension = pathParts.pop()?.toLowerCase();
-        const basePath = pathParts.join('.');
-        
-        // Precarrega a versão menor para dispositivos móveis
-        setTimeout(() => {
-          const responsiveLink = document.createElement('link');
-          responsiveLink.rel = 'preload';
-          responsiveLink.as = 'image';
-          responsiveLink.href = `${basePath}-optimized-768.${extension}`;
-          responsiveLink.fetchPriority = 'auto';
-          document.head.appendChild(responsiveLink);
-        }, 200);
-      }
     });
 
     // Preload dos placeholders LQIP também

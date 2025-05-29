@@ -170,44 +170,8 @@ export const useImageFormats = () => {
 
 // Retorna o melhor formato de imagem para o navegador
 export const useBestImageFormat = (baseSrc: string) => {
-  const { supportsWebp, supportsAvif } = useImageFormats();
-  const [isSlowConnection] = useState(false);
-  
-  // Se a URL já inclui extensão específica ou é externa, retornar como está
-  if (!baseSrc || !baseSrc.startsWith('/') || baseSrc.includes('?') || baseSrc.includes('#')) {
-    return baseSrc;
-  }
-  
-  const pathParts = baseSrc.split('.');
-  const extension = pathParts.pop()?.toLowerCase();
-  const basePath = pathParts.join('.');
-  
-  // Se for uma URL externa ou não for uma imagem, retornar a original
-  if (!extension || !['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
-    return baseSrc;
-  }
-  
-  // Em conexões lentas, usar versões menores
-  if (isSlowConnection) {
-    const optimizedPath = `${basePath}-optimized-768`;
-    if (supportsWebp) return `${optimizedPath}.webp`;
-    return `${optimizedPath}.jpg`;
-  }
-  
-  // Caminho otimizado com o formato original
-  const optimizedPath = `${basePath}-optimized`;
-  
-  // Em conexões normais, escolher o melhor formato
-  if (supportsAvif) return `${optimizedPath}.avif`;
-  if (supportsWebp) return `${optimizedPath}.webp`;
-  
-  // Fallback para JPEG (mais otimizado que PNG em geral)
-  if (extension === 'png' && !baseSrc.includes('transparent')) {
-    return `${optimizedPath}.jpg`;
-  }
-  
-  // Formato original
-  return `${optimizedPath}.${extension}`;
+  // Simplesmente retornar a imagem original para garantir compatibilidade
+  return baseSrc;
 };
 
 export default useImageOptimization;

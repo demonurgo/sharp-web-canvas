@@ -87,42 +87,12 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
   };
 
   const imageToShow = hasError && optimizedFallbackSrc ? optimizedFallbackSrc : optimizedSrc;
+  const originalSrc = src; // Guardar referência à imagem original
 
   // Função para gerar srcSet otimizado com diferentes tamanhos
   const generateSrcSet = (baseSrc: string) => {
-    // Somente criar srcSet para imagens do projeto
-    if (!baseSrc.startsWith('/projects/')) return baseSrc;
-    
-    // Separa o caminho da imagem para gerar versões em diferentes tamanhos
-    const pathParts = baseSrc.split('.');
-    const extension = pathParts.pop()?.toLowerCase();
-    const basePath = pathParts.join('.');
-    
-    // Verifica se já é uma versão otimizada
-    if (basePath.includes('-optimized')) {
-      const basePathWithoutSize = basePath.replace(/-optimized-\d+$/, '-optimized');
-      // Determinar melhor formato
-      const bestExt = supportsAvif ? 'avif' : (supportsWebp ? 'webp' : (extension || 'jpg'));
-      
-      return `
-        ${basePathWithoutSize}-480.${bestExt} 480w,
-        ${basePathWithoutSize}-768.${bestExt} 768w,
-        ${basePathWithoutSize}-1024.${bestExt} 1024w,
-        ${basePathWithoutSize}.${bestExt} 1920w
-      `;
-    }
-    
-    // Para imagens não otimizadas ainda, usar o comportamento original
-    const originalBasePath = basePath.replace(/-optimized(-\d+)?$/, '');
-    // Determinar melhor formato
-    const bestExt = supportsAvif ? 'avif' : (supportsWebp ? 'webp' : (extension || 'jpg'));
-    
-    return `
-      ${originalBasePath}-optimized-480.${bestExt} 480w,
-      ${originalBasePath}-optimized-768.${bestExt} 768w,
-      ${originalBasePath}-optimized-1024.${bestExt} 1024w,
-      ${originalBasePath}-optimized.${bestExt} 1920w
-    `;
+    // Retornar a imagem original para garantir compatibilidade
+    return baseSrc;
   };
 
   return (
@@ -154,39 +124,21 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
 
       {/* Imagem principal */}
       {hasStartedLoading && (
-        <picture>
-          {supportsAvif && (
-            <source
-              type="image/avif"
-              srcSet={generateSrcSet(imageToShow.replace(/\.\w+$/, '.avif'))}
-              sizes={sizes}
-            />
-          )}
-          {supportsWebp && (
-            <source
-              type="image/webp"
-              srcSet={generateSrcSet(imageToShow.replace(/\.\w+$/, '.webp'))}
-              sizes={sizes}
-            />
-          )}
-          <img
-            ref={imgRef}
-            src={imageToShow}
-            srcSet={generateSrcSet(imageToShow)}
-            sizes={sizes}
-            alt={alt}
-            className={`
-              w-full h-full object-cover transition-all duration-500 ease-out
-              ${isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}
-            `}
-            style={{ aspectRatio }}
-            onError={handleError}
-            onLoad={handleLoad}
-            loading={priority ? 'eager' : 'lazy'}
-            decoding="async"
-            fetchPriority={priority ? 'high' : 'auto'}
-          />
-        </picture>
+        <img
+          ref={imgRef}
+          src={originalSrc}
+          alt={alt}
+          className={`
+            w-full h-full object-cover transition-all duration-500 ease-out
+            ${isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}
+          `}
+          style={{ aspectRatio }}
+          onError={handleError}
+          onLoad={handleLoad}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={priority ? 'high' : 'auto'}
+        />
       )}
 
       {/* Overlay de carregamento com blur effect */}
