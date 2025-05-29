@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Code, Globe, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -33,7 +32,7 @@ const Hero = () => {
               </Link>
             </div>
           </div>
-          <div className="hidden md:flex items-center justify-center">
+          <div className="hidden lg:flex items-center justify-center">
             <div className="relative w-full max-w-sm aspect-square animate-float">
               <div className="absolute inset-0 bg-accent -rotate-3 brutal-box"></div>
               <div className="absolute inset-0 border-2 border-black dark:border-white rotate-2 dotted-bg"></div>
@@ -51,7 +50,31 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-0 right-0 hidden md:flex justify-center z-20 animate-float">
+        <div className="md:flex lg:hidden mt-10 justify-center hidden">
+          <div className="relative w-full max-w-xs aspect-square animate-float">
+            <div className="absolute inset-0 bg-accent -rotate-3 brutal-box"></div>
+            <div className="absolute inset-0 border-2 border-black dark:border-white rotate-2 dotted-bg"></div>
+            <div className="absolute inset-0 border-2 border-black dark:border-white bg-white dark:bg-black flex items-center justify-center z-10">
+              <div className="grid grid-cols-3 gap-4 p-6">
+                <Code size={30} className="animate-pulse-slow" />
+                <Database size={30} className="animate-pulse-slow delay-200" />
+                <Globe size={30} className="animate-pulse-slow delay-400" />
+                <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PHP&gt;</div>
+                <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;Docker&gt;</div>
+                <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PostgreSQL&gt;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-0 right-0 hidden lg:flex justify-center z-20 animate-float">
+          <a href="#about" className="flex flex-col items-center text-xs">
+            <span className="mb-2">Scroll</span>
+            <span className="w-0.5 h-10 bg-black dark:bg-white"></span>
+          </a>
+        </div>
+        
+        <div className="hidden md:flex lg:hidden justify-center mt-8 pb-6">
           <a href="#about" className="flex flex-col items-center text-xs">
             <span className="mb-2">Scroll</span>
             <span className="w-0.5 h-10 bg-black dark:bg-white"></span>
