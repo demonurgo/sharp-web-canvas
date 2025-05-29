@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import SkeletonLoader from './SkeletonLoader';
+import { useImageFormats, useBestImageFormat } from '@/hooks/useImageOptimization';
 
 interface OptimizedProjectImageProps {
   src: string;
@@ -34,6 +35,12 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
   const [hasStartedLoading, setHasStartedLoading] = useState(priority);
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { supportsWebp, supportsAvif } = useImageFormats();
+  
+  // Escolher o melhor formato para a imagem principal
+  const optimizedSrc = useBestImageFormat(src);
+  // Escolher o melhor formato para o fallback, se existir
+  const optimizedFallbackSrc = fallbackSrc ? useBestImageFormat(fallbackSrc) : undefined;
 
   // Intersection Observer para lazy loading
   useEffect(() => {
@@ -79,12 +86,43 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
     onLoad?.();
   };
 
-  const imageToShow = hasError && fallbackSrc ? fallbackSrc : src;
+  const imageToShow = hasError && optimizedFallbackSrc ? optimizedFallbackSrc : optimizedSrc;
 
-  // Função para gerar srcSet otimizado (simulando diferentes tamanhos)
+  // Função para gerar srcSet otimizado com diferentes tamanhos
   const generateSrcSet = (baseSrc: string) => {
-    // Por enquanto retorna a imagem original, mas pode ser expandido para diferentes tamanhos
-    return `${baseSrc} 1x`;
+    // Somente criar srcSet para imagens do projeto
+    if (!baseSrc.startsWith('/projects/')) return baseSrc;
+    
+    // Separa o caminho da imagem para gerar versões em diferentes tamanhos
+    const pathParts = baseSrc.split('.');
+    const extension = pathParts.pop()?.toLowerCase();
+    const basePath = pathParts.join('.');
+    
+    // Verifica se já é uma versão otimizada
+    if (basePath.includes('-optimized')) {
+      const basePathWithoutSize = basePath.replace(/-optimized-\d+$/, '-optimized');
+      // Determinar melhor formato
+      const bestExt = supportsAvif ? 'avif' : (supportsWebp ? 'webp' : (extension || 'jpg'));
+      
+      return `
+        ${basePathWithoutSize}-480.${bestExt} 480w,
+        ${basePathWithoutSize}-768.${bestExt} 768w,
+        ${basePathWithoutSize}-1024.${bestExt} 1024w,
+        ${basePathWithoutSize}.${bestExt} 1920w
+      `;
+    }
+    
+    // Para imagens não otimizadas ainda, usar o comportamento original
+    const originalBasePath = basePath.replace(/-optimized(-\d+)?$/, '');
+    // Determinar melhor formato
+    const bestExt = supportsAvif ? 'avif' : (supportsWebp ? 'webp' : (extension || 'jpg'));
+    
+    return `
+      ${originalBasePath}-optimized-480.${bestExt} 480w,
+      ${originalBasePath}-optimized-768.${bestExt} 768w,
+      ${originalBasePath}-optimized-1024.${bestExt} 1024w,
+      ${originalBasePath}-optimized.${bestExt} 1920w
+    `;
   };
 
   return (
@@ -105,7 +143,7 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
       )}
 
       {/* Container de erro quando não consegue carregar e não tem fallback */}
-      {hasError && !fallbackSrc && (
+      {hasError && !optimizedFallbackSrc && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 z-20">
           <div className="text-center">
             <div className="text-4xl mb-2">📱</div>
@@ -116,22 +154,39 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
 
       {/* Imagem principal */}
       {hasStartedLoading && (
-        <img
-          ref={imgRef}
-          src={imageToShow}
-          srcSet={generateSrcSet(imageToShow)}
-          sizes={sizes}
-          alt={alt}
-          className={`
-            w-full h-full object-cover transition-all duration-500 ease-out
-            ${isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}
-          `}
-          style={{ aspectRatio }}
-          onError={handleError}
-          onLoad={handleLoad}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-        />
+        <picture>
+          {supportsAvif && (
+            <source
+              type="image/avif"
+              srcSet={generateSrcSet(imageToShow.replace(/\.\w+$/, '.avif'))}
+              sizes={sizes}
+            />
+          )}
+          {supportsWebp && (
+            <source
+              type="image/webp"
+              srcSet={generateSrcSet(imageToShow.replace(/\.\w+$/, '.webp'))}
+              sizes={sizes}
+            />
+          )}
+          <img
+            ref={imgRef}
+            src={imageToShow}
+            srcSet={generateSrcSet(imageToShow)}
+            sizes={sizes}
+            alt={alt}
+            className={`
+              w-full h-full object-cover transition-all duration-500 ease-out
+              ${isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}
+            `}
+            style={{ aspectRatio }}
+            onError={handleError}
+            onLoad={handleLoad}
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            fetchPriority={priority ? 'high' : 'auto'}
+          />
+        </picture>
       )}
 
       {/* Overlay de carregamento com blur effect */}

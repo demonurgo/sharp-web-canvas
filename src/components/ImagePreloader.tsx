@@ -2,52 +2,63 @@ import React, { useEffect } from 'react';
 import useProjects from '@/hooks/useProjects';
 
 const ImagePreloader: React.FC = () => {
-  const { featuredProjects } = useProjects();
+  const { featuredProjects, otherProjects } = useProjects();
 
   useEffect(() => {
-    // Preload apenas das imagens críticas (projetos em destaque)
-    const criticalImages = featuredProjects
-      .filter(project => project.hasRealImage)
-      .map(project => project.image);
+    // Preload das imagens críticas (projetos em destaque e figurinhas)
+    const figurinhasProject = otherProjects.find(p => p.id === 'figurinhas');
+    
+    const criticalImages = [
+      ...featuredProjects.filter(project => project.hasRealImage).map(project => project.image),
+      ...(figurinhasProject && figurinhasProject.hasRealImage ? [figurinhasProject.image] : [])
+    ];
 
     // Criar elementos link para preload
     criticalImages.forEach((imageSrc, index) => {
-      // Preload apenas da primeira imagem imediatamente
-      if (index === 0) {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = imageSrc;
-        link.fetchPriority = 'high';
-        document.head.appendChild(link);
-      } else {
-        // Outras imagens com prioridade menor
+      // Preload com alta prioridade
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = imageSrc;
+      link.fetchPriority = index < 2 ? 'high' : 'auto';
+      document.head.appendChild(link);
+      
+      // Preload versões responsivas
+      if (imageSrc.startsWith('/projects/')) {
+        const pathParts = imageSrc.split('.');
+        const extension = pathParts.pop()?.toLowerCase();
+        const basePath = pathParts.join('.');
+        
+        // Precarrega a versão menor para dispositivos móveis
         setTimeout(() => {
-          const link = document.createElement('link');
-          link.rel = 'preload';
-          link.as = 'image';
-          link.href = imageSrc;
-          link.fetchPriority = 'low';
-          document.head.appendChild(link);
-        }, 1000 * index); // Delay escalonado
+          const responsiveLink = document.createElement('link');
+          responsiveLink.rel = 'preload';
+          responsiveLink.as = 'image';
+          responsiveLink.href = `${basePath}-optimized-768.${extension}`;
+          responsiveLink.fetchPriority = 'auto';
+          document.head.appendChild(responsiveLink);
+        }, 200);
       }
     });
 
     // Preload dos placeholders LQIP também
-    featuredProjects.forEach((project, index) => {
+    const allCriticalProjects = [
+      ...featuredProjects,
+      ...(figurinhasProject ? [figurinhasProject] : [])
+    ];
+    
+    allCriticalProjects.forEach((project, index) => {
       if (project.lqip) {
-        setTimeout(() => {
-          const link = document.createElement('link');
-          link.rel = 'preload';
-          link.as = 'image';
-          link.href = project.lqip;
-          link.fetchPriority = 'high';
-          document.head.appendChild(link);
-        }, 100 * index);
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = project.lqip;
+        link.fetchPriority = 'high';
+        document.head.appendChild(link);
       }
     });
 
-  }, [featuredProjects]);
+  }, [featuredProjects, otherProjects]);
 
   // Preload de fontes críticas
   useEffect(() => {

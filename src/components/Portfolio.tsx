@@ -171,7 +171,7 @@ const Portfolio = () => {
                                   className="w-full h-auto object-contain max-h-96 mx-auto transition-all duration-300"
                                   aspectRatio="9/16"
                                   variant="featured-project"
-                                  priority={false}
+                                  priority={true}
                                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
                                 />
                               </div>

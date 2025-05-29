@@ -194,3 +194,66 @@ Implementei uma solução robusta que resolve completamente os problemas de perf
 A solução é **production-ready** e segue as melhores práticas de performance web modernas!
 
 **Teste agora e você deve notar a diferença imediatamente! 🎯**
+
+# Otimizações de Imagens - Resumo
+
+## Problemas Identificados
+- Imagens de projetos grandes e não otimizadas, especialmente no projeto "figurinhas"
+- Carregamento lento de imagens secundárias
+- Ausência de pré-carregamento para imagens importantes
+
+## Soluções Implementadas
+
+### 1. Carregamento Prioritário
+- Configurado `priority={true}` para o projeto "figurinhas" no `Portfolio.tsx`
+- Configurado atributo `fetchPriority="high"` nas imagens principais
+
+### 2. Otimização e Compressão de Imagens
+- Adicionado script `optimize-images.js` que:
+  - Gera versões otimizadas das imagens em vários tamanhos (480px, 768px, 1024px)
+  - Cria versões em formatos modernos (WebP, JPEG otimizado)
+  - Aplica compressão inteligente para reduzir o tamanho dos arquivos
+
+### 3. Carregamento Responsivo
+- Implementada detecção de formatos suportados (WebP, AVIF)
+- Atualizado `OptimizedProjectImage.tsx` para usar `<picture>` com múltiplas `<source>`
+- Implementação de `srcSet` dinâmico que carrega imagens adequadas ao tamanho da tela
+
+### 4. Pré-carregamento Inteligente
+- Atualizado `ImagePreloader.tsx` para pré-carregar o projeto "figurinhas"
+- Implementada estratégia de carregamento em fases:
+  1. Carregamento imediato de imagens críticas
+  2. Pré-carregamento de versões menores para dispositivos móveis
+  3. Carregamento de imagens em segundo plano para projetos visíveis
+
+### 5. Detecção de Conexão
+- Implementado hook `useConnectionSpeed` para detectar conexões lentas
+- Em conexões lentas, prioriza versões menores e mais leves das imagens
+
+## Como Usar as Otimizações
+
+1. **Instalar Dependências**:
+   ```
+   npm install
+   ```
+
+2. **Otimizar Imagens**:
+   ```
+   npm run optimize:images
+   ```
+
+3. **Executar o Projeto**:
+   ```
+   npm run dev
+   ```
+
+## Tecnologias Utilizadas
+- Sharp: para processamento e otimização de imagens
+- Intersection Observer API: para lazy loading inteligente
+- Picture/Source: para servir diferentes formatos baseados no suporte do navegador
+
+## Resultados Esperados
+- Carregamento instantâneo das imagens críticas
+- Redução significativa no tempo de carregamento inicial
+- Melhor experiência do usuário com visualização imediata de conteúdo
+- Economia de banda em dispositivos móveis com carregamento adaptativo

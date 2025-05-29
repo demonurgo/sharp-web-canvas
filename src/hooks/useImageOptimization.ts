@@ -143,4 +143,71 @@ export const usePrefersReducedMotion = () => {
   return prefersReducedMotion;
 };
 
+// Hook para verificar suporte a formatos de imagem modernos
+export const useImageFormats = () => {
+  const [supportsWebp, setSupportsWebp] = useState(false);
+  const [supportsAvif, setSupportsAvif] = useState(false);
+
+  useEffect(() => {
+    // Teste para WebP
+    const webpImage = new Image();
+    webpImage.onload = () => setSupportsWebp(true);
+    webpImage.onerror = () => setSupportsWebp(false);
+    webpImage.src = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
+
+    // Teste para AVIF
+    const avifImage = new Image();
+    avifImage.onload = () => setSupportsAvif(true);
+    avifImage.onerror = () => setSupportsAvif(false);
+    avifImage.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+  }, []);
+
+  return {
+    supportsWebp,
+    supportsAvif
+  };
+};
+
+// Retorna o melhor formato de imagem para o navegador
+export const useBestImageFormat = (baseSrc: string) => {
+  const { supportsWebp, supportsAvif } = useImageFormats();
+  const [isSlowConnection] = useState(false);
+  
+  // Se a URL já inclui extensão específica ou é externa, retornar como está
+  if (!baseSrc || !baseSrc.startsWith('/') || baseSrc.includes('?') || baseSrc.includes('#')) {
+    return baseSrc;
+  }
+  
+  const pathParts = baseSrc.split('.');
+  const extension = pathParts.pop()?.toLowerCase();
+  const basePath = pathParts.join('.');
+  
+  // Se for uma URL externa ou não for uma imagem, retornar a original
+  if (!extension || !['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+    return baseSrc;
+  }
+  
+  // Em conexões lentas, usar versões menores
+  if (isSlowConnection) {
+    const optimizedPath = `${basePath}-optimized-768`;
+    if (supportsWebp) return `${optimizedPath}.webp`;
+    return `${optimizedPath}.jpg`;
+  }
+  
+  // Caminho otimizado com o formato original
+  const optimizedPath = `${basePath}-optimized`;
+  
+  // Em conexões normais, escolher o melhor formato
+  if (supportsAvif) return `${optimizedPath}.avif`;
+  if (supportsWebp) return `${optimizedPath}.webp`;
+  
+  // Fallback para JPEG (mais otimizado que PNG em geral)
+  if (extension === 'png' && !baseSrc.includes('transparent')) {
+    return `${optimizedPath}.jpg`;
+  }
+  
+  // Formato original
+  return `${optimizedPath}.${extension}`;
+};
+
 export default useImageOptimization;
