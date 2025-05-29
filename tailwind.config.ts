@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -22,6 +21,12 @@ export default {
 			fontFamily: {
 				mono: ['Space Mono', 'monospace'],
 				sans: ['Inter', 'sans-serif'],
+			},
+			dropShadow: {
+				'white-sm': '0 0 4px rgba(255, 255, 255, 0.8)',
+				'white': '0 0 8px rgba(255, 255, 255, 0.8)',
+				'white-lg': '0 0 16px rgba(255, 255, 255, 0.9)',
+				'white-xl': '0 0 24px rgba(255, 255, 255, 1)',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -112,9 +117,21 @@ export default {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.5' }
 				},
+				pulseSlow: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
+				},
+				pulseSubtle: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.92' }
+				},
 				glow: {
-					'0%, 100%': { boxShadow: '0 0 5px 0px rgba(255, 255, 255, 0.3)' },
-					'50%': { boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.5)' }
+					'0%, 100%': { boxShadow: '0 0 10px 2px rgba(255, 255, 255, 0.2)' },
+					'50%': { boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.4)' }
+				},
+				glowFilter: {
+					'0%, 100%': { filter: 'drop-shadow(0 0 16px rgba(255, 255, 255, 0.8)) !important' },
+					'50%': { filter: 'drop-shadow(0 0 32px rgba(255, 255, 255, 1)) !important' }
 				}
 			},
 			animation: {
@@ -124,7 +141,9 @@ export default {
 				'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-slow': 'pulse 4s ease infinite',
-				'glow': 'glow 2s ease-in-out infinite'
+				'pulse-subtle': 'pulseSubtle 5s ease-in-out infinite',
+				'glow': 'glow 4s ease-in-out infinite',
+				'glow-filter': 'glowFilter 3s ease-in-out infinite'
 			},
 			zIndex: {
 				'-1': '-1',

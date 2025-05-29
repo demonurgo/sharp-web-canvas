@@ -1,12 +1,34 @@
 import React from 'react';
-import { Code, Globe, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center brutalist-section bg-white dark:bg-black pt-20 md:pt-24 relative">
+    <section id="home" className="min-h-screen flex items-start md:items-center brutalist-section bg-white dark:bg-black pt-40 md:pt-24 relative">
       <div className="grain-overlay"></div>
       <div className="container mx-auto relative z-10">
+        {/* Mobile icon - will show only on smallest screens and be the first element */}
+        <div className="flex md:hidden justify-center mt-4 mb-40">
+          <div className="relative transition-all duration-300 hover:rotate-3">
+            <div 
+              className="absolute inset-0 dark:block hidden"
+              style={{
+                filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 1))'
+              }}
+            >
+              <img 
+                src="/icon.png" 
+                alt="" 
+                className="w-24 h-24 filter invert animate-pulse-slow"
+              />
+            </div>
+            <img 
+              src="/icon.png" 
+              alt="Site Logo" 
+              className="w-24 h-24 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
+            />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col justify-center">
             <p className="text-md mb-3 uppercase font-bold animate-fade-in-up">Olá, eu sou</p>
@@ -37,13 +59,24 @@ const Hero = () => {
               <div className="absolute inset-0 bg-accent -rotate-3 brutal-box"></div>
               <div className="absolute inset-0 border-2 border-black dark:border-white rotate-2 dotted-bg"></div>
               <div className="absolute inset-0 border-2 border-black dark:border-white bg-white dark:bg-black flex items-center justify-center z-10">
-                <div className="grid grid-cols-3 gap-4 p-8">
-                  <Code size={40} className="animate-pulse-slow" />
-                  <Database size={40} className="animate-pulse-slow delay-200" />
-                  <Globe size={40} className="animate-pulse-slow delay-400" />
-                  <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PHP&gt;</div>
-                  <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;Docker&gt;</div>
-                  <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PostgreSQL&gt;</div>
+                <div className="relative transition-all duration-300 hover:rotate-3">
+                  <div 
+                    className="absolute inset-0 dark:block hidden"
+                    style={{
+                      filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 1))'
+                    }}
+                  >
+                    <img 
+                      src="/icon.png" 
+                      alt="" 
+                      className="w-36 h-36 filter invert animate-pulse-slow"
+                    />
+                  </div>
+                  <img 
+                    src="/icon.png" 
+                    alt="Site Logo" 
+                    className="w-36 h-36 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
+                  />
                 </div>
               </div>
             </div>
@@ -55,13 +88,24 @@ const Hero = () => {
             <div className="absolute inset-0 bg-accent -rotate-3 brutal-box"></div>
             <div className="absolute inset-0 border-2 border-black dark:border-white rotate-2 dotted-bg"></div>
             <div className="absolute inset-0 border-2 border-black dark:border-white bg-white dark:bg-black flex items-center justify-center z-10">
-              <div className="grid grid-cols-3 gap-4 p-6">
-                <Code size={30} className="animate-pulse-slow" />
-                <Database size={30} className="animate-pulse-slow delay-200" />
-                <Globe size={30} className="animate-pulse-slow delay-400" />
-                <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PHP&gt;</div>
-                <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;Docker&gt;</div>
-                <div className="text-xs border border-black dark:border-white p-1 text-center">&lt;PostgreSQL&gt;</div>
+              <div className="relative transition-all duration-300 hover:rotate-3">
+                <div 
+                  className="absolute inset-0 dark:block hidden"
+                  style={{
+                    filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 1))'
+                  }}
+                >
+                  <img 
+                    src="/icon.png" 
+                    alt="" 
+                    className="w-24 h-24 filter invert animate-pulse-slow"
+                  />
+                </div>
+                <img 
+                  src="/icon.png" 
+                  alt="Site Logo" 
+                  className="w-24 h-24 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
+                />
               </div>
             </div>
           </div>
