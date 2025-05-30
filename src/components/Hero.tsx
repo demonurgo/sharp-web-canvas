@@ -18,13 +18,13 @@ const Hero = () => {
               <img 
                 src="/icon.png" 
                 alt="" 
-                className="w-24 h-24 filter invert animate-pulse-slow"
+                className="w-28 h-28 filter invert animate-pulse-slow"
               />
             </div>
             <img 
               src="/icon.png" 
               alt="Site Logo" 
-              className="w-24 h-24 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
+              className="w-28 h-28 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
             />
           </div>
         </div>
@@ -32,7 +32,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col justify-center">
             <p className="text-md mb-3 uppercase font-bold animate-fade-in-up">Olá, eu sou</p>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl mb-5 leading-tight animate-fade-in-up delay-100">
+            <h1 className="text-[2.5rem] sm:text-5xl md:text-7xl mb-5 leading-tight animate-fade-in-up delay-100">
               <span className="block">Desenvolvedor</span>
               <span className="text-accent relative inline-block animate-glitch">Backend</span>
             </h1>
@@ -98,13 +98,13 @@ const Hero = () => {
                   <img 
                     src="/icon.png" 
                     alt="" 
-                    className="w-24 h-24 filter invert animate-pulse-slow"
+                    className="w-28 h-28 filter invert animate-pulse-slow"
                   />
                 </div>
                 <img 
                   src="/icon.png" 
                   alt="Site Logo" 
-                  className="w-24 h-24 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
+                  className="w-28 h-28 animate-pulse-subtle transition-all duration-300 hover:opacity-90 opacity-85 dark:invert relative z-10"
                 />
               </div>
             </div>
