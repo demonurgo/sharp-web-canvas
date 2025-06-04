@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import OptimizedProjectImage from '@/components/OptimizedProjectImage';
 import IconRenderer from '@/components/IconRenderer';
 import STARMethodologySection from '@/components/STARMethodologySection';
+import ImageZoomModal from '@/components/ImageZoomModal';
 import useProjects from '@/hooks/useProjects';
 import ProjectType from '@/types/Project';
 import './ProjectDetail.css';
@@ -18,62 +19,51 @@ const ProjectDetail = () => {
   const [prevProject, setPrevProject] = useState<ProjectType | null>(null);
   const [nextProject, setNextProject] = useState<ProjectType | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [showMoreDetails, setShowMoreDetails] = useState(false);
-  
-  const carouselImages = [
-    { src: "/projects/figurinhas/IMG_2122.PNG", alt: "Login e tela inicial do app" },
-    { src: "/projects/figurinhas/IMG_2120.PNG", alt: "Dashboard principal com estatísticas" },
-    { src: "/projects/figurinhas/IMG_2121.PNG", alt: "Visualização detalhada de figurinha" },
-    { src: "/projects/figurinhas/IMG_2119.PNG", alt: "Sistema de conexões e amigos" },
-    { src: "/projects/figurinhas/IMG_2118.PNG", alt: "Perfil do usuário e configurações" }
-  ];
-  
-  const adivinhejaImages = [
-    { src: "/projects/adivinheja/IMG_2151.PNG", alt: "Tela inicial com seleção de categorias" },
-    { src: "/projects/adivinheja/IMG_2152.PNG", alt: "Jogo em andamento com controles múltiplos" },
-    { src: "/projects/adivinheja/IMG_2153.PNG", alt: "Sistema de configurações e dificuldades" },
-    { src: "/projects/adivinheja/IMG_2154.PNG", alt: "Resultados e estatísticas do jogo" }
-  ];
-  
-  const captions = [
-    "Tela 1/5 - Login e tela inicial do app",
-    "Tela 2/5 - Dashboard principal com estatísticas",
-    "Tela 3/5 - Visualização detalhada de figurinha",
-    "Tela 4/5 - Sistema de conexões e amigos",
-    "Tela 5/5 - Perfil do usuário e configurações"
-  ];
-  
-  const adivinhejaCaption = [
-    "Tela 1/4 - Tela inicial com seleção de categorias",
-    "Tela 2/4 - Jogo em andamento com controles múltiplos",
-    "Tela 3/4 - Sistema de configurações e dificuldades",
-    "Tela 4/4 - Resultados e estatísticas do jogo"
-  ];
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const getImagesForProject = (p: ProjectType) => {
+    if (p.galleryImages && p.galleryImages.length > 0) {
+      return p.galleryImages.map(src => ({ src, alt: `Screenshot do projeto ${p.title}` }));
+    }
+    return p.image ? [{ src: p.image, alt: `Imagem principal do projeto ${p.title}` }] : [];
+  };
+
   const nextSlide = () => {
-    const imageCount = project?.id === 'adivinheja' ? adivinhejaImages.length : carouselImages.length;
-    setCurrentSlide((prev) => (prev + 1) % imageCount);
+    if (!project) return;
+    const images = getImagesForProject(project);
+    setCurrentSlide((prev) => (prev + 1) % images.length);
   };
   
   const previousSlide = () => {
-    const imageCount = project?.id === 'adivinheja' ? adivinhejaImages.length : carouselImages.length;
-    setCurrentSlide((prev) => (prev - 1 + imageCount) % imageCount);
-    setIsAutoPlaying(false); // Pausar auto-play quando usuário interage
+    if (!project) return;
+    const images = getImagesForProject(project);
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
   };
   
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-    setIsAutoPlaying(false); // Pausar auto-play quando usuário interage
   };
   
-  // Auto-play carrossel
+  // Removed auto-play functionality - images remain static until user interaction
+
+  // Update favicon dynamically
   useEffect(() => {
-    if ((project?.id === 'figurinhas' || project?.id === 'adivinheja') && isAutoPlaying) {
-      const interval = setInterval(nextSlide, 5000);
-      return () => clearInterval(interval);
+    let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.getElementsByTagName('head')[0].appendChild(link);
     }
-  }, [project?.id, isAutoPlaying]);
+
+    if (project?.id === 'adivinheja') {
+      link.href = '/projects/adivinheja/icon.png';
+    } else if (project?.id === 'figurinhas') {
+      link.href = '/projects/figurinhas/icon.png';
+    } else {
+      // Fallback to default favicon if no specific project icon
+      link.href = '/favicon.ico'; // Assuming a default favicon exists
+    }
+  }, [project]);
 
   useEffect(() => {
     if (!projectId) return;
@@ -154,89 +144,142 @@ const ProjectDetail = () => {
             
             {/* Imagem do Projeto */}
             <div className="project-image-container mb-10 animate-fade-in-up">
-              {project.id === 'adivinheja' ? (
+              {project.galleryImages && project.galleryImages.length > 0 ? (
                 <div className="space-y-6">
                   <div className="text-center mb-6">
                     <p className="text-xl text-accent mb-4">{project.category}</p>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">Jogo moderno de charadas com IA Gemini e sistema anti-repetição inteligente</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">{project.description}</p>
                     
                     {/* Botão de Demonstração em Destaque */}
                     <div className="flex justify-center mb-8">
-                      <a 
-                        href={project.demoUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold text-lg uppercase border-4 border-black shadow-[8px_8px_0_0_#000] hover:shadow-[12px_12px_0_0_#000] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-200"
-                      >
-                        <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                        </svg>
-                        JOGAR ADIVINHE JÁ!
-                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
-                          JOGAR
-                        </span>
-                      </a>
+                      {project.demoUrl !== '#' && (
+                        <a 
+                          href={project.demoUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="group relative inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold text-lg uppercase border-4 border-black shadow-[8px_8px_0_0_#000] hover:shadow-[12px_12px_0_0_#000] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-200"
+                        >
+                          <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                          </svg>
+                          VER DEMONSTRAÇÃO AO VIVO
+                          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+                            DEMO
+                          </span>
+                        </a>
+                      )}
                     </div>
                   </div>
                   
-                  {/* Carrossel de Imagens */}
-                  <div className="relative max-w-md mx-auto">
-                    <div className="carousel-container overflow-hidden rounded-lg border-4 border-black">
+                  {/* Carrossel de Imagens Adaptativo */}
+                  <div className="relative w-full max-w-4xl mx-auto">
+                    <div className="carousel-container brutal-box bg-white dark:bg-black/50 flex items-center justify-center shadow-lg overflow-hidden w-full min-h-[300px] md:min-h-[400px]">
                       <div 
-                        className="carousel-track flex transition-transform duration-500 ease-in-out" 
+                        className="carousel-track flex transition-transform duration-500 ease-in-out w-full h-full"
                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                       >
-                        {adivinhejaImages.map((image, index) => (
-                          <div key={index} className="carousel-slide min-w-full bg-white">
-                            <OptimizedProjectImage 
-                              src={image.src}
-                              fallbackSrc="/projects/adivinheja/placeholder-lqip.svg"
-                              alt={image.alt}
-                              className="w-full h-full"
-                              objectFit="contain"
-                              variant="project-card"
-                              priority={index === 0}
-                              sizes="(max-width: 640px) 100vw, 50vw"
-                            />
-                          </div>
-                        ))}
+                        {getImagesForProject(project).map((image, index) => {
+                          // Detectar se é imagem vertical ou horizontal baseado nas dimensões conhecidas
+                          const isVertical = project.id === "adivinheja" || project.id === "figurinhas";
+                          const isLandscape = project.id === "projetoimobiliaria";
+                          
+                          return (
+                            <div key={index} className="carousel-slide min-w-full h-full flex items-center justify-center bg-white dark:bg-black p-4">
+                              <button
+                                className="h-full w-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-accent rounded-lg"
+                                onClick={() => setIsModalOpen(true)}
+                                aria-label="Visualizar imagem em tela cheia com zoom"
+                              >
+                                  <div
+                                    className="relative flex items-center justify-center w-full h-full"
+                                    style={{
+                                      maxWidth: isVertical ? "300px" : isLandscape ? "100%" : "600px",
+                                      maxHeight: isVertical ? "600px" : isLandscape ? "auto" : "400px"
+                                    }}
+                                  >
+                                  <OptimizedProjectImage 
+                                    src={image.src}
+                                    fallbackSrc={project.lqip || project.fallbackImage}
+                                    alt={image.alt}
+                                    className="object-contain w-full h-full cursor-zoom-in rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                                    variant="project-card"
+                                    priority={index === 0}
+                                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 60vw"
+                                  />
+                                  {/* Overlay de zoom */}
+                                  <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center opacity-0 hover:opacity-100">
+                                    <div className="bg-white/90 dark:bg-black/90 text-black dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                      🔍 Clique para zoom
+                                    </div>
+                                  </div>
+                                </div>
+                              </button>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                     
-                    {/* Controles do Carrossel */}
-                    <button 
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
-                      onClick={previousSlide}
-                      aria-label="Imagem anterior"
-                    >
-                      ←
-                    </button>
-                    <button 
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
-                      onClick={nextSlide}
-                      aria-label="Próxima imagem"
-                    >
-                      →
-                    </button>
-                    
-                    {/* Indicadores */}
-                    <div className="flex justify-center mt-4 space-x-2">
-                      {adivinhejaImages.map((_, index) => (
+                    {/* Modal de Zoom Avançado */}
+                    <ImageZoomModal
+                      isOpen={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      imageSrc={getImagesForProject(project)[currentSlide]?.src || ''}
+                      imageAlt={getImagesForProject(project)[currentSlide]?.alt || 'Imagem do projeto'}
+                      projectTitle={project.title}
+                    />
+
+                    {/* Controles do Carrossel - Apenas se houver múltiplas imagens */}
+                    {getImagesForProject(project).length > 1 && (
+                      <>
                         <button 
-                          key={index}
-                          className={`carousel-indicator w-3 h-3 border border-gray-400 brutal-box ${
-                            index === currentSlide ? 'bg-black' : 'bg-gray-400'
-                          }`} 
-                          onClick={() => goToSlide(index)}
-                          aria-label={`Ir para slide ${index + 1}`}
-                        />
-                      ))}
-                    </div>
+                          className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 brutal-box bg-black text-white w-10 h-10 md:w-12 md:h-12 border-2 border-black dark:border-white shadow-md hover:bg-accent hover:text-white transition-all duration-150 z-10 flex items-center justify-center"
+                          onClick={previousSlide}
+                          aria-label="Imagem anterior"
+                          type="button"
+                        >
+                          <span className="text-lg md:text-2xl font-bold">←</span>
+                        </button>
+                        <button 
+                          className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 brutal-box bg-black text-white w-10 h-10 md:w-12 md:h-12 border-2 border-black dark:border-white shadow-md hover:bg-accent hover:text-white transition-all duration-150 z-10 flex items-center justify-center"
+                          onClick={nextSlide}
+                          aria-label="Próxima imagem"
+                          type="button"
+                        >
+                          <span className="text-lg md:text-2xl font-bold">→</span>
+                        </button>
+                      </>
+                    )}
+                    
+                    {/* Indicadores - Apenas se houver múltiplas imagens */}
+                    {getImagesForProject(project).length > 1 && (
+                      <div className="flex justify-center mt-4 space-x-2 px-4">
+                        {getImagesForProject(project).map((_, index) => (
+                          <button 
+                            key={index}
+                            className={`carousel-indicator w-3 h-3 md:w-4 md:h-4 border border-gray-400 brutal-box transition-all duration-200 ${
+                              index === currentSlide 
+                                ? 'bg-black dark:bg-white transform scale-110' 
+                                : 'bg-gray-400 hover:bg-gray-600'
+                            }`} 
+                            onClick={() => goToSlide(index)}
+                            aria-label={`Ir para slide ${index + 1}`}
+                            title={`Imagem ${index + 1} de ${getImagesForProject(project).length}`}
+                          />
+                        ))}
+                      </div>
+                    )}
                     
                     {/* Legenda da imagem atual */}
-                    <div className="text-center mt-4 p-3 bg-accent/10 border-2 border-black rounded">
+                    <div className="text-center mt-4 p-3 bg-accent/10 dark:bg-accent/20 border-2 border-black dark:border-white rounded mx-4">
                       <p className="font-bold text-sm">
-                        {adivinhejaCaption[currentSlide]}
+                        {getImagesForProject(project).length > 1 
+                          ? `Tela ${currentSlide + 1}/${getImagesForProject(project).length} - ${getImagesForProject(project)[currentSlide]?.alt || 'Imagem do projeto'}`
+                          : getImagesForProject(project)[currentSlide]?.alt || 'Imagem do projeto'
+                        }
+                      </p>
+                      <p className="text-xs mt-1 text-gray-600 dark:text-gray-400">
+                        💡 Clique na imagem para visualizar em tela cheia com zoom
                       </p>
                     </div>
                   </div>
@@ -244,111 +287,9 @@ const ProjectDetail = () => {
                   <div className="text-center mt-8 p-4 bg-accent/10 border-2 border-black rounded-lg">
                     <h3 className="font-bold text-lg mb-2">Principais Funcionalidades:</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                      <p>• 10 categorias com 3 níveis de dificuldade</p>
-                      <p>• Geração automática de palavras via IA Gemini</p>
-                      <p>• Controles múltiplos (mouse, touch, teclado)</p>
-                      <p>• Sistema anti-repetição inteligente</p>
-                      <p>• Feedback visual avançado</p>
-                      <p>• Armazenamento persistente com Supabase</p>
-                    </div>
-                  </div>
-                </div>
-              ) : project.id === 'figurinhas' ? (
-                <div className="space-y-6">
-                  <div className="text-center mb-6">
-                    <p className="text-xl text-accent mb-4">{project.category}</p>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">Progressive Web App completo com funcionalidades offline e sistema social</p>
-                    
-                    {/* Botão de Demonstração em Destaque */}
-                    <div className="flex justify-center mb-8">
-                      <a 
-                        href={project.demoUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold text-lg uppercase border-4 border-black shadow-[8px_8px_0_0_#000] hover:shadow-[12px_12px_0_0_#000] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-200"
-                      >
-                        <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                        </svg>
-                        TESTAR APLICATIVO AO VIVO
-                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
-                          DEMO
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                  
-                  {/* Carrossel de Imagens */}
-                  <div className="relative max-w-md mx-auto">
-                    <div className="carousel-container overflow-hidden rounded-lg border-4 border-black">
-                      <div 
-                        className="carousel-track flex transition-transform duration-500 ease-in-out" 
-                        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                      >
-                        {carouselImages.map((image, index) => (
-                          <div key={index} className="carousel-slide min-w-full bg-white">
-                            <OptimizedProjectImage 
-                              src={image.src}
-                              fallbackSrc="/projects/figurinhas/placeholder-lqip.svg"
-                              alt={image.alt}
-                              className="w-full h-full"
-                              objectFit="contain"
-                              variant="project-card"
-                              priority={index === 0}
-                              sizes="(max-width: 640px) 100vw, 50vw"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Controles do Carrossel */}
-                    <button 
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
-                      onClick={previousSlide}
-                      aria-label="Imagem anterior"
-                    >
-                      ←
-                    </button>
-                    <button 
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-12 h-12 border-2 border-white brutal-box hover:bg-accent transition-colors" 
-                      onClick={nextSlide}
-                      aria-label="Próxima imagem"
-                    >
-                      →
-                    </button>
-                    
-                    {/* Indicadores */}
-                    <div className="flex justify-center mt-4 space-x-2">
-                      {carouselImages.map((_, index) => (
-                        <button 
-                          key={index}
-                          className={`carousel-indicator w-3 h-3 border border-gray-400 brutal-box ${
-                            index === currentSlide ? 'bg-black' : 'bg-gray-400'
-                          }`} 
-                          onClick={() => goToSlide(index)}
-                          aria-label={`Ir para slide ${index + 1}`}
-                        />
+                      {project.longDescription.map((desc, idx) => (
+                        <p key={idx}>• {desc}</p>
                       ))}
-                    </div>
-                    
-                    {/* Legenda da imagem atual */}
-                    <div className="text-center mt-4 p-3 bg-secondary/10 border-2 border-black rounded">
-                      <p className="font-bold text-sm">
-                        {captions[currentSlide]}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="text-center mt-8 p-4 bg-secondary/10 border-2 border-black rounded-lg">
-                    <h3 className="font-bold text-lg mb-2">Principais Funcionalidades:</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                      <p>• 184 figurinhas organizadas em categorias</p>
-                      <p>• Sistema de gamificação com figurinhas especiais</p>
-                      <p>• Upload de fotos das figurinhas coletadas</p>
-                      <p>• Funcionalidades sociais e sistema de amizades</p>
-                      <p>• Suporte completo offline (PWA)</p>
-                      <p>• Sincronização automática com Supabase</p>
                     </div>
                   </div>
                 </div>
@@ -362,7 +303,7 @@ const ProjectDetail = () => {
                   
                   {/* Botão de Demonstração em Destaque */}
                   <div className="text-center">
-                    {project.demoUrl !== '#' ? (
+                    {project.demoUrl !== '#' && (
                       <a 
                         href={project.demoUrl} 
                         target="_blank" 
@@ -377,13 +318,6 @@ const ProjectDetail = () => {
                           DEMO
                         </span>
                       </a>
-                    ) : (
-                      <div className="inline-flex items-center gap-3 px-8 py-4 bg-gray-400 text-white font-bold text-lg uppercase border-4 border-black cursor-not-allowed">
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M3 4a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 13a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1v-3zM13 4a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1V4zM13 13a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-3z" clipRule="evenodd" />
-                        </svg>
-                        EM DESENVOLVIMENTO
-                      </div>
                     )}
                   </div>
                 </div>
@@ -444,7 +378,7 @@ const ProjectDetail = () => {
                 {prevProject && (
                   <Link 
                     to={`/projeto/${prevProject.id}`}
-                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors"
+                    className="brutalist-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors"
                   >
                     <span className="text-xl">←</span> 
                     <div>
@@ -456,7 +390,7 @@ const ProjectDetail = () => {
               </div>
               
               <div className="text-center flex justify-center items-center">
-                <Link to="/#portfolio" className="brutal-box border-2 border-black dark:border-white p-3 inline-block hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors">
+                <Link to="/#portfolio" className="brutalist-box border-2 border-black dark:border-white p-3 inline-block hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors">
                   Ver Todos
                 </Link>
               </div>
@@ -465,7 +399,7 @@ const ProjectDetail = () => {
                 {nextProject && (
                   <Link 
                     to={`/projeto/${nextProject.id}`}
-                    className="brutal-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors"
+                    className="brutalist-box border-2 border-black dark:border-white p-3 inline-flex items-center gap-2 hover:bg-black hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors"
                   >
                     <div>
                       <div className="text-xs uppercase font-bold">Próximo Projeto</div>

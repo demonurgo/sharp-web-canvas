@@ -4,6 +4,40 @@ import ProjectType from '@/types/Project';
 const useProjects = () => {
   const projects: ProjectType[] = useMemo(() => [
     {
+      id: "projetoimobiliaria",
+      title: "Sistema de Gestão Imobiliária e Fiscal",
+      category: "PHP + CodeIgniter + PostgreSQL",
+      description: "Sistema para imobiliárias que emite notas fiscais (API Focus), importa XML/Excel e gera arquivo DIMOB.",
+      longDescription: [
+        "Sistema de gestão para imobiliárias focado na emissão de notas fiscais através da API Focus, importação de dados via XML e Excel, e geração do arquivo TXT para a DIMOB.",
+        "Permite o gerenciamento completo de inquilinos, imóveis e tomadores de serviço, com visualização e alteração dos dados diretamente no sistema."
+      ],
+      image: "/projects/projetoimobiliaria/Screenshot_1.PNG",
+      fallbackImage: "/projects/projetoimobiliaria/placeholder-lqip.svg", // Assuming this will be created
+      lqip: "/projects/projetoimobiliaria/placeholder-lqip.svg", // Assuming this will be created
+      hasRealImage: true,
+      demoUrl: "#",
+      featured: true,
+      icon: "file-text",
+      technologies: ["PHP", "CodeIgniter", "PostgreSQL", "API Focus"],
+      tools: [
+        { icon: "code", name: "PHP 7.3" },
+        { icon: "box", name: "CodeIgniter 3" },
+        { icon: "database", name: "PostgreSQL" },
+        { icon: "settings-2", name: "API Focus" },
+        { icon: "file-input", name: "Import XML/Excel" },
+        { icon: "file-output", name: "Geração DIMOB" }
+      ],
+      // STAR methodology section can be added later if desired
+      galleryImages: [
+        "/projects/projetoimobiliaria/Screenshot_1.PNG",
+        "/projects/projetoimobiliaria/Screenshot_2.PNG",
+        "/projects/projetoimobiliaria/Screenshot_3.PNG",
+        "/projects/projetoimobiliaria/Screenshot_4.PNG",
+        "/projects/projetoimobiliaria/Screenshot_5.PNG",
+      ],
+    },
+    {
       id: "adivinheja",
       title: "Adivinhe Já!",
       category: "IA + React + Gamificação",
@@ -12,12 +46,12 @@ const useProjects = () => {
         "Jogo interativo de charadas construído com React + TypeScript, integrado com Google Gemini AI para geração automática de palavras em 10 categorias distintas (Pessoas, Lugares, Animais, Objetos, Filmes, Música, Comida, Esportes, Profissões, Natureza) com 3 níveis de dificuldade cada.",
         "Sistema de controles múltiplos (mouse drag, touch swipe, teclado e botões de fallback) com feedback visual avançado. Utiliza Supabase para armazenamento persistente com sistema de aleatoriedade inteligente que evita repetições, priorizando palavras menos utilizadas e implementando cooldown temporal para melhor experiência de jogo."
       ],
-      image: "/projects/adivinheja/IMG_2151.PNG",
+      image: "/projects/adivinheja/icon.png",
       fallbackImage: "/projects/adivinheja/placeholder-lqip.svg",
       lqip: "/projects/adivinheja/placeholder-lqip.svg",
       hasRealImage: true,
       demoUrl: "https://adivinheja.vercel.app/",
-      featured: true,
+      featured: false,
       icon: "brain",
       technologies: ["Gemini AI", "React", "TypeScript", "Supabase"],
       tools: [
@@ -27,6 +61,12 @@ const useProjects = () => {
         { icon: "palette", name: "Tailwind CSS" },
         { icon: "gamepad-2", name: "Controles Múltiplos" },
         { icon: "shuffle", name: "Anti-Repetição" }
+      ],
+      galleryImages: [
+        "/projects/adivinheja/IMG_2151.PNG",
+        "/projects/adivinheja/IMG_2152.PNG",
+        "/projects/adivinheja/IMG_2153.PNG",
+        "/projects/adivinheja/IMG_2154.PNG"
       ],
       star: {
         situation: {
@@ -124,7 +164,7 @@ const useProjects = () => {
         "Progressive Web App completo para coleção de figurinhas temáticas com 184 itens organizados em categorias como Fotografias, Pinturas, Esculturas, Obras literárias, Músicas, Filmes e muito mais. O app inclui sistema de gamificação com figurinhas especiais (bronze, prata, ouro) e permite upload de fotos das figurinhas coletadas.",
         "Funcionalidades sociais avançadas permitem conexões entre usuários, visualização de álbuns de amigos e sistema de solicitações de amizade. Suporte completo offline com sincronização automática quando online, utilizando IndexedDB e Service Workers para garantir funcionalidade mesmo sem internet."
       ],
-      image: "/projects/figurinhas/IMG_2120.PNG",
+      image: "/projects/figurinhas/icon.png",
       fallbackImage: "/projects/figurinhas/placeholder-lqip.svg",
       lqip: "/projects/figurinhas/placeholder-lqip.svg",
       hasRealImage: true,
@@ -139,6 +179,13 @@ const useProjects = () => {
         { icon: "palette", name: "Tailwind CSS" },
         { icon: "wifi-off", name: "Offline Support" },
         { icon: "users", name: "Sistema Social" }
+      ],
+      galleryImages: [
+        "/projects/figurinhas/IMG_2118.PNG",
+        "/projects/figurinhas/IMG_2119.PNG",
+        "/projects/figurinhas/IMG_2120.PNG",
+        "/projects/figurinhas/IMG_2121.PNG",
+        "/projects/figurinhas/IMG_2122.PNG"
       ],
       star: {
         situation: {

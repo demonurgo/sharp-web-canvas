@@ -44,6 +44,7 @@ interface ProjectType {
     name: string;
   }>;
   star?: STARMethodology;
+  galleryImages?: string[]; // Add this line
 }
 
 export default ProjectType;

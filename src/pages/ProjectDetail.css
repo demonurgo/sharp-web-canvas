@@ -199,6 +199,10 @@
   transform: scale(1.03);
 }
 
+/* Modal de imagem em tela cheia */
+/* Estilos do modal antigo removidos - agora usando ImageZoomModal */
+/* Os estilos do modal foram movidos para o componente ImageZoomModal */
+
 /* Showcase de projetos */
 .project-image-showcase {
   position: relative;
@@ -259,7 +263,7 @@
 /* Responsividade para carrossel */
 @media (max-width: 768px) {
   .carousel-container {
-    max-width: 280px;
+    min-height: 300px !important;
   }
   
   .project-image-showcase {
@@ -268,6 +272,18 @@
   
   .project-image-showcase img {
     max-height: 350px;
+  }
+  
+  /* Controles menores em mobile */
+  .carousel-indicator {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  
+  /* Botões de navegação responsivos */
+  .brutal-box.w-10.h-10 {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
   }
 }
 
@@ -357,4 +373,112 @@
   color: white !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+/* Estilos para o carrossel adaptativo */
+.carousel-container {
+  position: relative;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.dark .carousel-container {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+}
+
+.carousel-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Estilos para overlay de zoom */
+.carousel-slide .absolute {
+  border-radius: 0.5rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Melhorias para indicadores */
+.carousel-indicator {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicator:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Estilos para imagens adaptativas */
+.adaptive-image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Suporte para diferentes proporções */
+.vertical-image {
+  max-width: 350px;
+  max-height: 600px;
+}
+
+.landscape-image {
+  max-width: 100%;
+  max-height: 400px;
+}
+
+.standard-image {
+  max-width: 600px;
+  max-height: 400px;
+}
+
+/* Animações suaves */
+@keyframes imageLoad {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.carousel-slide img {
+  animation: imageLoad 0.3s ease-out;
+}
+
+/* Melhorias para acessibilidade */
+.brutal-box:focus {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}
+
+.dark .brutal-box:focus {
+  outline: 2px solid #66d9ff;
+  outline-offset: 2px;
+}
+
+/* Estados de loading */
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.dark .image-loading {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
