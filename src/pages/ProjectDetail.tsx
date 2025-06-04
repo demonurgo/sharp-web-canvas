@@ -4,167 +4,22 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import OptimizedProjectImage from '@/components/OptimizedProjectImage';
 import IconRenderer from '@/components/IconRenderer';
+import STARMethodologySection from '@/components/STARMethodologySection';
 import useProjects from '@/hooks/useProjects';
+import ProjectType from '@/types/Project';
 import './ProjectDetail.css';
 
-// Definição dos tipos
-interface Tool {
-  icon: string;
-  name: string;
-}
-
-interface Project {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  longDescription: string[];
-  image: string;
-  demoUrl: string;
-  tools: Tool[];
-}
-
-const projects: Project[] = [
-  {
-    id: "sistema-automacao",
-    title: "Sistema de Automação",
-    category: "Backend Development",
-    description: "Sistema automatizado para processamento de dados em lote com integração a múltiplos serviços externos.",
-    longDescription: [
-      "Sistema desenvolvido para automatizar processos de negócio críticos, reduzindo a intervenção manual e aumentando a eficiência operacional.",
-      "A solução processa grandes volumes de dados em lote, utilizando filas assíncronas para garantir escalabilidade e resiliência, com capacidade de retomada em caso de falhas."
-    ],
-    image: "bg-secondary/20",
-    demoUrl: "#",
-    tools: [
-      { icon: "server", name: "PHP 8" },
-      { icon: "database", name: "PostgreSQL" },
-      { icon: "repeat", name: "Queue" },
-      { icon: "bar-chart", name: "Analytics" }
-    ]
-  },
-  {
-    id: "adivinheja",
-    title: "Adivinhe Já!",
-    category: "React + IA + Gamificação",
-    description: "Jogo moderno de charadas/adivinhação com IA Gemini para geração dinâmica de palavras e sistema anti-repetição inteligente.",
-    longDescription: [
-      "Jogo interativo de charadas construído com React + TypeScript, integrado com Google Gemini AI para geração automática de palavras em 10 categorias distintas (Pessoas, Lugares, Animais, Objetos, Filmes, Música, Comida, Esportes, Profissões, Natureza) com 3 níveis de dificuldade cada.",
-      "Sistema de controles múltiplos (mouse drag, touch swipe, teclado e botões de fallback) com feedback visual avançado. Utiliza Supabase para armazenamento persistente com sistema de aleatoriedade inteligente que evita repetições, priorizando palavras menos utilizadas e implementando cooldown temporal para melhor experiência de jogo."
-    ],
-    image: "bg-accent/20",
-    demoUrl: "https://adivinheja.vercel.app/",
-    tools: [
-      { icon: "brain", name: "IA Gemini" },
-      { icon: "code", name: "React + TypeScript" },
-      { icon: "database", name: "Supabase" },
-      { icon: "palette", name: "Tailwind CSS" },
-      { icon: "gamepad-2", name: "Controles Múltiplos" },
-      { icon: "shuffle", name: "Anti-Repetição" }
-    ]
-  },
-  {
-    id: "figurinhas",
-    title: "Figurinhas - PWA",
-    category: "React + Supabase + PWA",
-    description: "Progressive Web App completo de álbum de figurinhas com sistema social, funcionalidades offline e gamificação.",
-    longDescription: [
-      "Progressive Web App completo para coleção de figurinhas temáticas com 184 itens organizados em categorias como Fotografias, Pinturas, Esculturas, Obras literárias, Músicas, Filmes e muito mais. O app inclui sistema de gamificação com figurinhas especiais (bronze, prata, ouro) e permite upload de fotos das figurinhas coletadas.",
-      "Funcionalidades sociais avançadas permitem conexões entre usuários, visualização de álbuns de amigos e sistema de solicitações de amizade. Suporte completo offline com sincronização automática quando online, utilizando IndexedDB e Service Workers para garantir funcionalidade mesmo sem internet."
-    ],
-    image: "bg-accent/20",
-    demoUrl: "https://figurinhas-nine.vercel.app/",
-    tools: [
-      { icon: "smartphone", name: "PWA" },
-      { icon: "code", name: "React + TypeScript" },
-      { icon: "database", name: "Supabase" },
-      { icon: "palette", name: "Tailwind CSS" },
-      { icon: "wifi-off", name: "Offline Support" },
-      { icon: "users", name: "Sistema Social" }
-    ]
-  },
-  {
-    id: "microservicos-docker",
-    title: "Microserviços Docker",
-    category: "DevOps",
-    description: "Arquitetura de microsserviços containerizada com Docker, com monitoramento e escalabilidade automática.",
-    longDescription: [
-      "Projeto de migração de arquitetura monolítica para microsserviços, utilizando Docker para containerização e orquestração com Kubernetes.",
-      "Implementação de CI/CD completo, monitoramento em tempo real e escalabilidade automática baseada em métricas de uso e performance."
-    ],
-    image: "bg-secondary/20",
-    demoUrl: "#",
-    tools: [
-      { icon: "box", name: "Docker" },
-      { icon: "grid", name: "Kubernetes" },
-      { icon: "git-branch", name: "CI/CD" },
-      { icon: "activity", name: "Prometheus" }
-    ]
-  },
-  {
-    id: "dashboard-analitico",
-    title: "Dashboard Analítico",
-    category: "Full Stack",
-    description: "Dashboard para visualização de métricas e KPIs com backend em PHP, PostgreSQL e frontend moderno.",
-    longDescription: [
-      "Dashboard interativo para visualização em tempo real de métricas de negócio e KPIs críticos, com dados consolidados de múltiplas fontes.",
-      "Interface responsiva desenvolvida com foco em UX, permitindo customização de visualizações e geração de relatórios automatizados."
-    ],
-    image: "bg-accent/20",
-    demoUrl: "#",
-    tools: [
-      { icon: "code", name: "PHP" },
-      { icon: "database", name: "PostgreSQL" },
-      { icon: "bar-chart-2", name: "Charts.js" },
-      { icon: "refresh-cw", name: "Real-time" }
-    ]
-  },
-  {
-    id: "assistente-ia",
-    title: "Assistente IA",
-    category: "Inteligência Artificial",
-    description: "Implementação de assistente virtual baseado em IA para automatizar suporte ao cliente e processos internos.",
-    longDescription: [
-      "Assistente virtual inteligente desenvolvido para automatizar tarefas de suporte ao cliente e processos internos, reduzindo tempo de resposta e aumentando satisfação.",
-      "Utilização de processamento de linguagem natural e aprendizado de máquina para compreensão de intenções e melhoria contínua nas respostas."
-    ],
-    image: "bg-secondary/20",
-    demoUrl: "#",
-    tools: [
-      { icon: "cpu", name: "NLP" },
-      { icon: "message-square", name: "Chatbot" },
-      { icon: "code", name: "Python" },
-      { icon: "database", name: "NoSQL" }
-    ]
-  },
-  {
-    id: "sistema-crm",
-    title: "Sistema CRM",
-    category: "Backend & Automação",
-    description: "Sistema de gestão de relacionamento com clientes com automações de tarefas e fluxos de trabalho personalizados.",
-    longDescription: [
-      "Sistema CRM completo para gestão de relacionamento com clientes, com módulos de vendas, marketing, suporte e análise de dados.",
-      "Automação de fluxos de trabalho e tarefas recorrentes, integração com múltiplos canais de comunicação e dashboard personalizado por perfil de usuário."
-    ],
-    image: "bg-accent/20",
-    demoUrl: "#",
-    tools: [
-      { icon: "users", name: "CRM" },
-      { icon: "mail", name: "Email Marketing" },
-      { icon: "trending-up", name: "Lead Scoring" },
-      { icon: "sliders", name: "Automação" }
-    ]
-  }
-];
+// Os dados dos projetos agora vêm do hook useProjects com informações STAR
 
 const ProjectDetail = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const { projects, getProjectById } = useProjects();
-  const [project, setProject] = useState<Project | null>(null);
-  const [prevProject, setPrevProject] = useState<Project | null>(null);
-  const [nextProject, setNextProject] = useState<Project | null>(null);
+  const [project, setProject] = useState<ProjectType | null>(null);
+  const [prevProject, setPrevProject] = useState<ProjectType | null>(null);
+  const [nextProject, setNextProject] = useState<ProjectType | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [showMoreDetails, setShowMoreDetails] = useState(false);
   
   const carouselImages = [
     { src: "/projects/figurinhas/IMG_2122.PNG", alt: "Login e tela inicial do app" },
@@ -302,7 +157,6 @@ const ProjectDetail = () => {
               {project.id === 'adivinheja' ? (
                 <div className="space-y-6">
                   <div className="text-center mb-6">
-                    <h2 className="text-3xl font-bold text-black dark:text-white mb-2">{project.title}</h2>
                     <p className="text-xl text-accent mb-4">{project.category}</p>
                     <p className="text-gray-600 dark:text-gray-300 mb-6">Jogo moderno de charadas com IA Gemini e sistema anti-repetição inteligente</p>
                     
@@ -333,13 +187,13 @@ const ProjectDetail = () => {
                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                       >
                         {adivinhejaImages.map((image, index) => (
-                          <div key={index} className="carousel-slide min-w-full aspect-[9/16] bg-white">
+                          <div key={index} className="carousel-slide min-w-full bg-white">
                             <OptimizedProjectImage 
                               src={image.src}
                               fallbackSrc="/projects/adivinheja/placeholder-lqip.svg"
                               alt={image.alt}
-                              className="w-full h-full object-cover"
-                              aspectRatio="9/16"
+                              className="w-full h-full"
+                              objectFit="contain"
                               variant="project-card"
                               priority={index === 0}
                               sizes="(max-width: 640px) 100vw, 50vw"
@@ -402,7 +256,6 @@ const ProjectDetail = () => {
               ) : project.id === 'figurinhas' ? (
                 <div className="space-y-6">
                   <div className="text-center mb-6">
-                    <h2 className="text-3xl font-bold text-black dark:text-white mb-2">{project.title}</h2>
                     <p className="text-xl text-accent mb-4">{project.category}</p>
                     <p className="text-gray-600 dark:text-gray-300 mb-6">Progressive Web App completo com funcionalidades offline e sistema social</p>
                     
@@ -433,13 +286,13 @@ const ProjectDetail = () => {
                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                       >
                         {carouselImages.map((image, index) => (
-                          <div key={index} className="carousel-slide min-w-full aspect-[9/16] bg-white">
+                          <div key={index} className="carousel-slide min-w-full bg-white">
                             <OptimizedProjectImage 
                               src={image.src}
                               fallbackSrc="/projects/figurinhas/placeholder-lqip.svg"
                               alt={image.alt}
-                              className="w-full h-full object-cover"
-                              aspectRatio="9/16"
+                              className="w-full h-full"
+                              objectFit="contain"
                               variant="project-card"
                               priority={index === 0}
                               sizes="(max-width: 640px) 100vw, 50vw"
@@ -503,7 +356,6 @@ const ProjectDetail = () => {
                 <div className="space-y-6">
                   <div className={`aspect-video w-full ${project.image} p-12 flex items-center justify-center border-2 border-black`}>
                     <div className="text-center">
-                      <h2 className="text-3xl font-bold text-black dark:text-white mb-4">{project.title}</h2>
                       <p className="text-xl mb-6">{project.category}</p>
                     </div>
                   </div>
@@ -568,6 +420,23 @@ const ProjectDetail = () => {
                 ))}
               </div>
             </div>
+
+            {/* Botão para mostrar/ocultar detalhes STAR */}
+            {project.star && (
+              <div className="text-center my-8 animate-fade-in-up animate-delay-250">
+                <button
+                  onClick={() => setShowMoreDetails(!showMoreDetails)}
+                  className="brutalist-button brutal-box inline-block dark:text-white"
+                >
+                  {showMoreDetails ? 'Ver menos detalhes' : 'Ver mais detalhes do projeto'}
+                </button>
+              </div>
+            )}
+            
+            {/* Seção STAR Condicional */}
+            {showMoreDetails && project.star && (
+              <STARMethodologySection star={project.star} />
+            )}
             
             {/* Navegação entre projetos */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 mb-8 animate-fade-in-up animate-delay-300">

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 
@@ -32,9 +31,9 @@ const Footer = () => {
             <h3 className="text-sm uppercase font-bold mb-4 text-white/80">Navegação</h3>
             <ul className="space-y-2">
               <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
               <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Serviços</a></li>
               <li><a href="#portfolio" className="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
               <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contato</a></li>
             </ul>
           </div>

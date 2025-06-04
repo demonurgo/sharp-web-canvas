@@ -8,10 +8,11 @@ interface OptimizedProjectImageProps {
   alt: string;
   className?: string;
   style?: React.CSSProperties;
-  aspectRatio?: string;
+  aspectRatio?: string | 'auto'; // Allow 'auto'
   sizes?: string;
   priority?: boolean;
   variant?: 'project-card' | 'featured-project' | 'default';
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -22,10 +23,11 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
   alt, 
   className = '', 
   style,
-  aspectRatio = '4/3',
+  aspectRatio = 'auto', // Default to 'auto' to let image define its aspect ratio
   sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
   priority = false,
   variant = 'default',
+  objectFit = 'cover', // Default to 'cover'
   onLoad,
   onError
 }) => {
@@ -99,10 +101,10 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
     <div 
       ref={containerRef}
       className={`relative overflow-hidden ${className}`}
-      style={{ aspectRatio, ...style }}
+      style={aspectRatio && aspectRatio !== 'auto' ? { aspectRatio, ...style } : style}
     >
       {/* Skeleton loader enquanto não começou a carregar ou está carregando */}
-      {(!hasStartedLoading || isLoading) && (
+      {(!hasStartedLoading || isLoading) && aspectRatio && aspectRatio !== 'auto' && (
         <div className="absolute inset-0 z-10">
           <SkeletonLoader 
             aspectRatio={aspectRatio} 
@@ -129,10 +131,10 @@ const OptimizedProjectImage: React.FC<OptimizedProjectImageProps> = ({
           src={originalSrc}
           alt={alt}
           className={`
-            w-full h-full object-cover transition-all duration-500 ease-out
+            w-full ${aspectRatio && aspectRatio !== 'auto' ? 'h-full' : 'h-auto'} object-${objectFit} transition-all duration-500 ease-out
             ${isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}
           `}
-          style={{ aspectRatio }}
+          style={aspectRatio && aspectRatio !== 'auto' ? { aspectRatio } : {}}
           onError={handleError}
           onLoad={handleLoad}
           loading={priority ? 'eager' : 'lazy'}

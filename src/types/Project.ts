@@ -1,3 +1,30 @@
+interface STARMethodology {
+  situation: {
+    context: string;
+    problem: string;
+    opportunity: string;
+  };
+  task: {
+    objective: string;
+    responsibilities: string[];
+    challenges: string[];
+    newTechnologies?: string[];
+    essentialFeatures: string[];
+  };
+  action: {
+    technicalImplementation: string[];
+    keyDecisions: string[];
+    strategies: string[];
+  };
+  result: {
+    performance: string[];
+    impact: string[];
+    technicalAchievements: string[];
+    learnings: string[];
+    futureImprovements?: string[];
+  };
+}
+
 interface ProjectType {
   id: string;
   title: string;
@@ -16,6 +43,8 @@ interface ProjectType {
     icon: string;
     name: string;
   }>;
+  star?: STARMethodology;
 }
 
 export default ProjectType;
+export type { STARMethodology };

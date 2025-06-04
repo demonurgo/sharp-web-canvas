@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -14,9 +13,9 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <About />
         <Services />
         <Portfolio />
+        <About />
         <Contact />
       </main>
       <Footer />

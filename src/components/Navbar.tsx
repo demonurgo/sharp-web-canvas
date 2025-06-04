@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -23,7 +22,22 @@ const Navbar = () => {
       e.preventDefault();
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        // Obtém a altura da barra de navegação fixa (aproximadamente)
+        const navbarHeight = 80; // Altura aproximada da navbar em pixels
+        
+        // Calcula a posição do elemento
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        
+        // Subtrai a altura da navbar e adiciona offset adicional para portfolio
+        const offsetPosition = sectionId === 'portfolio' 
+          ? elementPosition - navbarHeight - 40 // Offset adicional para o portfolio
+          : elementPosition - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
         // Close mobile menu if open
         if (isMenuOpen) {
           setIsMenuOpen(false);
@@ -86,16 +100,6 @@ const Navbar = () => {
               </li>
               <li>
                 <Link 
-                  to="/#about" 
-                  onClick={(e) => handleNavigation(e, 'about')}
-                  className="hover:text-accent-foreground relative group dark:text-white"
-                >
-                  Sobre
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              </li>
-              <li>
-                <Link 
                   to="/#services" 
                   onClick={(e) => handleNavigation(e, 'services')}
                   className="hover:text-accent-foreground relative group dark:text-white"
@@ -111,6 +115,16 @@ const Navbar = () => {
                   className="hover:text-accent-foreground relative group dark:text-white"
                 >
                   Portfolio
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/#about" 
+                  onClick={(e) => handleNavigation(e, 'about')}
+                  className="hover:text-accent-foreground relative group dark:text-white"
+                >
+                  Sobre
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
@@ -144,15 +158,6 @@ const Navbar = () => {
             </li>
             <li>
               <Link 
-                to="/#about" 
-                onClick={(e) => handleNavigation(e, 'about')}
-                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
-              >
-                Sobre
-              </Link>
-            </li>
-            <li>
-              <Link 
                 to="/#services" 
                 onClick={(e) => handleNavigation(e, 'services')}
                 className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
@@ -167,6 +172,15 @@ const Navbar = () => {
                 className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
               >
                 Portfolio
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/#about" 
+                onClick={(e) => handleNavigation(e, 'about')}
+                className="block py-3 px-4 hover:bg-secondary hover:text-white transition-colors dark:text-white"
+              >
+                Sobre
               </Link>
             </li>
             <li>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Instagram, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -61,8 +60,9 @@ const Contact = () => {
                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
                   <Instagram size={20} className="text-white" />
                 </a>
-                <a href="tel:+5511987654321" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors">
+                <a href="https://wa.me/5581996151072?text=Tenho%20interesse%20em%20fazer%20um%20projeto%20com%20voc%C3%AA" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black flex items-center justify-center brutal-box hover:bg-accent transition-colors relative">
                   <Smartphone size={20} className="text-white" />
+                  <span className="absolute inset-0 brutal-box scale-110 shadow-[0_0_15px_rgba(34,197,94,0.7)] pointer-events-none animate-pulse"></span>
                 </a>
               </div>
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const About = () => {
@@ -49,17 +48,17 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-400">
               <div className="flex justify-between items-start">
-                <h4 className="text-lg mb-2">Desenvolvedor Senior</h4>
-                <span className="bg-accent text-white px-2 text-xs">2021 - Presente</span>
+                <h4 className="text-lg mb-2">Desenvolvedor Pleno</h4>
+                <span className="bg-accent text-white px-2 text-xs">2024 - Presente</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento de APIs e microsserviços utilizando PHP, Docker e PostgreSQL.</p>
+              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento avançado de sistemas com implementação de soluções de IA e automações. Maior autonomia em propostas de melhorias e inovações, com responsabilidade por fluxos completos e otimização de processos existentes.</p>
             </div>
             <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-500">
               <div className="flex justify-between items-start">
-                <h4 className="text-lg mb-2">Tech Lead</h4>
-                <span className="bg-secondary text-white px-2 text-xs">2018 - 2021</span>
+                <h4 className="text-lg mb-2">Desenvolvedor Júnior</h4>
+                <span className="bg-secondary text-white px-2 text-xs">2023 - 2024</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Liderança técnica em projetos, definição de arquitetura e automação de processos.</p>
+              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento e manutenção de funcionalidades utilizando Codeigniter, Docker, PostgreSQL.</p>
             </div>
           </div>
         </div>
