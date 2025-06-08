@@ -12,7 +12,7 @@ const useProjects = () => {
         "Sistema de gestão para imobiliárias focado na emissão de notas fiscais através da API Focus, importação de dados via XML e Excel, e geração do arquivo TXT para a DIMOB.",
         "Permite o gerenciamento completo de inquilinos, imóveis e tomadores de serviço, com visualização e alteração dos dados diretamente no sistema."
       ],
-      image: "/projects/projetoimobiliaria/Screenshot_1.PNG",
+      image: "/projects/projetoimobiliaria/Screenshot_1.png",
       fallbackImage: "/projects/projetoimobiliaria/placeholder-lqip.svg", // Assuming this will be created
       lqip: "/projects/projetoimobiliaria/placeholder-lqip.svg", // Assuming this will be created
       hasRealImage: true,
@@ -30,11 +30,11 @@ const useProjects = () => {
       ],
       // STAR methodology section can be added later if desired
       galleryImages: [
-        "/projects/projetoimobiliaria/Screenshot_1.PNG",
-        "/projects/projetoimobiliaria/Screenshot_2.PNG",
-        "/projects/projetoimobiliaria/Screenshot_3.PNG",
-        "/projects/projetoimobiliaria/Screenshot_4.PNG",
-        "/projects/projetoimobiliaria/Screenshot_5.PNG",
+        "/projects/projetoimobiliaria/Screenshot_1.png",
+        "/projects/projetoimobiliaria/Screenshot_2.png",
+        "/projects/projetoimobiliaria/Screenshot_3.png",
+        "/projects/projetoimobiliaria/Screenshot_4.png",
+        "/projects/projetoimobiliaria/Screenshot_5.png",
       ],
     },
     {
