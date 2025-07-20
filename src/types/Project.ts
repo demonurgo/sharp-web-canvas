@@ -37,6 +37,7 @@ interface ProjectType {
   hasRealImage: boolean;
   demoUrl: string;
   featured: boolean;
+  inDevelopment?: boolean;
   icon?: string;
   technologies: string[];
   tools: Array<{
@@ -44,7 +45,7 @@ interface ProjectType {
     name: string;
   }>;
   star?: STARMethodology;
-  galleryImages?: string[]; // Add this line
+  galleryImages?: string[];
 }
 
 export default ProjectType;

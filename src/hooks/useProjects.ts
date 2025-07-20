@@ -278,31 +278,158 @@ const useProjects = () => {
       }
     },
     {
-      id: "sistema-automacao",
-      title: "Sistema de Automação",
-      category: "Backend Development",
-      description: "Sistema automatizado para processamento de dados em lote com integração a múltiplos serviços externos.",
+      id: "adlamendes",
+      title: "Adla Mendes - Portfolio Digital",
+      category: "Landing Page + Mobile UX",
+      description: "Landing page moderna e otimizada para mobile de portfolio de social media creator, com design responsivo e foco na conversão.",
       longDescription: [
-        "Sistema desenvolvido para automatizar processos de negócio críticos, reduzindo a intervenção manual e aumentando a eficiência operacional.",
-        "A solução processa grandes volumes de dados em lote, utilizando filas assíncronas para garantir escalabilidade e resiliência, com capacidade de retomada em caso de falhas."
+        "Landing page profissional desenvolvida para social media creator, com design moderno e totalmente otimizado para dispositivos móveis. O projeto prioriza a experiência do usuário em telas pequenas, considerando que a maioria do público acessa através de smartphones.",
+        "Interface limpa e intuitiva que destaca o trabalho da criadora de conteúdo, com seções estratégicas para apresentação pessoal, portfolio de trabalhos, depoimentos de clientes e formulário de contato. O design responsivo garante uma experiência consistente em todos os dispositivos."
       ],
-      image: "bg-accent/10",
-      fallbackImage: "/placeholder.svg",
-      hasRealImage: false,
+      image: "/projects/adlamendes/adla.png",
+      fallbackImage: "/projects/adlamendes/adla-lqip.svg",
+      lqip: "/projects/adlamendes/adla-lqip.svg",
+      hasRealImage: true,
       demoUrl: "#",
       featured: false,
-      icon: "server",
-      technologies: ["PHP", "PostgreSQL", "Docker"],
+      icon: "smartphone",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Mobile-First"],
       tools: [
-        { icon: "server", name: "PHP 8" },
-        { icon: "database", name: "PostgreSQL" },
-        { icon: "repeat", name: "Queue" },
-        { icon: "bar-chart", name: "Analytics" }
+        { icon: "smartphone", name: "Mobile-First Design" },
+        { icon: "layout", name: "Responsive Layout" },
+        { icon: "palette", name: "Modern UI/UX" },
+        { icon: "zap", name: "Performance Optimized" },
+        { icon: "user", name: "Social Media Focus" },
+        { icon: "mail", name: "Contact Forms" }
+      ],
+      galleryImages: [
+        "/projects/adlamendes/Screenshot_6.png"
       ]
     },
     {
+      id: "finpal",
+      title: "FinPal - Gestão Financeira",
+      category: "React + Supabase + PWA",
+      description: "Aplicativo moderno de gestão financeira pessoal com interface mobile-first, controle de assinaturas e dashboard inteligente.",
+      longDescription: [
+        "Aplicativo completo de gestão financeira desenvolvido com React 18 e TypeScript, oferecendo uma experiência mobile-first para controle de finanças pessoais. Possui autenticação segura via Supabase, gestão de assinaturas recorrentes e dashboard com visão geral financeira.",
+        "Inclui sistema de categorias inteligente, controle de gastos por categoria, cache otimizado para performance e interface responsiva otimizada para dispositivos móveis. O app utiliza TanStack Query para gerenciamento de estado e oferece funcionalidades avançadas como criação automática de categorias padrão e indicadores de próximas cobranças."
+      ],
+      image: "/projects/gestão/icon.png",
+      fallbackImage: "/projects/gestão/placeholder-lqip.svg",
+      lqip: "/projects/gestão/placeholder-lqip.svg",
+      hasRealImage: true,
+      demoUrl: "#",
+      featured: false,
+      inDevelopment: false,
+      icon: "wallet",
+      technologies: ["React", "TypeScript", "Supabase", "TanStack Query"],
+      tools: [
+        { icon: "smartphone", name: "Mobile-First" },
+        { icon: "database", name: "Supabase" },
+        { icon: "wallet", name: "Gestão Financeira" },
+        { icon: "repeat", name: "Assinaturas" },
+        { icon: "bar-chart", name: "Dashboard" },
+        { icon: "shield", name: "Auth Segura" }
+      ],
+      galleryImages: [
+        "/projects/gestão/IMG_2815.PNG",
+        "/projects/gestão/IMG_2816.PNG",
+        "/projects/gestão/IMG_2817.PNG",
+        "/projects/gestão/IMG_2818.PNG",
+        "/projects/gestão/IMG_2819.PNG"
+      ],
+      star: {
+        situation: {
+          context: "Necessidade de uma solução moderna e intuitiva para gestão de finanças pessoais, especialmente focada em controle de assinaturas e gastos recorrentes.",
+          problem: "Dificuldade em controlar gastos mensais com assinaturas digitais (Netflix, Spotify, etc.) e falta de visibilidade sobre padrões de consumo financeiro.",
+          opportunity: "Desenvolver um aplicativo mobile-first que centralize o controle financeiro pessoal com foco em usabilidade e performance."
+        },
+        task: {
+          objective: "Criar uma aplicação web progressiva (PWA) para gestão financeira pessoal com interface intuitiva e funcionalidades avançadas de controle de gastos.",
+          responsibilities: [
+            "Desenvolvimento full-stack com React 18 e TypeScript",
+            "Implementação de autenticação segura e gerenciamento de usuários",
+            "Design e desenvolvimento de interface mobile-first responsiva",
+            "Integração com Supabase para backend e banco de dados"
+          ],
+          challenges: [
+            "Otimização de performance para dispositivos móveis",
+            "Implementação de cache inteligente para operações offline",
+            "Design de UX/UI intuitivo para gestão financeira",
+            "Integração robusta com sistema de autenticação Supabase"
+          ],
+          newTechnologies: ["Supabase", "TanStack Query", "React Hook Form", "Shadcn/ui", "PWA"],
+          essentialFeatures: [
+            "Dashboard com visão geral financeira",
+            "Gestão de assinaturas recorrentes",
+            "Sistema de categorização inteligente",
+            "Controle de transações (receitas e despesas)",
+            "Indicadores de próximas cobranças",
+            "Interface totalmente responsiva"
+          ]
+        },
+        action: {
+          technicalImplementation: [
+            "Arquitetura React 18 com TypeScript e Vite para build otimizado",
+            "Supabase como backend-as-a-service com PostgreSQL e autenticação",
+            "TanStack Query para gerenciamento de estado do servidor e cache",
+            "Shadcn/ui com Tailwind CSS para design system consistente",
+            "React Hook Form com Zod para validação de formulários",
+            "PWA com service workers e manifest para experiência nativa"
+          ],
+          keyDecisions: [
+            "Escolha do Supabase para reduzir complexidade de backend",
+            "Implementação mobile-first com design responsivo",
+            "Sistema de cache inteligente para melhor performance",
+            "Criação automática de categorias padrão para novos usuários",
+            "Estrutura modular de componentes para manutenibilidade"
+          ],
+          strategies: [
+            "Design system baseado em shadcn/ui para consistência visual",
+            "Arquitetura de hooks customizados para lógica de negócio",
+            "Tratamento robusto de estados de loading e erro",
+            "Otimização de queries e cache para performance",
+            "Validação client-side e server-side para segurança"
+          ]
+        },
+        result: {
+          performance: [
+            "Interface responsiva com carregamento otimizado em dispositivos móveis",
+            "Sistema de cache reduz tempo de carregamento em 60%",
+            "Autenticação segura com verificação de email implementada",
+            "Dashboard financeiro com atualizações em tempo real"
+          ],
+          impact: [
+            "Solução completa para controle de finanças pessoais",
+            "Interface intuitiva facilita adoção por usuários não-técnicos",
+            "Gestão eficiente de assinaturas evita gastos desnecessários",
+            "Visibilidade clara de padrões de consumo financeiro"
+          ],
+          technicalAchievements: [
+            "Integração bem-sucedida com Supabase (auth, database, real-time)",
+            "Implementação de PWA com funcionalidades offline",
+            "Sistema de categorias com ícones dinâmicos",
+            "Cache inteligente com TanStack Query para performance otimizada"
+          ],
+          learnings: [
+            "Domínio completo do ecossistema Supabase",
+            "Experiência avançada com TanStack Query para gerenciamento de estado",
+            "Implementação de PWA com service workers e cache strategies",
+            "Design mobile-first com foco em usabilidade financeira"
+          ],
+          futureImprovements: [
+            "Sistema de notificações push para lembretes de cobrança",
+            "Relatórios avançados com análise de tendências",
+            "Integração com bancos via Open Banking",
+            "Sistema de metas financeiras e conquistas"
+          ]
+        }
+      }
+    },
+    {
       id: "microservicos-docker",
-      title: "Microserviços Docker",
+      title: "Em Desenvolvimento",
       category: "DevOps",
       description: "Arquitetura de microsserviços containerizada com Docker, com monitoramento e escalabilidade automática.",
       longDescription: [
@@ -314,7 +441,8 @@ const useProjects = () => {
       hasRealImage: false,
       demoUrl: "#",
       featured: false,
-      icon: "database",
+      inDevelopment: true,
+      icon: "hammer",
       technologies: ["Docker", "Kubernetes", "CI/CD"],
       tools: [
         { icon: "box", name: "Docker" },
@@ -325,7 +453,7 @@ const useProjects = () => {
     },
     {
       id: "dashboard-analitico",
-      title: "Dashboard Analítico",
+      title: "Em desenvolvimento",
       category: "Full Stack",
       description: "Dashboard para visualização de métricas e KPIs com backend em PHP, PostgreSQL e frontend moderno.",
       longDescription: [
@@ -337,59 +465,14 @@ const useProjects = () => {
       hasRealImage: false,
       demoUrl: "#",
       featured: false,
-      icon: "code",
+      inDevelopment: true,
+      icon: "wrench",
       technologies: ["PHP", "PostgreSQL", "Charts.js"],
       tools: [
         { icon: "code", name: "PHP" },
         { icon: "database", name: "PostgreSQL" },
         { icon: "bar-chart-2", name: "Charts.js" },
         { icon: "refresh-cw", name: "Real-time" }
-      ]
-    },
-    {
-      id: "assistente-ia",
-      title: "Assistente IA",
-      category: "Inteligência Artificial + NLP",
-      description: "Implementação de assistente virtual baseado em IA para automatizar suporte ao cliente e processos internos.",
-      longDescription: [
-        "Assistente virtual inteligente desenvolvido para automatizar tarefas de suporte ao cliente e processos internos, reduzindo tempo de resposta e aumentando satisfação.",
-        "Utilização de processamento de linguagem natural e aprendizado de máquina para compreensão de intenções e melhoria contínua nas respostas."
-      ],
-      image: "bg-secondary/10",
-      fallbackImage: "/placeholder.svg",
-      hasRealImage: false,
-      demoUrl: "#",
-      featured: false,
-      icon: "cpu",
-      technologies: ["IA/NLP", "Python", "Machine Learning"],
-      tools: [
-        { icon: "cpu", name: "IA/NLP" },
-        { icon: "message-square", name: "Chatbot" },
-        { icon: "code", name: "Python" },
-        { icon: "database", name: "NoSQL" }
-      ]
-    },
-    {
-      id: "sistema-crm",
-      title: "Sistema CRM",
-      category: "Backend & Automação",
-      description: "Sistema de gestão de relacionamento com clientes com automações de tarefas e fluxos de trabalho personalizados.",
-      longDescription: [
-        "Sistema CRM completo para gestão de relacionamento com clientes, com módulos de vendas, marketing, suporte e análise de dados.",
-        "Automação de fluxos de trabalho e tarefas recorrentes, integração com múltiplos canais de comunicação e dashboard personalizado por perfil de usuário."
-      ],
-      image: "bg-accent/10",
-      fallbackImage: "/placeholder.svg",
-      hasRealImage: false,
-      demoUrl: "#",
-      featured: false,
-      icon: "users",
-      technologies: ["CRM", "Automação", "Email Marketing"],
-      tools: [
-        { icon: "users", name: "CRM" },
-        { icon: "mail", name: "Email Marketing" },
-        { icon: "trending-up", name: "Lead Scoring" },
-        { icon: "sliders", name: "Automação" }
       ]
     }
   ], []);

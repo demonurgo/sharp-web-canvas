@@ -132,16 +132,29 @@ const Portfolio = () => {
     </div>
   )}
                     
-                    {/* Badge de categoria */}
-                    <div className="absolute top-2 right-2 bg-black dark:bg-white text-white dark:text-black px-2 py-1 text-xs font-bold brutal-box">
-                      {project.category.split(' ')[0]}
-                    </div>
+                    {/* Badge de categoria ou desenvolvimento */}
+                    {project.inDevelopment ? (
+                      <div className="absolute top-2 right-2 bg-black dark:bg-white text-white dark:text-black px-2 py-1 text-xs font-bold brutal-box">
+                        EM DESENVOLVIMENTO
+                      </div>
+                    ) : (
+                      <div className="absolute top-2 right-2 bg-black dark:bg-white text-white dark:text-black px-2 py-1 text-xs font-bold brutal-box">
+                        {project.category.split(' ')[0]}
+                      </div>
+                    )}
                   </div>
                   
                   <div className="p-4">
                     <p className="text-sm font-bold uppercase text-accent mb-2">{project.category}</p>
-                    <h4 className="font-bold text-lg mb-2 text-black dark:text-white">{project.title}</h4>
-                    <p className="mb-4 text-gray-700 dark:text-gray-300 text-sm line-clamp-3">{project.description}</p>
+                    <h4 className="font-bold text-lg mb-2 text-black dark:text-white">
+                      {project.inDevelopment ? "Em desenvolvimento" : project.title}
+                    </h4>
+                    <p className="mb-4 text-gray-700 dark:text-gray-300 text-sm line-clamp-3">
+                      {project.inDevelopment 
+                        ? "Este projeto está atualmente em desenvolvimento. Em breve estará disponível com mais detalhes e funcionalidades." 
+                        : project.description
+                      }
+                    </p>
                     
                     <div className="flex flex-wrap gap-1 mb-4">
                       {project.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -157,29 +170,39 @@ const Portfolio = () => {
                     </div>
                     
                     <div className="flex justify-between items-center">
-                      <Link 
-                        to={`/projeto/${project.id}`} 
-                        className="font-bold uppercase text-black dark:text-white hover:text-accent flex items-center gap-2 group-hover:translate-x-1 transition-transform text-sm"
-                      >
-                        Ver detalhes 
-                        <span className="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
-                      </Link>
-                      
-{project.demoUrl !== '#' && (
-  <div className="w-full flex justify-center mt-4 mb-2">
-    <a 
-      href={project.demoUrl} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="brutal-box bg-accent text-white px-4 py-2 font-bold uppercase hover:bg-secondary transition-colors flex items-center gap-2 demo-button-highlight"
-      style={{ borderRadius: 8 }}
-      title="Ver demonstração"
-    >
-      <ExternalLink className="w-4 h-4" />
-      DEMO AO VIVO
-    </a>
-  </div>
-)}
+                      {project.inDevelopment ? (
+                        <div className="w-full text-center">
+                          <span className="font-bold uppercase text-gray-500 dark:text-gray-400 text-sm">
+                            🚧 Em desenvolvimento
+                          </span>
+                        </div>
+                      ) : (
+                        <>
+                          <Link 
+                            to={`/projeto/${project.id}`} 
+                            className="font-bold uppercase text-black dark:text-white hover:text-accent flex items-center gap-2 group-hover:translate-x-1 transition-transform text-sm"
+                          >
+                            Ver detalhes 
+                            <span className="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
+                          </Link>
+                          
+                          {project.demoUrl !== '#' && (
+                            <div className="w-full flex justify-center mt-4 mb-2">
+                              <a 
+                                href={project.demoUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="brutal-box bg-accent text-white px-4 py-2 font-bold uppercase hover:bg-secondary transition-colors flex items-center gap-2 demo-button-highlight"
+                                style={{ borderRadius: 8 }}
+                                title="Ver demonstração"
+                              >
+                                <ExternalLink className="w-4 h-4" />
+                                DEMO AO VIVO
+                              </a>
+                            </div>
+                          )}
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="none">
+  <rect width="400" height="400" fill="#ffffff" rx="20"/>
+  
+  <!-- Logo placeholder - circular design -->
+  <circle cx="200" cy="200" r="120" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+  
+  <!-- Inner design elements representing a logo -->
+  <circle cx="200" cy="180" r="40" fill="#6c757d" opacity="0.3"/>
+  <rect x="170" y="220" width="60" height="20" fill="#6c757d" opacity="0.4" rx="10"/>
+  <rect x="180" y="250" width="40" height="15" fill="#6c757d" opacity="0.2" rx="7"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="160" cy="160" r="8" fill="#007bff" opacity="0.6"/>
+  <circle cx="240" cy="160" r="8" fill="#dc3545" opacity="0.6"/>
+  <circle cx="200" cy="140" r="6" fill="#ffc107" opacity="0.6"/>
+  
+  <!-- Border -->
+  <rect x="2" y="2" width="396" height="396" fill="none" stroke="#dee2e6" stroke-width="2" rx="18"/>
+  
+  <!-- Text overlay -->
+  <text x="200" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#6c757d" opacity="0.6">Adla Mendes</text>
+  <text x="200" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6c757d" opacity="0.4">Social Media</text>
+</svg>

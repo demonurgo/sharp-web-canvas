@@ -180,7 +180,7 @@ const ProjectDetail = () => {
                       >
                         {getImagesForProject(project).map((image, index) => {
                           // Detectar se é imagem vertical ou horizontal baseado nas dimensões conhecidas
-                          const isVertical = project.id === "adivinheja" || project.id === "figurinhas";
+                          const isVertical = project.id === "adivinheja" || project.id === "figurinhas" || project.id === "finpal";
                           const isLandscape = project.id === "projetoimobiliaria";
                           
                           return (
