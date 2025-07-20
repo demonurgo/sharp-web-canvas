@@ -2,8 +2,8 @@ import React from 'react';
 
 const About = () => {
   const skills = [
-    'PHP', 'Docker', 'PostgreSQL', 'IA', 'Automações', 
-    'Python', 'Git', 'RESTful APIs', 'CI/CD', 'Linux'
+    'React', 'TypeScript', 'PHP', 'PostgreSQL', 'Supabase',
+    'Docker', 'IA', 'PWA', 'Git', 'RESTful APIs', 'CI/CD', 'Linux'
   ];
 
   return (
@@ -18,12 +18,12 @@ const About = () => {
           <div className="animate-fade-in-up delay-100">
             <h3 className="text-xl mb-6 font-bold">Quem sou eu</h3>
             <p className="text-base mb-5 text-gray-700 dark:text-gray-300">
-              Sou um desenvolvedor backend apaixonado por criar soluções eficientes e escaláveis. 
-              Com experiência em PHP, Docker e bancos de dados, transformo requisitos complexos em códigos confiáveis.
+              Sou um desenvolvedor full stack especializado em criar aplicações completas e escaláveis. 
+              Domino tanto o frontend moderno com React e TypeScript quanto o backend robusto com PHP e PostgreSQL.
             </p>
             <p className="text-base text-gray-700 dark:text-gray-300">
-              Minha jornada na programação me permitiu desenvolver diversos projetos 
-              com foco em automação, segurança e integração de sistemas, sempre seguindo as melhores práticas.
+              Minha experiência abrange desde PWAs e interfaces responsivas até APIs RESTful e integrações com IA. 
+              Foco em entregar soluções completas que unem performance, usabilidade e código limpo.
             </p>
           </div>
           
@@ -51,14 +51,14 @@ const About = () => {
                 <h4 className="text-lg mb-2">Desenvolvedor Pleno</h4>
                 <span className="bg-accent text-white px-2 text-xs">2024 - Presente</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento avançado de sistemas com implementação de soluções de IA e automações. Maior autonomia em propostas de melhorias e inovações, com responsabilidade por fluxos completos e otimização de processos existentes.</p>
+              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento full stack de aplicações modernas com React, TypeScript, PHP e PostgreSQL. Implementação de soluções com IA, PWAs e automações. Responsável por fluxos completos desde a concepção até o deploy.</p>
             </div>
             <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-500">
               <div className="flex justify-between items-start">
                 <h4 className="text-lg mb-2">Desenvolvedor Júnior</h4>
                 <span className="bg-secondary text-white px-2 text-xs">2023 - 2024</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento e manutenção de funcionalidades utilizando Codeigniter, Docker, PostgreSQL.</p>
+              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento e manutenção de sistemas utilizando CodeIgniter, Docker, PostgreSQL. Transição para tecnologias modernas como React e TypeScript.</p>
             </div>
           </div>
         </div>

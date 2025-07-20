@@ -66,7 +66,7 @@ const Hero = () => {
               <span className="text-accent relative inline-block animate-glitch">Full Stack</span>
             </h1>
             <p className="text-lg mb-6 md:pr-8 text-gray-700 dark:text-gray-300 animate-fade-in-up delay-200">
-              Transformo suas ideias em soluções eficientes com código limpo e tecnologias atuais.
+              Especialista em React, PHP e tecnologias modernas. Desenvolvo aplicações completas do frontend ao backend, com foco em performance, usabilidade e código limpo.
             </p>
             <div className="flex gap-3 animate-fade-in-up delay-300">
               <Link 
