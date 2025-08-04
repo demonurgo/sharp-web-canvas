@@ -45,20 +45,26 @@ const About = () => {
         
         <div className="border-t-2 border-black dark:border-white pt-10">
           <h3 className="text-xl mb-6 font-bold animate-fade-in-up delay-300">Experiência</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-400">
-              <div className="flex justify-between items-start">
-                <h4 className="text-lg mb-2">Desenvolvedor Pleno</h4>
-                <span className="bg-accent text-white px-2 text-xs">2024 - Presente</span>
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h4 className="text-lg mb-1">Desenvolvedor Full Stack</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Acene Contabilidade</p>
+                </div>
+                <span className="bg-accent text-white px-2 text-xs">2023 - Presente</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento full stack de aplicações modernas com React, TypeScript, PHP e PostgreSQL. Implementação de soluções com IA, PWAs e automações. Responsável por fluxos completos desde a concepção até o deploy.</p>
-            </div>
-            <div className="brutal-box p-5 bg-white dark:bg-black animate-fade-in-up delay-500">
-              <div className="flex justify-between items-start">
-                <h4 className="text-lg mb-2">Desenvolvedor Júnior</h4>
-                <span className="bg-secondary text-white px-2 text-xs">2023 - 2024</span>
+              <p className="text-gray-700 dark:text-gray-300 mb-3">
+                Desenvolvimento completo do sistema Gestor Kaisen, responsável por toda arquitetura e implementação. 
+                Criação de soluções que automatizam processos contábeis complexos, desde integração com APIs até 
+                interfaces de usuário modernas.
+              </p>
+              <div className="border-l-4 border-accent pl-4">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <strong>Principais responsabilidades:</strong> Arquitetura de sistema, desenvolvimento frontend/backend, 
+                  integração com APIs externas, automação de processos e gestão completa do ciclo de desenvolvimento.
+                </p>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Desenvolvimento e manutenção de sistemas utilizando CodeIgniter, Docker, PostgreSQL. Transição para tecnologias modernas como React e TypeScript.</p>
             </div>
           </div>
         </div>

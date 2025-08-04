@@ -197,7 +197,7 @@ const Portfolio = () => {
                                 title="Ver demonstração"
                               >
                                 <ExternalLink className="w-4 h-4" />
-                                DEMO AO VIVO
+                                VER PROJETO
                               </a>
                             </div>
                           )}
@@ -213,7 +213,7 @@ const Portfolio = () => {
         
         <div className="mt-12 text-center animate-fade-in-up delay-500">
           <Link to="/#contact" className="brutalist-button brutal-box inline-block dark:text-white hover:opacity-100">
-            Tem um projeto em mente?
+            Vamos conversar sobre seu projeto
           </Link>
         </div>
       </div>

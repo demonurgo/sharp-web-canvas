@@ -129,6 +129,16 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <span 
+                  className="text-gray-400 dark:text-gray-600 cursor-not-allowed relative group"
+                >
+                  Blog
+                  <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-black dark:bg-white text-white dark:text-black text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Em breve
+                  </span>
+                </span>
+              </li>
+              <li>
                 <Link 
                   to="/#contact" 
                   onClick={(e) => handleNavigation(e, 'contact')}
@@ -182,6 +192,13 @@ const Navbar = () => {
               >
                 Sobre
               </Link>
+            </li>
+            <li>
+              <span 
+                className="block py-3 px-4 text-gray-400 dark:text-gray-600 cursor-not-allowed"
+              >
+                Blog (Em breve)
+              </span>
             </li>
             <li>
               <Link 

@@ -7,10 +7,10 @@ const useProjects = () => {
       id: "projetoimobiliaria",
       title: "Sistema de Gestão Imobiliária e Fiscal",
       category: "PHP + CodeIgniter + PostgreSQL",
-      description: "Sistema para imobiliárias que emite notas fiscais (API Focus), importa XML/Excel e gera arquivo DIMOB.",
+      description: "Sistema completo utilizado pela Caimíveis que automatiza processos que antes levavam dias, economizando semanas de trabalho manual.",
       longDescription: [
-        "Sistema de gestão para imobiliárias focado na emissão de notas fiscais através da API Focus, importação de dados via XML e Excel, e geração do arquivo TXT para a DIMOB.",
-        "Permite o gerenciamento completo de inquilinos, imóveis e tomadores de serviço, com visualização e alteração dos dados diretamente no sistema."
+        "Sistema em produção na Caimíveis que centralizou e automatizou todos os processos burocráticos. Emissão automática de notas fiscais, importação de planilhas Excel, geração do arquivo DIMOB e emails automáticos para clientes.",
+        "Transformou atividades que consumiam dias ou semanas em processos de poucos cliques. A empresa consegue focar no que realmente importa: atender bem os clientes e fechar mais negócios, enquanto a burocracia roda sozinha."
       ],
       image: "/projects/projetoimobiliaria/Screenshot_1.png",
       fallbackImage: "/projects/projetoimobiliaria/placeholder-lqip.svg", // Assuming this will be created
@@ -41,10 +41,10 @@ const useProjects = () => {
       id: "adivinheja",
       title: "Adivinhe Já!",
       category: "IA + React + Gamificação",
-      description: "Jogo moderno de charadas/adivinhação com IA Gemini para geração dinâmica de palavras e sistema anti-repetição inteligente.",
+      description: "Jogo de charadas interativo com inteligência artificial que gera palavras únicas, evitando repetições para diversão garantida.",
       longDescription: [
-        "Jogo interativo de charadas construído com React + TypeScript, integrado com Google Gemini AI para geração automática de palavras em 10 categorias distintas (Pessoas, Lugares, Animais, Objetos, Filmes, Música, Comida, Esportes, Profissões, Natureza) com 3 níveis de dificuldade cada.",
-        "Sistema de controles múltiplos (mouse drag, touch swipe, teclado e botões de fallback) com feedback visual avançado. Utiliza Supabase para armazenamento persistente com sistema de aleatoriedade inteligente que evita repetições, priorizando palavras menos utilizadas e implementando cooldown temporal para melhor experiência de jogo."
+        "Aplicativo de charadas que utiliza inteligência artificial para criar palavras dinamicamente, oferecendo 10 categorias diferentes com 3 níveis de dificuldade. Funciona perfeitamente em qualquer dispositivo com controles touch, mouse e teclado.",
+        "Sistema inteligente que evita repetir palavras já utilizadas, mantendo a diversão por muito mais tempo. Ideal para festas familiares e encontros sociais, proporcionando entretenimento garantido para todas as idades."
       ],
       image: "/projects/adivinheja/icon.png",
       fallbackImage: "/projects/adivinheja/placeholder-lqip.svg",
@@ -159,10 +159,10 @@ const useProjects = () => {
       id: "figurinhas",
       title: "Figurinhas - PWA",
       category: "React + Supabase + PWA",
-      description: "Progressive Web App completo de álbum de figurinhas com sistema social, funcionalidades offline e gamificação.",
+      description: "Aplicativo de coleção de figurinhas com rede social integrada, funcionando online e offline para conectar colecionadores.",
       longDescription: [
-        "Progressive Web App completo para coleção de figurinhas temáticas com 184 itens organizados em categorias como Fotografias, Pinturas, Esculturas, Obras literárias, Músicas, Filmes e muito mais. O app inclui sistema de gamificação com figurinhas especiais (bronze, prata, ouro) e permite upload de fotos das figurinhas coletadas.",
-        "Funcionalidades sociais avançadas permitem conexões entre usuários, visualização de álbuns de amigos e sistema de solicitações de amizade. Suporte completo offline com sincronização automática quando online, utilizando IndexedDB e Service Workers para garantir funcionalidade mesmo sem internet."
+        "Aplicativo completo para colecionadores de figurinhas com 184 itens catalogados em diversas categorias. Permite adicionar amigos, visualizar coleções de outros usuários e identificar quais figurinhas estão faltando ou repetidas.",
+        "Funciona completamente offline, sincronizando dados automaticamente quando a internet retorna. Desenvolvido especialmente para facilitar trocas entre colecionadores, criando uma comunidade social em torno do hobby."
       ],
       image: "/projects/figurinhas/icon.png",
       fallbackImage: "/projects/figurinhas/placeholder-lqip.svg",
@@ -310,10 +310,10 @@ const useProjects = () => {
       id: "finpal",
       title: "FinPal - Gestão Financeira",
       category: "React + Supabase + PWA",
-      description: "Aplicativo moderno de gestão financeira pessoal com interface mobile-first, controle de assinaturas e dashboard inteligente.",
+      description: "Aplicativo para controle financeiro pessoal com foco em assinaturas recorrentes e visualização clara dos gastos mensais.",
       longDescription: [
-        "Aplicativo completo de gestão financeira desenvolvido com React 18 e TypeScript, oferecendo uma experiência mobile-first para controle de finanças pessoais. Possui autenticação segura via Supabase, gestão de assinaturas recorrentes e dashboard com visão geral financeira.",
-        "Inclui sistema de categorias inteligente, controle de gastos por categoria, cache otimizado para performance e interface responsiva otimizada para dispositivos móveis. O app utiliza TanStack Query para gerenciamento de estado e oferece funcionalidades avançadas como criação automática de categorias padrão e indicadores de próximas cobranças."
+        "Solução prática para quem quer controlar gastos com Netflix, Spotify e outras assinaturas digitais. Interface simples e intuitiva que mostra exatamente onde o dinheiro está sendo gasto a cada mês.",
+        "Inclui alertas de próximas cobranças, categorização automática de gastos e dashboard com visão completa da situação financeira. Funciona perfeitamente no celular e salva dados com segurança na nuvem."
       ],
       image: "/projects/gestão/icon.png",
       fallbackImage: "/projects/gestão/placeholder-lqip.svg",
@@ -429,13 +429,10 @@ const useProjects = () => {
     },
     {
       id: "microservicos-docker",
-      title: "Em Desenvolvimento",
-      category: "DevOps",
-      description: "Arquitetura de microsserviços containerizada com Docker, com monitoramento e escalabilidade automática.",
-      longDescription: [
-        "Projeto de migração de arquitetura monolítica para microsserviços, utilizando Docker para containerização e orquestração com Kubernetes.",
-        "Implementação de CI/CD completo, monitoramento em tempo real e escalabilidade automática baseada em métricas de uso e performance."
-      ],
+      title: "",
+      category: "",
+      description: "",
+      longDescription: [""],
       image: "bg-secondary/10",
       fallbackImage: "/placeholder.svg",
       hasRealImage: false,
@@ -443,23 +440,15 @@ const useProjects = () => {
       featured: false,
       inDevelopment: true,
       icon: "hammer",
-      technologies: ["Docker", "Kubernetes", "CI/CD"],
-      tools: [
-        { icon: "box", name: "Docker" },
-        { icon: "grid", name: "Kubernetes" },
-        { icon: "git-branch", name: "CI/CD" },
-        { icon: "activity", name: "Prometheus" }
-      ]
+      technologies: [],
+      tools: []
     },
     {
       id: "dashboard-analitico",
-      title: "Em desenvolvimento",
-      category: "Full Stack",
-      description: "Dashboard para visualização de métricas e KPIs com backend em PHP, PostgreSQL e frontend moderno.",
-      longDescription: [
-        "Dashboard interativo para visualização em tempo real de métricas de negócio e KPIs críticos, com dados consolidados de múltiplas fontes.",
-        "Interface responsiva desenvolvida com foco em UX, permitindo customização de visualizações e geração de relatórios automatizados."
-      ],
+      title: "",
+      category: "",
+      description: "",
+      longDescription: [""],
       image: "bg-accent/10",
       fallbackImage: "/placeholder.svg",
       hasRealImage: false,
@@ -467,13 +456,8 @@ const useProjects = () => {
       featured: false,
       inDevelopment: true,
       icon: "wrench",
-      technologies: ["PHP", "PostgreSQL", "Charts.js"],
-      tools: [
-        { icon: "code", name: "PHP" },
-        { icon: "database", name: "PostgreSQL" },
-        { icon: "bar-chart-2", name: "Charts.js" },
-        { icon: "refresh-cw", name: "Real-time" }
-      ]
+      technologies: [],
+      tools: []
     }
   ], []);
 
