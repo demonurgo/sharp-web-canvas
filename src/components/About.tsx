@@ -55,7 +55,7 @@ const About = () => {
                 <span className="bg-accent text-white px-2 text-xs">2023 - Presente</span>
               </div>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                Desenvolvimento completo do sistema Gestor Kaisen, responsável por toda arquitetura e implementação. 
+                Desenvolvimento de funcionalidades e manutenção do sistema Gestor Kaisen, responsável por arquiteturas e implementações. 
                 Criação de soluções que automatizam processos contábeis complexos, desde integração com APIs até 
                 interfaces de usuário modernas.
               </p>
